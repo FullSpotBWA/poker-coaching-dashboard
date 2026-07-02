@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Coaching Notes | PKO Mastery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --bg-card-hover: #222230;
+            --accent-green: #00ff87;
+            --accent-green-dim: #00cc6a;
+            --accent-red: #ff4757;
+            --accent-orange: #ffa502;
+            --accent-blue: #3742fa;
+            --accent-purple: #a855f7;
+            --text-primary: #f1f1f3;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border-color: #2a2a3a;
+            --border-glow: rgba(0, 255, 135, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .logo {
+            padding: 0 24px 32px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .logo h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            display: block;
+            margin-top: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-section {
+            padding: 0 16px;
+            margin-bottom: 24px;
+        }
+
+        .nav-section-title {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            padding: 0 8px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent-green);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-card);
+        }
+
+        .nav-item.active {
+            background: var(--bg-card);
+        }
+
+        .nav-item.active::before {
+            transform: scaleY(1);
+        }
+
+        .nav-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .nav-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .nav-item-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-item-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-item.pko .nav-item-icon {
+            background: linear-gradient(135deg, var(--accent-green), #00b36b);
+            color: var(--bg-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 32px 48px;
+            max-width: 1200px;
+        }
+
+        .session-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .session-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Session Header */
+        .session-header {
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .session-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid rgba(0, 255, 135, 0.2);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .session-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .session-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .session-meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .section-icon.concepts { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); }
+        .section-icon.situations { background: rgba(55, 66, 250, 0.15); color: var(--accent-blue); }
+        .section-icon.takeaways { background: rgba(0, 255, 135, 0.15); color: var(--accent-green); }
+        .section-icon.quotes { background: rgba(255, 165, 2, 0.15); color: var(--accent-orange); }
+        .section-icon.ranges { background: rgba(255, 71, 87, 0.15); color: var(--accent-red); }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 255, 135, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            padding-right: 30px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Concept Cards with Tags */
+        .concept-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(168, 85, 247, 0.15);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Situation Cards */
+        .situation-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .situation-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .situation-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .position-badge {
+            padding: 4px 10px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        .situation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .situation-block h5 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .situation-block ul {
+            list-style: none;
+        }
+
+        .situation-block li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .situation-block li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .situation-block.errors li::before {
+            content: '✗';
+            color: var(--accent-red);
+        }
+
+        /* Takeaways Checklist */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-item:hover {
+            border-color: rgba(0, 255, 135, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .checklist-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--accent-green);
+            border-radius: 5px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-box:hover {
+            background: rgba(0, 255, 135, 0.1);
+        }
+
+        .checklist-box.checked {
+            background: var(--accent-green);
+        }
+
+        .checklist-box.checked::after {
+            content: '✓';
+            color: var(--bg-primary);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .checklist-text {
+            flex: 1;
+        }
+
+        .checklist-text strong {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .checklist-text span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Quote Cards */
+        .quote-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 165, 2, 0.05) 100%);
+            border: 1px solid rgba(255, 165, 2, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            font-family: Georgia, serif;
+            color: var(--accent-orange);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .quote-context {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-left: 20px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Diagram Container */
+        .diagram-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .diagram-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Range Display */
+        .range-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .range-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .range-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .range-hands {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            word-break: break-all;
+            line-height: 1.6;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+            background: var(--bg-secondary);
+        }
+
+        .comparison-table td {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:hover td {
+            background: var(--bg-card-hover);
+        }
+
+        .value-positive {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .value-negative {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            .main-content {
+                margin-left: 240px;
+                padding: 24px 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .session-title {
+                font-size: 1.8rem;
+            }
+            .situation-content {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>Poker Notes</h1>
+                <span>// coaching syntheses</span>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions PKO</div>
+                
+                <div class="nav-item pko active" onclick="showSession('session-pko-icm')">
+                    <div class="nav-item-icon">01</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">PKO & ICM + Postflop</div>
+                        <div class="nav-item-meta">Série PKO • Avancé</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Statistiques</div>
+                <div style="padding: 12px 16px; color: var(--text-muted); font-size: 0.85rem;">
+                    <div style="margin-bottom: 8px;">📚 1 session</div>
+                    <div style="margin-bottom: 8px;">⏱️ ~45 min de contenu</div>
+                    <div>🎯 12 takeaways</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Session: PKO & ICM -->
+            <div id="session-pko-icm" class="session-content active">
+                
+                <!-- Header -->
+                <header class="session-header">
+                    <div class="session-badge">
+                        <span>●</span> Série PKO - Partie Finale
+                    </div>
+                    <h1 class="session-title">PKO & ICM + Applications Postflop</h1>
+                    <p class="session-subtitle">Comment les bounties modifient les dynamiques ICM en table finale et impactent les décisions postflop</p>
+                    <div class="session-meta">
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            Coaching Vidéo
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            Niveau Avancé
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            PKO, ICM, Postflop
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">~⅓</div>
+                        <div class="stat-label">Risk Premium réduit en PKO vs Vanilla</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">45%</div>
+                        <div class="stat-label">Valeur Starting Bounty en TF</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">RP-</div>
+                        <div class="stat-label">Quand on couvre = RP négatif</div>
+                    </div>
+                </div>
+
+                <!-- KEY CONCEPTS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon concepts">💡</div>
+                        <h2 class="section-title">Key Concepts</h2>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <span class="card-number">01</span>
+                            <span class="concept-tag">FONDAMENTAL</span>
+                            <h4>Forces Opposées ICM vs Bounty</h4>
+                            <p>L'ICM augmente le Risk Premium (jetons perdus > jetons gagnés). Les Bounties le diminuent car on gagne de l'argent directement. Ces deux forces s'opposent et parfois se neutralisent (RP ≈ 1).</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">02</span>
+                            <span class="concept-tag">ICM PKO</span>
+                            <h4>Moins d'ICM en PKO = Structure Top Heavy</h4>
+                            <p>La structure de payout PKO est très "top heavy" : le 1er gagne sa propre bounty + celle du 2ème. Il n'est pas rare que le 1er gagne le double du 2ème, voire plus. Donc plus d'incentive à jouer la win → RP ~⅓ plus faible qu'en Vanilla.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">03</span>
+                            <span class="concept-tag">STRATÉGIE</span>
+                            <h4>Chip Leader moins d'abus, Middle stacks plus loose</h4>
+                            <p>Ranges plus loose pour les middle stacks et les shortys. Défense plus large. Les chip leaders peuvent moins abuser du Risk Premium. Plus d'incentive à devenir gros stack pour collecter les bounties.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">04</span>
+                            <span class="concept-tag">CALCUL</span>
+                            <h4>Valeur du Starting Bounty en TF</h4>
+                            <p>Le starting bounty commence à ¼ et sa valeur augmente au fil du tournoi. En table finale, on peut estimer qu'un starting bounty power de 1 équivaut à ~45% du stack du joueur.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">05</span>
+                            <span class="concept-tag">POSTFLOP</span>
+                            <h4>Threshold de Value plus bas pour le Couvrant</h4>
+                            <p>Le stack couvrant a besoin de moins d'équité pour go broke car il gagne un bonus (la bounty). Plus la bounty est grosse, plus le seuil pour value bet/shove baisse. Le couvrant veut mettre plus d'argent au milieu.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SITUATIONS & LINES -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon situations">🎯</div>
+                        <h2 class="section-title">Situations & Lines Analysées</h2>
+                    </div>
+
+                    <!-- Situation 1: Chip Leader en TF PKO -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Chip Leader en Table Finale PKO
+                                <span class="position-badge">85-100bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Contre stack 60bb : RP ~6% en Vanilla, mais RP négatif en PKO grâce aux bounties</li>
+                                    <li>Contre stack 50bb : presque pas de RP, joue quasi chip EV</li>
+                                    <li>Contre les blindes : peut jouer à RP = 1 exactement</li>
+                                    <li>Ouvrir plus de combos : 67s, paires de 4 deviennent des opens</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Jouer aussi tight qu'en ICM Vanilla</li>
+                                    <li>Ne pas exploiter le RP réduit contre les stacks qu'on couvre</li>
+                                    <li>Sous-estimer la valeur de l'élimination potentielle</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Situation 2: Middle Stack en TF PKO -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Middle Stack en Table Finale PKO
+                                <span class="position-badge">~50bb / Average 40bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Défendre plus wide qu'en Vanilla ICM</li>
+                                    <li>Le RP est significativement réduit vs structure classique</li>
+                                    <li>Plus d'incentive à prendre des spots marginaux pour passer gros stack</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Folder trop tight en pensant "je suis en TF"</li>
+                                    <li>Oublier que passer gros stack = pouvoir collecter les bounties</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Situation 3: Postflop en PKO - Couvrant -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Postflop en Position (Stack Couvrant)
+                                <span class="position-badge">IP vs OOP</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Bet plus gros au flop (sizing up vs Chip EV)</li>
+                                    <li>Moins de trap, moins de slowplay - mettre l'argent au milieu</li>
+                                    <li>Threshold value bet river plus bas (~78-79% équité en Chip EV vs moins en PKO)</li>
+                                    <li>Plus la bounty est grosse, plus on peut value thin</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Utiliser les mêmes sizings qu'en Chip EV</li>
+                                    <li>Trap river avec les nuts (on veut que Villain mette son stack)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Situation 4: Postflop - Stack Couvert -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Postflop OOP (Stack Couvert)
+                                <span class="position-badge">OOP vs IP couvrant</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Check-raise plus fort et plus direct (jam plutôt que petit sizing)</li>
+                                    <li>Moins de bluff (Villain call au-dessus de sa MDF car bounty bonus)</li>
+                                    <li>Value bet plus thin car Villain call plus light</li>
+                                    <li>Avec les très bonnes mains : jam direct, pas de sizing intermédiaire</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Bluffer autant qu'en Chip EV (Villain over-call pour la bounty)</li>
+                                    <li>Check-raise petit sizing avec les nuts (on veut jam pour max value)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RANGES & CONSTRUCTIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon ranges">📊</div>
+                        <h2 class="section-title">Comparaison RP : Vanilla vs PKO</h2>
+                    </div>
+
+                    <div class="diagram-container">
+                        <div class="diagram-title">Impact du Bounty Power sur le Risk Premium</div>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Situation</th>
+                                    <th>RP Vanilla (Chip EV TF)</th>
+                                    <th>RP PKO (avec Bounties)</th>
+                                    <th>Δ Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Chip Leader (85bb) vs 60bb</td>
+                                    <td>~6%</td>
+                                    <td class="value-negative">Négatif</td>
+                                    <td class="value-positive">↓↓ Bounty compense ICM</td>
+                                </tr>
+                                <tr>
+                                    <td>Chip Leader vs 50bb (UTG)</td>
+                                    <td>~3-4%</td>
+                                    <td class="value-negative">~0% (chip EV)</td>
+                                    <td class="value-positive">↓ Neutralisé</td>
+                                </tr>
+                                <tr>
+                                    <td>Chip Leader vs Blindes</td>
+                                    <td>~2%</td>
+                                    <td class="value-positive">RP = 1 exact</td>
+                                    <td class="value-positive">= Parfait chip EV</td>
+                                </tr>
+                                <tr>
+                                    <td>Middle Stack général</td>
+                                    <td>Variable élevé</td>
+                                    <td>~⅓ plus faible</td>
+                                    <td class="value-positive">↓ Ranges plus loose</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="range-grid" style="margin-top: 24px;">
+                        <div class="range-item">
+                            <div class="range-label">Opens additionnels en TF PKO vs Vanilla</div>
+                            <div class="range-hands">67s, 44, 87s (quand on couvre tout le monde)</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Bounty Power 1 (¼ stack)</div>
+                            <div class="range-hands">RP réduit de ~6-7% vs situations équivalentes</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Bounty Power 2 (½ stack)</div>
+                            <div class="range-hands">Encore plus de jams OOP, cold down réduit IP</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Bounty Power 4 (= stack)</div>
+                            <div class="range-hands">Open beaucoup plus, threshold value minimal</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAKEAWAYS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon takeaways">✅</div>
+                        <h2 class="section-title">Takeaways Actionnables</h2>
+                    </div>
+
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Réduire mentalement le RP de ~⅓ en TF PKO</strong>
+                                <span>La structure top-heavy + bounties = moins de pression ICM. Jouer plus loose qu'en Vanilla.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Quand je couvre : mon RP peut être négatif</strong>
+                                <span>L'ICM existe mais la bounty potentielle le compense, voire le dépasse. Élargir ma range vs les stacks que je couvre.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>En TF : 1 starting bounty ≈ 45% du stack adverse</strong>
+                                <span>Utiliser cette approximation pour estimer la valeur de l'élimination d'un joueur.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Postflop couvrant : bet bigger, trap moins</strong>
+                                <span>Mon seuil pour broke est plus bas. Je veux mettre l'argent au milieu avec mes value hands.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Postflop couvert : bluff moins, value thin plus</strong>
+                                <span>Villain call au-dessus de sa MDF pour ma bounty. Moins de bluffs, mais je peux value bet plus light car il call trop.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>OOP avec les nuts : jam direct au lieu de petit sizing</strong>
+                                <span>IP va call beaucoup plus pour la bounty. Maximiser la value en mettant tout le stack.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Threshold value river : besoin de moins d'équité</strong>
+                                <span>En Chip EV ~78-79% d'équité pour 3-barrel. En PKO, ce seuil baisse proportionnellement au bounty power.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Space KO / Monster Bounty : rules amplifiées</strong>
+                                <span>Si une bounty vaut plus que le prizepool restant, le RP contre ce joueur est extrêmement bas. Il doit jouer ultra tight, je peux call super wide.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Moins de slowplay des deux côtés</strong>
+                                <span>Couvrant et couvert ont tous les deux intérêt à aller vers le nœud "all-in". Moins de checks strong, moins de traps river.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Adapter bluff/value ratio selon bounty power</strong>
+                                <span>Plus la bounty est grosse, plus Villain over-call → réduire les bluffs proportionnellement.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Incentive gros stack = collecter les bounties</strong>
+                                <span>En plus de jouer la win, être gros stack permet de couvrir tout le monde et collecter. Double incentive.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>IP vs Bounty Power élevé : augmenter les sizings</strong>
+                                <span>Au flop, passer de bet 40% à des sizings plus gros. OOP va call/raise plus, donc je capitalise avec mes value.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CITATIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon quotes">💬</div>
+                        <h2 class="section-title">Citations Clés</h2>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Les Risk Premium en général sont ⅓ plus faibles en PKO. Ça veut donc dire qu'il y a moins d'ICM, moins de pression, les ranges sont plus loose, les middle stacks peuvent go plus loose, défendre plus, et les chip leaders peuvent moins abuser du Risk Premium.</p>
+                        <p class="quote-context">— Sur l'impact global du format PKO sur l'ICM</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Le stack couvrant a besoin de moins d'équité pour go broke selon la bounty adverse. Donc on peut value plus thin, bet plus cher. Et le stack couvert doit modifier son bluff-to-value ratio vu que le couvrant va call au-dessus de sa MDF mathématique.</p>
+                        <p class="quote-context">— Sur les ajustements postflop en PKO</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Il y a pas de slowplay, voire presque pas de slowplay. Dans les traps river, les check strong... En général on met plus l'argent au milieu. Quand on est couvert, on a moins de checks, on force l'autre à payer. Donc en général on veut moins trap.</p>
+                        <p class="quote-context">— Sur la disparition du slowplay en contexte bounty</p>
+                    </div>
+                </section>
+
+            </div>
+            <!-- End Session PKO-ICM -->
+
+        </main>
+    </div>
+
+    <script>
+        // Navigation functionality
+        function showSession(sessionId) {
+            // Hide all sessions
+            document.querySelectorAll('.session-content').forEach(session => {
+                session.classList.remove('active');
+            });
+            
+            // Remove active state from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show selected session
+            document.getElementById(sessionId).classList.add('active');
+            
+            // Add active state to clicked nav item
+            event.currentTarget.classList.add('active');
+        }
+
+        // Store checkbox states in localStorage
+        document.querySelectorAll('.checklist-box').forEach((box, index) => {
+            const key = `checkbox-${window.location.pathname}-${index}`;
+            
+            // Load saved state
+            if (localStorage.getItem(key) === 'checked') {
+                box.classList.add('checked');
+            }
+            
+            // Save state on click
+            box.addEventListener('click', function() {
+                if (this.classList.contains('checked')) {
+                    localStorage.setItem(key, 'checked');
+                } else {
+                    localStorage.removeItem(key);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

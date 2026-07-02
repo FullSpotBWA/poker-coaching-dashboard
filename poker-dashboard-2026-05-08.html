@@ -1,0 +1,3866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Coaching Notes | PKO Mastery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --bg-card-hover: #222230;
+            --accent-green: #00ff87;
+            --accent-green-dim: #00cc6a;
+            --accent-red: #ff4757;
+            --accent-orange: #ffa502;
+            --accent-blue: #3742fa;
+            --accent-purple: #a855f7;
+            --accent-cyan: #00d4ff;
+            --text-primary: #f1f1f3;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border-color: #2a2a3a;
+            --border-glow: rgba(0, 255, 135, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 24px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .logo {
+            padding: 0 24px 32px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+        }
+
+        .logo h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            display: block;
+            margin-top: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-section {
+            padding: 0 16px;
+            margin-bottom: 24px;
+        }
+
+        .nav-section-title {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            padding: 0 8px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent-green);
+            transform: scaleY(0);
+            transition: transform 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-card);
+        }
+
+        .nav-item.active {
+            background: var(--bg-card);
+        }
+
+        .nav-item.active::before {
+            transform: scaleY(1);
+        }
+
+        .nav-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .nav-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .nav-item-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-item-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-item.pko .nav-item-icon {
+            background: linear-gradient(135deg, var(--accent-green), #00b36b);
+            color: var(--bg-primary);
+        }
+
+        .nav-item.postflop .nav-item-icon {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-primary);
+        }
+
+        .nav-item.quiz .nav-item-icon {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            color: var(--bg-primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 32px 48px;
+            max-width: 1200px;
+        }
+
+        .session-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .session-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Session Header */
+        .session-header {
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .session-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid rgba(0, 255, 135, 0.2);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .session-badge.cyan {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--accent-cyan);
+        }
+
+        .session-badge.orange {
+            background: rgba(255, 165, 2, 0.1);
+            border: 1px solid rgba(255, 165, 2, 0.2);
+            color: var(--accent-orange);
+        }
+
+        .session-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .session-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .session-meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .section-icon.concepts { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); }
+        .section-icon.situations { background: rgba(55, 66, 250, 0.15); color: var(--accent-blue); }
+        .section-icon.takeaways { background: rgba(0, 255, 135, 0.15); color: var(--accent-green); }
+        .section-icon.quotes { background: rgba(255, 165, 2, 0.15); color: var(--accent-orange); }
+        .section-icon.ranges { background: rgba(255, 71, 87, 0.15); color: var(--accent-red); }
+        .section-icon.textures { background: rgba(0, 212, 255, 0.15); color: var(--accent-cyan); }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0, 255, 135, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            padding-right: 30px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Concept Cards with Tags */
+        .concept-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(168, 85, 247, 0.15);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .concept-tag.cyan {
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--accent-cyan);
+        }
+
+        /* Situation Cards */
+        .situation-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .situation-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .situation-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .position-badge {
+            padding: 4px 10px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        .position-badge.cyan {
+            color: var(--accent-cyan);
+        }
+
+        .situation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .situation-block h5 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .situation-block ul {
+            list-style: none;
+        }
+
+        .situation-block li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .situation-block li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .situation-block.errors li::before {
+            content: '✗';
+            color: var(--accent-red);
+        }
+
+        /* Takeaways Checklist */
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-item:hover {
+            border-color: rgba(0, 255, 135, 0.3);
+            background: var(--bg-card-hover);
+        }
+
+        .checklist-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--accent-green);
+            border-radius: 5px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checklist-box:hover {
+            background: rgba(0, 255, 135, 0.1);
+        }
+
+        .checklist-box.checked {
+            background: var(--accent-green);
+        }
+
+        .checklist-box.checked::after {
+            content: '✓';
+            color: var(--bg-primary);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .checklist-text {
+            flex: 1;
+        }
+
+        .checklist-text strong {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .checklist-text span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Quote Cards */
+        .quote-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 165, 2, 0.05) 100%);
+            border: 1px solid rgba(255, 165, 2, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            font-family: Georgia, serif;
+            color: var(--accent-orange);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .quote-context {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-left: 20px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Diagram Container */
+        .diagram-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .diagram-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Range Display */
+        .range-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .range-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .range-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .range-hands {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            word-break: break-all;
+            line-height: 1.6;
+        }
+
+        .range-hands.cyan {
+            color: var(--accent-cyan);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+        }
+
+        .stat-value.cyan {
+            color: var(--accent-cyan);
+        }
+
+        .stat-value.orange {
+            color: var(--accent-orange);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+            background: var(--bg-secondary);
+        }
+
+        .comparison-table td {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:hover td {
+            background: var(--bg-card-hover);
+        }
+
+        .value-positive {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .value-negative {
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+
+        .value-neutral {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        /* ==========================================
+           QUIZ MODE STYLES
+           ========================================== */
+        
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .quiz-progress-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-progress-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .quiz-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 30px rgba(255, 165, 2, 0.1);
+        }
+
+        .quiz-card.flipped {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 255, 135, 0.05) 100%);
+            border-color: var(--accent-green);
+        }
+
+        .quiz-card-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 4px 10px;
+            background: rgba(255, 165, 2, 0.15);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .quiz-card-session {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .quiz-card-content {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .quiz-card-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .quiz-btn {
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .quiz-btn:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .quiz-btn.primary {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border-color: var(--accent-green);
+        }
+
+        .quiz-btn.primary:hover {
+            background: var(--accent-green-dim);
+        }
+
+        .quiz-btn.danger {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .quiz-btn.danger:hover {
+            background: rgba(255, 71, 87, 0.1);
+        }
+
+        .quiz-btn.success {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .quiz-btn.success:hover {
+            background: rgba(0, 255, 135, 0.1);
+        }
+
+        .quiz-filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .quiz-filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .quiz-filter-btn:hover {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+        }
+
+        .quiz-filter-btn.active {
+            background: var(--accent-orange);
+            color: var(--bg-primary);
+            border-color: var(--accent-orange);
+        }
+
+        .quiz-score {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 24px;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .quiz-score-item {
+            text-align: center;
+        }
+
+        .quiz-score-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .quiz-score-value.correct {
+            color: var(--accent-green);
+        }
+
+        .quiz-score-value.incorrect {
+            color: var(--accent-red);
+        }
+
+        .quiz-score-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .quiz-complete {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .quiz-complete-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .quiz-complete-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .quiz-complete-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* ==========================================
+           SRS (Spaced Repetition) STYLES
+           ========================================== */
+        
+        .srs-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .srs-stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .srs-stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .srs-stat-value.due { color: var(--accent-red); }
+        .srs-stat-value.learning { color: var(--accent-orange); }
+        .srs-stat-value.review { color: var(--accent-cyan); }
+        .srs-stat-value.mastered { color: var(--accent-green); }
+
+        .srs-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .srs-mode-toggle {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding: 4px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .srs-mode-btn {
+            padding: 8px 18px;
+            border-radius: 7px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .srs-mode-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .srs-mode-btn.active {
+            background: var(--accent-orange);
+            color: var(--bg-primary);
+        }
+
+        .srs-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .srs-btn {
+            padding: 16px 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid;
+            background: var(--bg-card);
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .srs-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .srs-btn-emoji {
+            font-size: 1.4rem;
+        }
+
+        .srs-btn-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .srs-btn-interval {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .srs-btn.again {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+        .srs-btn.again:hover {
+            background: rgba(255, 71, 87, 0.1);
+        }
+
+        .srs-btn.hard {
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+        }
+        .srs-btn.hard:hover {
+            background: rgba(255, 165, 2, 0.1);
+        }
+
+        .srs-btn.good {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+        .srs-btn.good:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .srs-btn.easy {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        .srs-btn.easy:hover {
+            background: rgba(0, 255, 135, 0.1);
+        }
+
+        .srs-card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .srs-level-badge {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .srs-level-badge.new { background: rgba(255, 71, 87, 0.15); color: var(--accent-red); }
+        .srs-level-badge.learning { background: rgba(255, 165, 2, 0.15); color: var(--accent-orange); }
+        .srs-level-badge.review { background: rgba(0, 212, 255, 0.15); color: var(--accent-cyan); }
+        .srs-level-badge.mastered { background: rgba(0, 255, 135, 0.15); color: var(--accent-green); }
+
+        .srs-empty-state {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .srs-empty-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .srs-empty-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .srs-empty-text {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .srs-reset-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            margin-top: 16px;
+        }
+
+        .srs-reset-btn:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* ==========================================
+           QCM MODE STYLES
+           ========================================== */
+        .qcm-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .qcm-option {
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .qcm-option:hover:not(.disabled) {
+            border-color: var(--accent-orange);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .qcm-option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--bg-secondary);
+            color: var(--accent-orange);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .qcm-option-text {
+            flex: 1;
+        }
+
+        .qcm-option.correct {
+            border-color: var(--accent-green);
+            background: rgba(0, 255, 135, 0.1);
+            color: var(--text-primary);
+        }
+
+        .qcm-option.correct .qcm-option-letter {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+        }
+
+        .qcm-option.incorrect {
+            border-color: var(--accent-red);
+            background: rgba(255, 71, 87, 0.1);
+        }
+
+        .qcm-option.incorrect .qcm-option-letter {
+            background: var(--accent-red);
+            color: var(--bg-primary);
+        }
+
+        .qcm-option.disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .qcm-option.disabled.correct,
+        .qcm-option.disabled.incorrect {
+            opacity: 1;
+        }
+
+        .qcm-feedback {
+            margin-top: 16px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+        }
+
+        .qcm-feedback.success {
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .qcm-feedback.error {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        @media (max-width: 768px) {
+            .qcm-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            .main-content {
+                margin-left: 240px;
+                padding: 24px 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .session-title {
+                font-size: 1.8rem;
+            }
+            .situation-content {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .quiz-card {
+                padding: 30px 20px;
+            }
+            .quiz-card-content {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>Poker Notes</h1>
+                <span>// coaching syntheses</span>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Mode Révision</div>
+                
+                <div class="nav-item quiz" onclick="showSession('session-quiz')">
+                    <div class="nav-item-icon">🎯</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Quiz Mode</div>
+                        <div class="nav-item-meta">66 cartes • Flashcards</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions PKO</div>
+                
+                <div class="nav-item pko active" onclick="showSession('session-pko-icm')">
+                    <div class="nav-item-icon">01</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">PKO & ICM + Postflop</div>
+                        <div class="nav-item-meta">Série PKO • Avancé</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions Postflop</div>
+                
+                <div class="nav-item postflop" onclick="showSession('session-sqz-80bb')">
+                    <div class="nav-item-icon">02</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Pots SQZ 80bb SB vs HJ</div>
+                        <div class="nav-item-meta">C-Bet • Textures</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions ICM</div>
+                
+                <div class="nav-item pko" onclick="showSession('session-exploit-icm')">
+                    <div class="nav-item-icon">03</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Exploits ICM en TF</div>
+                        <div class="nav-item-meta">T. Boivin • Préflop</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Statistiques</div>
+                <div style="padding: 12px 16px; color: var(--text-muted); font-size: 0.85rem;">
+                    <div style="margin-bottom: 8px;">📚 3 sessions</div>
+                    <div style="margin-bottom: 8px;">⏱️ ~110 min de contenu</div>
+                    <div style="margin-bottom: 8px;">🎯 30 takeaways</div>
+                    <div>🃏 66 flashcards</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- ============================================== -->
+            <!-- QUIZ MODE -->
+            <!-- ============================================== -->
+            <div id="session-quiz" class="session-content">
+                
+                <header class="session-header">
+                    <div class="session-badge orange">
+                        <span>●</span> Mode Révision
+                    </div>
+                    <h1 class="session-title">Quiz Flashcards</h1>
+                    <p class="session-subtitle">Système de révision espacée — révise au bon moment pour mémoriser durablement</p>
+                </header>
+
+                <!-- Mode Toggle -->
+                <div class="srs-mode-toggle">
+                    <button class="srs-mode-btn active" id="mode-srs-btn" onclick="switchMode('srs')">📅 Révision Espacée (SRS)</button>
+                    <button class="srs-mode-btn" id="mode-qcm-btn" onclick="switchMode('qcm')">🎴 QCM</button>
+                    <button class="srs-mode-btn" id="mode-free-btn" onclick="switchMode('free')">🎯 Mode Libre</button>
+                </div>
+
+                <!-- ============ MODE SRS ============ -->
+                <div id="srs-mode-container">
+                    
+                    <!-- Stats SRS -->
+                    <div class="srs-stats">
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value due" id="srs-stat-due">0</div>
+                            <div class="srs-stat-label">À réviser</div>
+                        </div>
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value learning" id="srs-stat-learning">0</div>
+                            <div class="srs-stat-label">En apprentissage</div>
+                        </div>
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value review" id="srs-stat-review">0</div>
+                            <div class="srs-stat-label">En révision</div>
+                        </div>
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value mastered" id="srs-stat-mastered">0</div>
+                            <div class="srs-stat-label">Maîtrisées</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-container">
+                        
+                        <!-- Filters SRS -->
+                        <div class="quiz-filters">
+                            <button class="quiz-filter-btn active" onclick="filterSRS('all')">Toutes les sessions</button>
+                            <button class="quiz-filter-btn" onclick="filterSRS('pko')">PKO & ICM</button>
+                            <button class="quiz-filter-btn" onclick="filterSRS('sqz')">SQZ 80bb</button>
+                            <button class="quiz-filter-btn" onclick="filterSRS('icm')">Exploits ICM</button>
+                            <button class="quiz-filter-btn" onclick="filterSRS('takeaway')">Takeaways</button>
+                        </div>
+
+                        <!-- Empty state -->
+                        <div id="srs-empty-state" class="srs-empty-state" style="display: none;">
+                            <div class="srs-empty-icon">🎉</div>
+                            <div class="srs-empty-title">Aucune carte à réviser !</div>
+                            <div class="srs-empty-text">Reviens plus tard ou passe en Mode Libre pour réviser quand même.</div>
+                            <button class="quiz-btn" onclick="switchMode('free')">🎯 Passer en Mode Libre</button>
+                        </div>
+
+                        <!-- SRS Card -->
+                        <div id="srs-card-container">
+                            <div class="srs-card-info">
+                                <div>Carte <span id="srs-current-num">1</span> / <span id="srs-total-num">0</span></div>
+                                <div class="srs-level-badge new" id="srs-level-badge">NOUVELLE</div>
+                            </div>
+
+                            <div class="quiz-card" id="srs-card" onclick="flipSRSCard()">
+                                <div class="quiz-card-tag" id="srs-tag">PKO</div>
+                                <div class="quiz-card-session" id="srs-session">Session 01</div>
+                                <div class="quiz-card-content" id="srs-content">Chargement...</div>
+                                <div class="quiz-card-hint" id="srs-hint">Clique pour voir la réponse</div>
+                            </div>
+
+                            <!-- SRS Buttons (4 levels) -->
+                            <div class="srs-buttons" id="srs-buttons" style="display: none;">
+                                <button class="srs-btn again" onclick="rateSRS(0)">
+                                    <span class="srs-btn-emoji">🔴</span>
+                                    <span class="srs-btn-label">À revoir</span>
+                                    <span class="srs-btn-interval" id="srs-int-again">< 10 min</span>
+                                </button>
+                                <button class="srs-btn hard" onclick="rateSRS(1)">
+                                    <span class="srs-btn-emoji">🟠</span>
+                                    <span class="srs-btn-label">Mauvais</span>
+                                    <span class="srs-btn-interval" id="srs-int-hard">1 jour</span>
+                                </button>
+                                <button class="srs-btn good" onclick="rateSRS(2)">
+                                    <span class="srs-btn-emoji">🟢</span>
+                                    <span class="srs-btn-label">Bien</span>
+                                    <span class="srs-btn-interval" id="srs-int-good">3 jours</span>
+                                </button>
+                                <button class="srs-btn easy" onclick="rateSRS(3)">
+                                    <span class="srs-btn-emoji">⭐</span>
+                                    <span class="srs-btn-label">Parfait</span>
+                                    <span class="srs-btn-interval" id="srs-int-easy">7 jours</span>
+                                </button>
+                            </div>
+
+                            <button class="srs-reset-btn" onclick="resetSRSData()">⚠️ Réinitialiser toute la progression SRS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ MODE QCM ============ -->
+                <div id="qcm-mode-container" style="display: none;">
+
+                    <!-- Stats QCM (mêmes que SRS, données partagées) -->
+                    <div class="srs-stats">
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value due" id="qcm-stat-due">0</div>
+                            <div class="srs-stat-label">À réviser</div>
+                        </div>
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value learning" id="qcm-stat-learning">0</div>
+                            <div class="srs-stat-label">En apprentissage</div>
+                        </div>
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value review" id="qcm-stat-review">0</div>
+                            <div class="srs-stat-label">En révision</div>
+                        </div>
+                        <div class="srs-stat-card">
+                            <div class="srs-stat-value mastered" id="qcm-stat-mastered">0</div>
+                            <div class="srs-stat-label">Maîtrisées</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-container">
+
+                        <!-- Filters QCM -->
+                        <div class="quiz-filters">
+                            <button class="quiz-filter-btn active" onclick="filterQCM('all')">Toutes les sessions</button>
+                            <button class="quiz-filter-btn" onclick="filterQCM('pko')">PKO & ICM</button>
+                            <button class="quiz-filter-btn" onclick="filterQCM('sqz')">SQZ 80bb</button>
+                            <button class="quiz-filter-btn" onclick="filterQCM('icm')">Exploits ICM</button>
+                            <button class="quiz-filter-btn" onclick="filterQCM('takeaway')">Takeaways</button>
+                        </div>
+
+                        <!-- Empty state QCM -->
+                        <div id="qcm-empty-state" class="srs-empty-state" style="display: none;">
+                            <div class="srs-empty-icon">🎉</div>
+                            <div class="srs-empty-title">Aucune carte à réviser !</div>
+                            <div class="srs-empty-text">Reviens plus tard ou passe en Mode Libre pour réviser quand même.</div>
+                            <button class="quiz-btn" onclick="switchMode('free')">🎯 Passer en Mode Libre</button>
+                        </div>
+
+                        <!-- QCM Card -->
+                        <div id="qcm-card-container">
+                            <div class="srs-card-info">
+                                <div>Carte <span id="qcm-current-num">1</span> / <span id="qcm-total-num">0</span></div>
+                                <div class="srs-level-badge new" id="qcm-level-badge">NOUVELLE</div>
+                            </div>
+
+                            <div class="quiz-card" style="cursor: default; min-height: auto; padding: 30px;">
+                                <div class="quiz-card-tag" id="qcm-tag">PKO</div>
+                                <div class="quiz-card-session" id="qcm-session">Session 01</div>
+                                <div class="quiz-card-content" id="qcm-question" style="font-size: 1.15rem; padding: 20px 0;">Chargement...</div>
+                            </div>
+
+                            <!-- Options de réponse -->
+                            <div class="qcm-options" id="qcm-options"></div>
+
+                            <!-- Feedback -->
+                            <div class="qcm-feedback" id="qcm-feedback"></div>
+
+                            <!-- SRS Buttons (4 levels) - apparaissent après réponse -->
+                            <div class="srs-buttons" id="qcm-srs-buttons" style="display: none;">
+                                <button class="srs-btn again" onclick="rateQCM(0)">
+                                    <span class="srs-btn-emoji">🔴</span>
+                                    <span class="srs-btn-label">À revoir</span>
+                                    <span class="srs-btn-interval" id="qcm-int-again">< 10 min</span>
+                                </button>
+                                <button class="srs-btn hard" onclick="rateQCM(1)">
+                                    <span class="srs-btn-emoji">🟠</span>
+                                    <span class="srs-btn-label">Mauvais</span>
+                                    <span class="srs-btn-interval" id="qcm-int-hard">1 jour</span>
+                                </button>
+                                <button class="srs-btn good" onclick="rateQCM(2)">
+                                    <span class="srs-btn-emoji">🟢</span>
+                                    <span class="srs-btn-label">Bien</span>
+                                    <span class="srs-btn-interval" id="qcm-int-good">3 jours</span>
+                                </button>
+                                <button class="srs-btn easy" onclick="rateQCM(3)">
+                                    <span class="srs-btn-emoji">⭐</span>
+                                    <span class="srs-btn-label">Parfait</span>
+                                    <span class="srs-btn-interval" id="qcm-int-easy">7 jours</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ MODE LIBRE ============ -->
+                <div id="free-mode-container" style="display: none;">
+
+                    <!-- Stats Overview -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value orange" id="quiz-total">66</div>
+                            <div class="stat-label">Cartes disponibles</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value orange" id="quiz-current">1</div>
+                            <div class="stat-label">Carte actuelle</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value orange" id="quiz-remaining">66</div>
+                            <div class="stat-label">Cartes restantes</div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-container">
+                        
+                        <!-- Filters -->
+                        <div class="quiz-filters">
+                            <button class="quiz-filter-btn active" onclick="filterQuiz('all')">Toutes (66)</button>
+                            <button class="quiz-filter-btn" onclick="filterQuiz('pko')">PKO & ICM (22)</button>
+                            <button class="quiz-filter-btn" onclick="filterQuiz('sqz')">SQZ 80bb (21)</button>
+                            <button class="quiz-filter-btn" onclick="filterQuiz('icm')">Exploits ICM (23)</button>
+                            <button class="quiz-filter-btn" onclick="filterQuiz('takeaway')">Takeaways (20)</button>
+                        </div>
+
+                        <!-- Progress -->
+                        <div class="quiz-progress">
+                            <div class="quiz-progress-bar">
+                                <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="quiz-progress-text"><span id="progress-current">0</span>/<span id="progress-total">66</span></div>
+                        </div>
+
+                        <!-- Card -->
+                        <div class="quiz-card" id="quiz-card" onclick="flipCard()">
+                            <div class="quiz-card-tag" id="quiz-tag">PKO</div>
+                            <div class="quiz-card-session" id="quiz-session">Session 01</div>
+                            <div class="quiz-card-content" id="quiz-content">
+                                Clique sur "Commencer" pour démarrer le quiz !
+                            </div>
+                            <div class="quiz-card-hint" id="quiz-hint">Clique pour commencer</div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="quiz-controls" id="quiz-controls-start">
+                            <button class="quiz-btn primary" onclick="startQuiz()">🎯 Commencer</button>
+                            <button class="quiz-btn" onclick="shuffleAndStart()">🔀 Mélanger & Commencer</button>
+                        </div>
+
+                        <div class="quiz-controls" id="quiz-controls-playing" style="display: none;">
+                            <button class="quiz-btn danger" onclick="markIncorrect()">✗ À revoir</button>
+                            <button class="quiz-btn" onclick="flipCard()">🔄 Retourner</button>
+                            <button class="quiz-btn success" onclick="markCorrect()">✓ Correct</button>
+                        </div>
+
+                        <div class="quiz-controls" id="quiz-controls-done" style="display: none;">
+                            <button class="quiz-btn primary" onclick="restartQuiz()">🔄 Recommencer</button>
+                            <button class="quiz-btn" onclick="reviewMistakes()">📝 Revoir les erreurs</button>
+                        </div>
+
+                        <!-- Score -->
+                        <div class="quiz-score" id="quiz-score" style="display: none;">
+                            <div class="quiz-score-item">
+                                <div class="quiz-score-value correct" id="score-correct">0</div>
+                                <div class="quiz-score-label">Correct</div>
+                            </div>
+                            <div class="quiz-score-item">
+                                <div class="quiz-score-value incorrect" id="score-incorrect">0</div>
+                                <div class="quiz-score-label">À revoir</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End Quiz Mode -->
+            
+            <!-- Session: PKO & ICM -->
+            <div id="session-pko-icm" class="session-content active">
+                
+                <!-- Header -->
+                <header class="session-header">
+                    <div class="session-badge">
+                        <span>●</span> Série PKO - Partie Finale
+                    </div>
+                    <h1 class="session-title">PKO & ICM + Applications Postflop</h1>
+                    <p class="session-subtitle">Comment les bounties modifient les dynamiques ICM en table finale et impactent les décisions postflop</p>
+                    <div class="session-meta">
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            Coaching Vidéo
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            Niveau Avancé
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            PKO, ICM, Postflop
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">~⅓</div>
+                        <div class="stat-label">Risk Premium réduit en PKO vs Vanilla</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">45%</div>
+                        <div class="stat-label">Valeur Starting Bounty en TF</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">RP-</div>
+                        <div class="stat-label">Quand on couvre = RP négatif</div>
+                    </div>
+                </div>
+
+                <!-- KEY CONCEPTS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon concepts">💡</div>
+                        <h2 class="section-title">Key Concepts</h2>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <span class="card-number">01</span>
+                            <span class="concept-tag">FONDAMENTAL</span>
+                            <h4>Forces Opposées ICM vs Bounty</h4>
+                            <p>L'ICM augmente le Risk Premium (jetons perdus > jetons gagnés). Les Bounties le diminuent car on gagne de l'argent directement. Ces deux forces s'opposent et parfois se neutralisent (RP ≈ 1).</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">02</span>
+                            <span class="concept-tag">ICM PKO</span>
+                            <h4>Moins d'ICM en PKO = Structure Top Heavy</h4>
+                            <p>La structure de payout PKO est très "top heavy" : le 1er gagne sa propre bounty + celle du 2ème. Il n'est pas rare que le 1er gagne le double du 2ème, voire plus. Donc plus d'incentive à jouer la win → RP ~⅓ plus faible qu'en Vanilla.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">03</span>
+                            <span class="concept-tag">STRATÉGIE</span>
+                            <h4>Chip Leader moins d'abus, Middle stacks plus loose</h4>
+                            <p>Ranges plus loose pour les middle stacks et les shortys. Défense plus large. Les chip leaders peuvent moins abuser du Risk Premium. Plus d'incentive à devenir gros stack pour collecter les bounties.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">04</span>
+                            <span class="concept-tag">CALCUL</span>
+                            <h4>Valeur du Starting Bounty en TF</h4>
+                            <p>Le starting bounty commence à ¼ et sa valeur augmente au fil du tournoi. En table finale, on peut estimer qu'un starting bounty power de 1 équivaut à ~45% du stack du joueur.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">05</span>
+                            <span class="concept-tag">POSTFLOP</span>
+                            <h4>Threshold de Value plus bas pour le Couvrant</h4>
+                            <p>Le stack couvrant a besoin de moins d'équité pour go broke car il gagne un bonus (la bounty). Plus la bounty est grosse, plus le seuil pour value bet/shove baisse. Le couvrant veut mettre plus d'argent au milieu.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SITUATIONS & LINES -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon situations">🎯</div>
+                        <h2 class="section-title">Situations & Lines Analysées</h2>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Chip Leader en Table Finale PKO
+                                <span class="position-badge">85-100bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Contre stack 60bb : RP ~6% en Vanilla, mais RP négatif en PKO grâce aux bounties</li>
+                                    <li>Contre stack 50bb : presque pas de RP, joue quasi chip EV</li>
+                                    <li>Contre les blindes : peut jouer à RP = 1 exactement</li>
+                                    <li>Ouvrir plus de combos : 67s, paires de 4 deviennent des opens</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Jouer aussi tight qu'en ICM Vanilla</li>
+                                    <li>Ne pas exploiter le RP réduit contre les stacks qu'on couvre</li>
+                                    <li>Sous-estimer la valeur de l'élimination potentielle</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Middle Stack en Table Finale PKO
+                                <span class="position-badge">~50bb / Average 40bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Défendre plus wide qu'en Vanilla ICM</li>
+                                    <li>Le RP est significativement réduit vs structure classique</li>
+                                    <li>Plus d'incentive à prendre des spots marginaux pour passer gros stack</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Folder trop tight en pensant "je suis en TF"</li>
+                                    <li>Oublier que passer gros stack = pouvoir collecter les bounties</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Postflop en Position (Stack Couvrant)
+                                <span class="position-badge">IP vs OOP</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Bet plus gros au flop (sizing up vs Chip EV)</li>
+                                    <li>Moins de trap, moins de slowplay - mettre l'argent au milieu</li>
+                                    <li>Threshold value bet river plus bas (~78-79% équité en Chip EV vs moins en PKO)</li>
+                                    <li>Plus la bounty est grosse, plus on peut value thin</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Utiliser les mêmes sizings qu'en Chip EV</li>
+                                    <li>Trap river avec les nuts (on veut que Villain mette son stack)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Postflop OOP (Stack Couvert)
+                                <span class="position-badge">OOP vs IP couvrant</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Check-raise plus fort et plus direct (jam plutôt que petit sizing)</li>
+                                    <li>Moins de bluff (Villain call au-dessus de sa MDF car bounty bonus)</li>
+                                    <li>Value bet plus thin car Villain call plus light</li>
+                                    <li>Avec les très bonnes mains : jam direct, pas de sizing intermédiaire</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Bluffer autant qu'en Chip EV (Villain over-call pour la bounty)</li>
+                                    <li>Check-raise petit sizing avec les nuts (on veut jam pour max value)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RANGES & CONSTRUCTIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon ranges">📊</div>
+                        <h2 class="section-title">Comparaison RP : Vanilla vs PKO</h2>
+                    </div>
+
+                    <div class="diagram-container">
+                        <div class="diagram-title">Impact du Bounty Power sur le Risk Premium</div>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Situation</th>
+                                    <th>RP Vanilla (Chip EV TF)</th>
+                                    <th>RP PKO (avec Bounties)</th>
+                                    <th>Δ Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Chip Leader (85bb) vs 60bb</td>
+                                    <td>~6%</td>
+                                    <td class="value-negative">Négatif</td>
+                                    <td class="value-positive">↓↓ Bounty compense ICM</td>
+                                </tr>
+                                <tr>
+                                    <td>Chip Leader vs 50bb (UTG)</td>
+                                    <td>~3-4%</td>
+                                    <td class="value-negative">~0% (chip EV)</td>
+                                    <td class="value-positive">↓ Neutralisé</td>
+                                </tr>
+                                <tr>
+                                    <td>Chip Leader vs Blindes</td>
+                                    <td>~2%</td>
+                                    <td class="value-positive">RP = 1 exact</td>
+                                    <td class="value-positive">= Parfait chip EV</td>
+                                </tr>
+                                <tr>
+                                    <td>Middle Stack général</td>
+                                    <td>Variable élevé</td>
+                                    <td>~⅓ plus faible</td>
+                                    <td class="value-positive">↓ Ranges plus loose</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="range-grid" style="margin-top: 24px;">
+                        <div class="range-item">
+                            <div class="range-label">Opens additionnels en TF PKO vs Vanilla</div>
+                            <div class="range-hands">67s, 44, 87s (quand on couvre tout le monde)</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Bounty Power 1 (¼ stack)</div>
+                            <div class="range-hands">RP réduit de ~6-7% vs situations équivalentes</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Bounty Power 2 (½ stack)</div>
+                            <div class="range-hands">Encore plus de jams OOP, cold down réduit IP</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Bounty Power 4 (= stack)</div>
+                            <div class="range-hands">Open beaucoup plus, threshold value minimal</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAKEAWAYS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon takeaways">✅</div>
+                        <h2 class="section-title">Takeaways Actionnables</h2>
+                    </div>
+
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Réduire mentalement le RP de ~⅓ en TF PKO</strong>
+                                <span>La structure top-heavy + bounties = moins de pression ICM. Jouer plus loose qu'en Vanilla.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Quand je couvre : mon RP peut être négatif</strong>
+                                <span>L'ICM existe mais la bounty potentielle le compense, voire le dépasse. Élargir ma range vs les stacks que je couvre.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>En TF : 1 starting bounty ≈ 45% du stack adverse</strong>
+                                <span>Utiliser cette approximation pour estimer la valeur de l'élimination d'un joueur.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Postflop couvrant : bet bigger, trap moins</strong>
+                                <span>Mon seuil pour broke est plus bas. Je veux mettre l'argent au milieu avec mes value hands.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Postflop couvert : bluff moins, value thin plus</strong>
+                                <span>Villain call au-dessus de sa MDF pour ma bounty. Moins de bluffs, mais je peux value bet plus light car il call trop.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>OOP avec les nuts : jam direct au lieu de petit sizing</strong>
+                                <span>IP va call beaucoup plus pour la bounty. Maximiser la value en mettant tout le stack.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Threshold value river : besoin de moins d'équité</strong>
+                                <span>En Chip EV ~78-79% d'équité pour 3-barrel. En PKO, ce seuil baisse proportionnellement au bounty power.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Space KO / Monster Bounty : rules amplifiées</strong>
+                                <span>Si une bounty vaut plus que le prizepool restant, le RP contre ce joueur est extrêmement bas. Il doit jouer ultra tight, je peux call super wide.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Moins de slowplay des deux côtés</strong>
+                                <span>Couvrant et couvert ont tous les deux intérêt à aller vers le nœud "all-in". Moins de checks strong, moins de traps river.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Adapter bluff/value ratio selon bounty power</strong>
+                                <span>Plus la bounty est grosse, plus Villain over-call → réduire les bluffs proportionnellement.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Incentive gros stack = collecter les bounties</strong>
+                                <span>En plus de jouer la win, être gros stack permet de couvrir tout le monde et collecter. Double incentive.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>IP vs Bounty Power élevé : augmenter les sizings</strong>
+                                <span>Au flop, passer de bet 40% à des sizings plus gros. OOP va call/raise plus, donc je capitalise avec mes value.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CITATIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon quotes">💬</div>
+                        <h2 class="section-title">Citations Clés</h2>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Les Risk Premium en général sont ⅓ plus faibles en PKO. Ça veut donc dire qu'il y a moins d'ICM, moins de pression, les ranges sont plus loose, les middle stacks peuvent go plus loose, défendre plus, et les chip leaders peuvent moins abuser du Risk Premium.</p>
+                        <p class="quote-context">— Sur l'impact global du format PKO sur l'ICM</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Le stack couvrant a besoin de moins d'équité pour go broke selon la bounty adverse. Donc on peut value plus thin, bet plus cher. Et le stack couvert doit modifier son bluff-to-value ratio vu que le couvrant va call au-dessus de sa MDF mathématique.</p>
+                        <p class="quote-context">— Sur les ajustements postflop en PKO</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Il y a pas de slowplay, voire presque pas de slowplay. Dans les traps river, les check strong... En général on met plus l'argent au milieu. Quand on est couvert, on a moins de checks, on force l'autre à payer. Donc en général on veut moins trap.</p>
+                        <p class="quote-context">— Sur la disparition du slowplay en contexte bounty</p>
+                    </div>
+                </section>
+
+            </div>
+            <!-- End Session PKO-ICM -->
+
+
+            <!-- ============================================== -->
+            <!-- Session 02: Pots SQZ 80bb SB vs HJ (CO fold) -->
+            <!-- ============================================== -->
+            <div id="session-sqz-80bb" class="session-content">
+                
+                <!-- Header -->
+                <header class="session-header">
+                    <div class="session-badge cyan">
+                        <span>●</span> Postflop • C-Bet Strategy
+                    </div>
+                    <h1 class="session-title">Pots SQZ 80bb : SB vs HJ (CO fold)</h1>
+                    <p class="session-subtitle">Stratégies de C-bet par texture après squeeze en SB contre un caller HJ — décortiquage complet des boards</p>
+                    <div class="session-meta">
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            Coaching Vidéo
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            Niveau Avancé
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            C-Bet, Textures, OOP Play
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            80bb deep
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value cyan">~21%</div>
+                        <div class="stat-label">Check moyen sur toutes textures</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value cyan">High</div>
+                        <div class="stat-label">Boards A/K/J = Range Bet</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value cyan">~70%</div>
+                        <div class="stat-label">Check sur low connected boards</div>
+                    </div>
+                </div>
+
+                <!-- KEY CONCEPTS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon concepts">💡</div>
+                        <h2 class="section-title">Key Concepts</h2>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <span class="card-number">01</span>
+                            <span class="concept-tag cyan">SPOT</span>
+                            <h4>Configuration du Spot</h4>
+                            <p>HJ open → CO call → SB squeeze → HJ call → CO fold. On joue OOP contre la range la plus forte (HJ qui a call le squeeze). CO a fold donc on ne fait face qu'à ~80-110 combos tight.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">02</span>
+                            <span class="concept-tag cyan">TEXTURE</span>
+                            <h4>High Cards = Range Bet</h4>
+                            <p>Sur les boards Ace High, King High et Jack High, on est en range bet. Notre range de squeeze domine ces textures. IP n'a presque rien qui fold si on bet 25%, mais notre équité justifie le bet.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">03</span>
+                            <span class="concept-tag cyan">TEXTURE</span>
+                            <h4>Queen High = Plus de checks</h4>
+                            <p>Les boards Queen High sont meilleurs pour le caller préflop. C'est la texture high card sur laquelle on check le plus en pot 3bet. Les queens connectent bien avec la range de call de HJ.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">04</span>
+                            <span class="concept-tag cyan">CRITIQUE</span>
+                            <h4>Low Boards = IP a tous les sets</h4>
+                            <p>Sur 8 high, 7 high, 6 high : on check 50-70%. IP a tous les brelans (44, 55, 66, 77, 88) et nous aucun. Les équités sont ~50/50 et IP peut nous exploiter si on range bet.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">05</span>
+                            <span class="concept-tag cyan">SIZING</span>
+                            <h4>Polarisé sur Boards Pairés Bas</h4>
+                            <p>Sur boards comme 4-3-3 (brick boards), les small bets n'accomplissent rien — IP fold 0-9%. On doit jouer polarisé avec un big size (2/3 pot). Nos overpairs JJ+ veulent value et protection.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TEXTURES ANALYSIS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon textures">🎨</div>
+                        <h2 class="section-title">Analyse par Type de Texture</h2>
+                    </div>
+
+                    <div class="diagram-container">
+                        <div class="diagram-title">Fréquence de Check par High Card</div>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Texture</th>
+                                    <th>Fréquence Check</th>
+                                    <th>Stratégie</th>
+                                    <th>Pourquoi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ace High</td>
+                                    <td class="value-positive">~5-10%</td>
+                                    <td>Range Bet</td>
+                                    <td>On domine, IP a peu de Ax forts</td>
+                                </tr>
+                                <tr>
+                                    <td>King High</td>
+                                    <td class="value-positive">~10-15%</td>
+                                    <td>Range Bet</td>
+                                    <td>Très bon pour notre range SQZ</td>
+                                </tr>
+                                <tr>
+                                    <td>Jack High</td>
+                                    <td class="value-positive">~15-20%</td>
+                                    <td>Range Bet</td>
+                                    <td>On connecte bien, IP moins</td>
+                                </tr>
+                                <tr>
+                                    <td>Queen High</td>
+                                    <td class="value-neutral">~25-35%</td>
+                                    <td>Mixed / Plus de checks</td>
+                                    <td>Bon pour caller PF (QJs, AQ)</td>
+                                </tr>
+                                <tr>
+                                    <td>8/7/6 High (connectés)</td>
+                                    <td class="value-negative">~50-70%</td>
+                                    <td>Majoritairement Check</td>
+                                    <td>IP a tous les sets, équité 50/50</td>
+                                </tr>
+                                <tr>
+                                    <td>Low Pairés (4-3-3)</td>
+                                    <td class="value-neutral">~40%</td>
+                                    <td>Polarisé Big Size</td>
+                                    <td>Small bet = IP fold 0%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- SITUATIONS & LINES -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon situations">🎯</div>
+                        <h2 class="section-title">Situations & Lines Analysées</h2>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Boards à Straights (ex: 7-6-5)
+                                <span class="position-badge cyan">OOP vs IP</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Check toute notre range — super conservateur</li>
+                                    <li>Check-raise nos overpairs (vulnérables)</li>
+                                    <li>Check-call les mains moyennes (7x, gutshots)</li>
+                                    <li>Check-raise les backdoor flush draws pour bluff</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>C-bet ces boards pensant que notre range domine</li>
+                                    <li>Oublier que IP a 98s, 87s, 65s, tous les sets</li>
+                                    <li>Ne pas trouver ses bluffs en check-raise</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Boards Pairés Bas (ex: 4-3-3, 8-4-4)
+                                <span class="position-badge cyan">Brick Board</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Jouer polarisé avec big size (2/3 pot)</li>
+                                    <li>Bet nos overpairs JJ+ (fortes mais vulnérables)</li>
+                                    <li>Check 88, 77 pour pot control</li>
+                                    <li>En pratique : peut range bet 25% vs weak regs qui over-fold</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Bet 25% en range — IP fold seulement 9% en théorie</li>
+                                    <li>Slowplay les overpairs sur boards bricks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Turn après Flop Pairé (ex: 8-4-4 → 5)
+                                <span class="position-badge cyan">2 Streets?</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Bet 50% du stack (pas all-in)</li>
+                                    <li>Nos bluffs (KT, A9) ont peu d'équité → on veut pouvoir fold</li>
+                                    <li>Quand board pairé = moins de connexion possible</li>
+                                    <li>Garder la possibilité de give up river avec nos airs</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Shove turn avec peu de bluffs à équité</li>
+                                    <li>3-barrel ses overcards sans draws</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Ajustement vs HJ Plus Tight
+                                <span class="position-badge cyan">~80 combos vs ~110</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Lines Recommandées</h5>
+                                <ul>
+                                    <li>Ajouter ~3-5% de checks en plus sur les mauvaises textures</li>
+                                    <li>High cards : rien ne change, toujours range bet</li>
+                                    <li>Low connectés : check encore plus (77% vs 66%)</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Penser que HJ tight = on peut plus bluff (faux)</li>
+                                    <li>Modifier sa stratégie high cards (elle reste la même)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- RANGES & CONSTRUCTIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon ranges">📊</div>
+                        <h2 class="section-title">Ranges & Constructions</h2>
+                    </div>
+
+                    <div class="range-grid">
+                        <div class="range-item">
+                            <div class="range-label">Range HJ call vs SQZ (~80-110 combos)</div>
+                            <div class="range-hands cyan">JJ-77, AQs-ATs, KQs, QJs, JTs, T9s, 98s, 87s, 76s, AQo-AJo parfois</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Mains HJ qui disparaissent si tight</div>
+                            <div class="range-hands cyan">A5s, A3s, K6s, AJo, KQo — les combos marginaux</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Nos Check-Raise Bluffs (boards connectés)</div>
+                            <div class="range-hands cyan">Backdoor flush draws, gutshots avec overcards</div>
+                        </div>
+                        <div class="range-item">
+                            <div class="range-label">Value Bet polarisé (boards pairés bas)</div>
+                            <div class="range-hands cyan">JJ+, parfois TT selon texture</div>
+                        </div>
+                    </div>
+
+                    <div class="formula-box" style="margin-top: 20px;">
+                        IP Float vs Bet 2/3 : K♠T♣, A♠J♦, Q♠J♥ — difficile à trouver mais nécessaire
+                    </div>
+                </section>
+
+                <!-- TAKEAWAYS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon takeaways">✅</div>
+                        <h2 class="section-title">Takeaways Actionnables</h2>
+                    </div>
+
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>High Cards (A/K/J) = Range Bet sans réfléchir</strong>
+                                <span>Ces textures favorisent notre range de squeeze. Bet small et souvent.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Queen High = Plus de prudence</strong>
+                                <span>QJ, QTs, AQ sont dans la range de call de HJ. Cette texture lui convient mieux.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Low Boards Connectés = Check 60-70%</strong>
+                                <span>IP a TOUS les sets (44-88), nous AUCUN. Les équités sont 50/50, pas de range bet.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Boards à Straights = Check range puis x/r</strong>
+                                <span>7-6-5 type boards : check tout, puis check-raise les overpairs et backdoors.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Brick Boards Pairés = Big Size Polarisé</strong>
+                                <span>4-3-3 : bet 2/3 pot. Les small sizes ne font rien folder. JJ+ veut value + protection.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Overpairs moyennes (88, 77) = Pot control</strong>
+                                <span>Check ces mains sur boards pairés bas. Trop vulnérables pour bet/call 3 streets.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Turn : Bet 50% stack quand bluffs ont peu d'équité</strong>
+                                <span>Sur board pairé, nos bluffs sont des overcards sans draws. On veut pouvoir fold river.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Exploit vs Weak Regs : Range bet 25% même sur bricks</strong>
+                                <span>En théorie IP fold 9%. En pratique, les regs over-fold K9s, QTs etc. Exploite.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>IP doit stab ses airs sur boards à straights</strong>
+                                <span>Quand je suis IP et que OOP check, je dois bluffer tous mes airs sur 7-6-5 type boards.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Check-raise OOP = Trouver ses backdoors</strong>
+                                <span>Les bons bluffs de check-raise sont les flush draws backdoor, pas les gutshots secs.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CITATIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon quotes">💬</div>
+                        <h2 class="section-title">Citations Clés</h2>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Sur les cartes basses, donc sur les boards 8 high, 7 high, 6 high qui sont en général des boards connectés, on voit qu'on check énormément parce qu'on a aucun brelan alors que IP lui dans sa range il a tous les brelans.</p>
+                        <p class="quote-context">— Sur pourquoi on check autant les low boards</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">C'est vraiment un big size qui est utilisé parce que les small size n'accomplissent pas grand chose. Très polar : nos overpairs qui sont à la fois fortes mais vulnérables.</p>
+                        <p class="quote-context">— Sur les boards bricks pairés (4-3-3 type)</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Queen High comme toujours, ou comme souvent en pot 3bet, est quand même assez bon pour le caller préflop. Donc c'est vraiment la texture high card sur laquelle on va checker le plus.</p>
+                        <p class="quote-context">— Sur pourquoi Queen High est différent des autres high cards</p>
+                    </div>
+                </section>
+
+            </div>
+            <!-- End Session SQZ 80bb -->
+
+
+            <!-- ============================================== -->
+            <!-- Session 03: Exploits ICM en TF (T. Boivin) -->
+            <!-- ============================================== -->
+            <div id="session-exploit-icm" class="session-content">
+                
+                <!-- Header -->
+                <header class="session-header">
+                    <div class="session-badge">
+                        <span>●</span> Exploits Préflop • ICM TF
+                    </div>
+                    <h1 class="session-title">Exploits ICM en Table Finale</h1>
+                    <p class="session-subtitle">Comment exploiter un joueur agressif à notre gauche qui 3-bet trop souvent en TF — par Thomas Boivin (Pure Poker Coaching)</p>
+                    <div class="session-meta">
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                            Coach: Thomas Boivin
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            Niveau Avancé
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+                            ICM, Préflop, Node Lock
+                        </div>
+                        <div class="meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            Source: Pure Poker Coaching
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">+2%</div>
+                        <div class="stat-label">Open wider face à un 3-better agro</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">35%</div>
+                        <div class="stat-label">3-bet IP vs CO under-defend (vs 12%)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3x</div>
+                        <div class="stat-label">Multiplier sa fréquence de 3-bet en exploit</div>
+                    </div>
+                </div>
+
+                <!-- KEY CONCEPTS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon concepts">💡</div>
+                        <h2 class="section-title">Key Concepts</h2>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <span class="card-number">01</span>
+                            <span class="concept-tag">PROFIL</span>
+                            <h4>Le Joueur Cible : 3-better trop fréquent</h4>
+                            <p>Joueur agro à notre gauche qui 3-bet en automatique des combos comme A4s-A8s, K6s-K8s, KQo, AJo en TF — manque de balance bluff/value malgré le RP élevé. Souvent vu en live ou contre amateurs.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">02</span>
+                            <span class="concept-tag">CONTRE-EXPLOIT</span>
+                            <h4>Open plus wide face à un 3-better agro</h4>
+                            <p>Quand on est middle stack et que le CO 3-bet trop, on ouvre ~2% plus wide. Pourquoi ? Le 3-bet revient à nous avec toute notre range et chaque décision (call/4-bet/fold) devient pure et profitable.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">03</span>
+                            <span class="concept-tag">CL DOUBLE EXPLOIT</span>
+                            <h4>CL avec range wide : le double ajustement</h4>
+                            <p>1) D'abord <strong>réduire</strong> la range d'open (de 42% à 30%) car on ne peut pas 4-bet shove tout. 2) Une fois open, presque <strong>jamais fold</strong> face au 3-bet — shove paires, suited, KTo, QTo print.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">04</span>
+                            <span class="concept-tag">CL TIGHT</span>
+                            <h4>CL avec range tight : modifier la composition</h4>
+                            <p>Si on anticipe l'agression : on garde le même % d'open (33%), mais on modifie les <strong>blockers</strong>. On enlève les Q5-Q9, J9, K9 (mains qui foldent) et on ajoute des paires basses (33+) pour pouvoir 4-bet shove derrière.</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">05</span>
+                            <span class="concept-tag">EXPLOIT IP</span>
+                            <h4>Exploiter un PFR qui under-defend</h4>
+                            <p>Si on est IP et qu'on pense que le PFR ne défendra pas assez face au 3-bet : augmenter la fréquence de 3-bet (de 11% à 16-27% selon adaptation des blindes). Quand on couvre le PFR : jusqu'à 35-50% de 3-bet possible !</p>
+                        </div>
+
+                        <div class="card">
+                            <span class="card-number">06</span>
+                            <span class="concept-tag">ASYMÉTRIE RP</span>
+                            <h4>Asymétrie de Risk Premium</h4>
+                            <p>Quand on couvre l'adversaire, notre RP est faible mais le sien est élevé. On peut étendre vite notre range de 3-bet, lui ne peut pas s'adapter sans grosses déviations. C'est pour ça qu'on peut tripler la fréquence de 3-bet et lui peu faire grand chose.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SITUATIONS & LINES -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon situations">🎯</div>
+                        <h2 class="section-title">Scénarios Analysés</h2>
+                    </div>
+
+                    <!-- Scénario 1 -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Scénario 1 : Middle Stack vs CO Agressif
+                                <span class="position-badge">36-37bb / CO couvre</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Adaptations Recommandées</h5>
+                                <ul>
+                                    <li>Open ~2% plus wide qu'à l'équilibre (~14% → ~16%)</li>
+                                    <li>Range blocker-oriented (K2s, K8s, J10o, A2o)</li>
+                                    <li>Toute la range devient profitable face au 3-bet (call/shove/4-bet)</li>
+                                    <li>Paire de Dame fait $500 EV, K6 fait $3000 EV</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Garder la range d'équilibre (laisser de l'argent sur la table)</li>
+                                    <li>Fold trop face au 3-bet alors que tout est profitable</li>
+                                    <li>Penser "je suis 3ème, je dois être tight"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scénario 2 -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Scénario 2 : CL Range Wide vs BU Agro
+                                <span class="position-badge">CL 60bb / BU 30bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Adaptations Recommandées (Double exploit)</h5>
+                                <ul>
+                                    <li><strong>Étape 1</strong> : Réduire l'open de 42% à 30%</li>
+                                    <li><strong>Étape 2</strong> : Quasiment aucun fold face au 3-bet</li>
+                                    <li>Shove toutes les suited, paires, et même KTo, QTo, JTo</li>
+                                    <li>Les "bluffs" deviennent des mains qui print</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Garder la range wide d'équilibre (on fold trop souvent)</li>
+                                    <li>Flat avec la range (à l'équilibre on flat car RP faible — ici on shove)</li>
+                                    <li>Ne pas reconnaître l'opportunité de print avec QTo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scénario 3 -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Scénario 3 : CL Range Tight vs CO Agro
+                                <span class="position-badge">CL UTG6 / CO 38bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Adaptations Recommandées</h5>
+                                <ul>
+                                    <li>Garder le même % d'open (33%) mais composition différente</li>
+                                    <li>Enlever Q5-Q9, J9, K9 (mains qui foldent face au 3-bet)</li>
+                                    <li>Ajouter paires basses (33+) pour 4-bet shove</li>
+                                    <li>Open plus de blockers : K2s, K8s, J10o, A2o</li>
+                                    <li>4-bet shove print avec quasi tout</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Open Q5, Q6, J9 : ces mains perdent quoi qu'elles fassent</li>
+                                    <li>Ne pas anticiper avant l'open (changer la composition)</li>
+                                    <li>Penser que "tight" = "ne pas exploiter"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scénario 4 -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Scénario 4 : IP au BU vs CO PFR Under-defend
+                                <span class="position-badge">BU couvert / CO 30bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Adaptations Recommandées</h5>
+                                <ul>
+                                    <li>3-bet small uniquement (pas de reshove même AQo)</li>
+                                    <li>Passage de 11% à 16% (BB peut s'adapter) ou 27% (BB ne s'adapte pas)</li>
+                                    <li>Si CO 4-bet, fold tout — sa range est trop forte</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Reshove face au 4-bet (on est dominé)</li>
+                                    <li>Ignorer le risque que les blindes 4-bet shove</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scénario 5 -->
+                    <div class="situation-card">
+                        <div class="situation-header">
+                            <div class="situation-title">
+                                Scénario 5 : BU couvre CO (RP asymétrique)
+                                <span class="position-badge">BU 60bb / CO 36bb</span>
+                            </div>
+                        </div>
+                        <div class="situation-content">
+                            <div class="situation-block">
+                                <h5>✓ Adaptations Recommandées</h5>
+                                <ul>
+                                    <li>3-bet de 12% à 35% (presque triplé !)</li>
+                                    <li>En live avec bonnes reads : 40-50% possible</li>
+                                    <li>RP faible permet d'étendre vite, le CO ne peut pas s'adapter</li>
+                                    <li>Game changer : exploit énorme face à un under-defender</li>
+                                </ul>
+                            </div>
+                            <div class="situation-block errors">
+                                <h5>✗ Erreurs Communes</h5>
+                                <ul>
+                                    <li>Ne pas oser tripler la fréquence (laisser de l'argent)</li>
+                                    <li>Appliquer 50% en mode default sans bonnes reads</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- COMBOS À 3-BET TENTANTS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon ranges">📊</div>
+                        <h2 class="section-title">Identification du Joueur Agro</h2>
+                    </div>
+
+                    <div class="diagram-container">
+                        <div class="diagram-title">Combos qu'un agro 3-bet à tort en TF (devraient flat)</div>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Spot</th>
+                                    <th>Action GTO</th>
+                                    <th>Action Joueur Agro</th>
+                                    <th>Combos typiques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3ème vs CL open (RP 8%)</td>
+                                    <td class="value-positive">Pure flat</td>
+                                    <td class="value-negative">3-bet automatique</td>
+                                    <td>A4s, A5s, A7s, A8s, K6s, K7s, K8s, A9s</td>
+                                </tr>
+                                <tr>
+                                    <td>3ème vs CL — Combos offsuit</td>
+                                    <td class="value-positive">Flat</td>
+                                    <td class="value-negative">3-bet</td>
+                                    <td>KQo, AJo, parfois ATo</td>
+                                </tr>
+                                <tr>
+                                    <td>BU vs UTG (RP énorme)</td>
+                                    <td class="value-positive">Pure fold</td>
+                                    <td class="value-negative">3-bet</td>
+                                    <td>ATo, K8s, A2s, K9s</td>
+                                </tr>
+                                <tr>
+                                    <td>BU vs CO mid stacks</td>
+                                    <td class="value-positive">Pure flat ou fold</td>
+                                    <td class="value-negative">3-bet</td>
+                                    <td>Rolls Royce only (A5s, A4s) en GTO mais agro 3-bet plus</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="formula-box" style="margin-top: 20px;">
+                        💡 Lecture clé : Si le joueur n'a pas conscience de la balance bluff/value en TF avec RP élevé,<br>
+                        il va 3-bet automatiquement les combos suités et offsuit "tentants" → exploitable.
+                    </div>
+                </section>
+
+                <!-- TAKEAWAYS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon takeaways">✅</div>
+                        <h2 class="section-title">Takeaways Actionnables</h2>
+                    </div>
+
+                    <div class="checklist">
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Identifier le 3-better agro avant l'open</strong>
+                                <span>Si je vois mon adversaire 3-bet K6s, A8s, KQo régulièrement en TF → exploit identifié.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Middle stack vs agro : open ~+2% plus wide</strong>
+                                <span>Chaque 3-bet devient une décision profitable avec toute ma range. Ça réduit l'inconfort du spot.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>CL avec range wide : DEUX étapes d'ajustement</strong>
+                                <span>1) Réduire l'open (42% → 30%). 2) Une fois open, presque jamais fold — shove tout face au 3-bet.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>CL avec range tight : modifier la composition, pas le %</strong>
+                                <span>Garder 33% mais enlever les mains qui foldent (Q5-Q9, J9) et ajouter paires basses pour 4-bet shove.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Open blocker-oriented contre un 3-better agro</strong>
+                                <span>K2s, K8s, J10o, A2o — bloquer sa range value pour 4-bet shove sereinement.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>IP vs PFR under-defend : tripler la fréquence de 3-bet</strong>
+                                <span>De 11% à 27-35% selon le profil. En live avec bonnes reads, possible jusqu'à 50%.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Quand je couvre : utiliser l'asymétrie RP à fond</strong>
+                                <span>Mon RP faible permet d'étendre vite. Lui ne peut pas s'adapter sans grosses déviations.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>3-bet small en exploit (pas de reshove)</strong>
+                                <span>Si je 3-bet exploit et que CO 4-bet, sa range est trop forte → fold tout, même AQo.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>Vérifier les hypothèses avant d'exploiter à fond</strong>
+                                <span>Qui s'adapte ? Qui ne s'adapte pas ? Si BB s'adaptent au 3-bet trop fréquent, j'exploit moins.</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
+                            <div class="checklist-text">
+                                <strong>En live amateur : c'est un game changer</strong>
+                                <span>Pas la strat default, mais dans les bons spots avec reads solides, énorme +EV.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CITATIONS -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <div class="section-icon quotes">💬</div>
+                        <h2 class="section-title">Citations Clés</h2>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">Quand on a une range qui est super wide à la base, comme cutoff chip leader, on doit d'abord réduire la range d'open, et ensuite de là on peut tout shove. Quand on part d'une range semi-tight ou relativement tight, on va pouvoir 4-bet-shove quasiment tout, et faire de l'argent, vraiment print.</p>
+                        <p class="quote-context">— Sur le double exploit selon la range de départ</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">On peut très vite étendre, et il faut des énormes déviations pour qu'eux puissent s'adapter puisqu'ils ont un gros RP. Donc nous on va pouvoir faire très vite beaucoup plus d'argent avec ces mains-là, parce que notre RP est beaucoup plus faible.</p>
+                        <p class="quote-context">— Sur l'asymétrie de Risk Premium quand on couvre</p>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">C'est évidemment pas la strat par défaut qu'on doit appliquer tout le temps, mais dans les gros spots et surtout en live quand on a des bonnes reads, c'est quand même un game changer de pouvoir 3-bet 40% au lieu de 11%.</p>
+                        <p class="quote-context">— Sur l'application pratique en live tournament</p>
+                    </div>
+                </section>
+
+            </div>
+            <!-- End Session Exploit ICM -->
+
+        </main>
+    </div>
+
+    <script>
+        // ==========================================
+        // QUIZ DATA
+        // ==========================================
+        const quizData = [
+            // ============ SESSION 01: PKO & ICM (Concepts) ============
+            { q: "En PKO TF, de combien est réduit le Risk Premium par rapport à un tournoi Vanilla ?", a: "~⅓ plus faible (environ 33% de réduction)", tag: "PKO", session: "Session 01", category: "pko" },
+            { q: "Pourquoi y a-t-il moins d'ICM en PKO ?", a: "Structure \"top heavy\" : le 1er gagne sa bounty + celle du 2ème. Souvent le double du 2ème ou plus. Plus d'incentive à jouer la win.", tag: "ICM", session: "Session 01", category: "pko" },
+            { q: "Quelles sont les deux forces opposées en PKO ICM ?", a: "L'ICM augmente le Risk Premium (jetons perdus > gagnés). Les Bounties le diminuent (gain direct). Ces forces s'opposent et parfois se neutralisent (RP ≈ 1).", tag: "FONDAMENTAL", session: "Session 01", category: "pko" },
+            { q: "En TF PKO, combien vaut un starting bounty power de 1 ?", a: "~45% du stack du joueur adverse", tag: "CALCUL", session: "Session 01", category: "pko" },
+            { q: "Quand on est chip leader et qu'on couvre un joueur, que se passe-t-il avec le RP ?", a: "Le RP peut devenir négatif. L'ICM est compensé voire dépassé par la bounty potentielle.", tag: "STRATÉGIE", session: "Session 01", category: "pko" },
+            { q: "Chip Leader 85bb vs stack 60bb : quel RP en Vanilla vs PKO ?", a: "Vanilla : ~6% RP. PKO : RP négatif (bounty compense l'ICM)", tag: "COMPARAISON", session: "Session 01", category: "pko" },
+            { q: "Chip Leader vs les blindes en PKO : quel RP ?", a: "RP = 1 exactement. On joue parfait chip EV.", tag: "STRATÉGIE", session: "Session 01", category: "pko" },
+            { q: "En PKO postflop, comment joue le stack couvrant ?", a: "Bet plus gros, trap moins, threshold de value plus bas. Il veut mettre l'argent au milieu car il gagne un bonus (bounty).", tag: "POSTFLOP", session: "Session 01", category: "pko" },
+            { q: "En PKO postflop, comment joue le stack couvert ?", a: "Bluff moins (Villain over-call pour la bounty), mais value thin plus car Villain call trop light.", tag: "POSTFLOP", session: "Session 01", category: "pko" },
+            { q: "Quel est le threshold de value river en Chip EV ?", a: "~78-79% d'équité pour 3-barrel value", tag: "THRESHOLD", session: "Session 01", category: "pko" },
+            { q: "Comment évolue le threshold de value en PKO ?", a: "Il baisse proportionnellement au bounty power. Plus la bounty est grosse, moins on a besoin d'équité pour value.", tag: "THRESHOLD", session: "Session 01", category: "pko" },
+            { q: "OOP avec les nuts en PKO : quelle line ?", a: "Jam direct au lieu de petit sizing. IP va call beaucoup plus pour la bounty. Maximiser la value.", tag: "POSTFLOP", session: "Session 01", category: "pko" },
+            { q: "Pourquoi y a-t-il moins de slowplay en PKO ?", a: "Couvrant ET couvert veulent aller vers le nœud \"all-in\" (pour la bounty). Moins de checks strong, moins de traps river.", tag: "STRATÉGIE", session: "Session 01", category: "pko" },
+            { q: "Comment adapter le bluff/value ratio selon le bounty power ?", a: "Plus la bounty est grosse, plus Villain over-call → réduire les bluffs proportionnellement.", tag: "RATIO", session: "Session 01", category: "pko" },
+            { q: "En Space KO avec une bounty énorme, comment jouer ?", a: "RP contre ce joueur = extrêmement bas. Il doit jouer ultra tight, on peut call super wide.", tag: "SPACE KO", session: "Session 01", category: "pko" },
+            { q: "IP vs Bounty Power élevé : quel sizing au flop ?", a: "Augmenter les sizings (de 40% à plus gros). OOP va call/raise plus, donc on capitalise avec nos value.", tag: "SIZING", session: "Session 01", category: "pko" },
+            
+            // ============ SESSION 01: TAKEAWAYS PKO ============
+            { q: "[TAKEAWAY] PKO TF - Réflexe mental sur le RP ?", a: "Réduire mentalement le RP de ~⅓ vs Vanilla. Jouer plus loose.", tag: "TAKEAWAY", session: "Session 01", category: "pko", isTakeaway: true },
+            { q: "[TAKEAWAY] PKO - Quand je couvre un adversaire, mon RP est ?", a: "Peut être négatif. Élargir ma range vs les stacks que je couvre.", tag: "TAKEAWAY", session: "Session 01", category: "pko", isTakeaway: true },
+            { q: "[TAKEAWAY] PKO - Approximation valeur d'élimination en TF ?", a: "1 starting bounty ≈ 45% du stack adverse", tag: "TAKEAWAY", session: "Session 01", category: "pko", isTakeaway: true },
+            { q: "[TAKEAWAY] PKO postflop couvrant - Règle d'action ?", a: "Bet bigger, trap moins. Mettre l'argent au milieu avec mes value hands.", tag: "TAKEAWAY", session: "Session 01", category: "pko", isTakeaway: true },
+            { q: "[TAKEAWAY] PKO postflop couvert - Règle d'action ?", a: "Bluff moins, value thin plus. Villain call au-dessus de sa MDF pour ma bounty.", tag: "TAKEAWAY", session: "Session 01", category: "pko", isTakeaway: true },
+            { q: "[TAKEAWAY] PKO OOP avec les nuts - Sizing ?", a: "Jam direct au lieu de petit sizing. IP va call beaucoup plus.", tag: "TAKEAWAY", session: "Session 01", category: "pko", isTakeaway: true },
+
+            // ============ SESSION 02: SQZ 80bb (Concepts) ============
+            { q: "Configuration du spot SQZ SB vs HJ : qui a fold ?", a: "HJ open → CO call → SB squeeze → HJ call → CO fold. On joue OOP vs la range forte de HJ (~80-110 combos).", tag: "SPOT", session: "Session 02", category: "sqz" },
+            { q: "Sur quels boards high cards faut-il range bet après un squeeze ?", a: "Ace High, King High, Jack High. Notre range de squeeze domine ces textures.", tag: "TEXTURE", session: "Session 02", category: "sqz" },
+            { q: "Pourquoi Queen High est différent des autres high cards après SQZ ?", a: "Queen High est bon pour le caller PF (QJ, QTs, AQ dans sa range). C'est la texture high card où on check le plus.", tag: "TEXTURE", session: "Session 02", category: "sqz" },
+            { q: "Quelle fréquence de check sur les low boards connectés (7-6-5) après SQZ ?", a: "~60-70% de check. IP a tous les sets (44-88), nous aucun. Équités ~50/50.", tag: "FRÉQUENCE", session: "Session 02", category: "sqz" },
+            { q: "Pourquoi on n'a aucun set sur les low boards après un SQZ ?", a: "On squeeze tight donc on n'a pas 44, 55, 66, 77, 88 dans notre range. IP les a tous.", tag: "RANGE", session: "Session 02", category: "sqz" },
+            { q: "Sur un board à straights (7-6-5) après SQZ, quelle stratégie ?", a: "Check toute notre range. Puis check-raise overpairs et backdoor flush draws. IP doit stab tous ses airs.", tag: "STRATÉGIE", session: "Session 02", category: "sqz" },
+            { q: "Sur boards pairés bas (4-3-3) après SQZ, quel sizing ?", a: "Big size polarisé (2/3 pot). Les small bets n'accomplissent rien — IP fold seulement 0-9%.", tag: "SIZING", session: "Session 02", category: "sqz" },
+            { q: "Quelles mains bet sur boards pairés bas après SQZ ?", a: "JJ+ (overpairs fortes mais vulnérables). Check 88, 77 pour pot control.", tag: "VALUE", session: "Session 02", category: "sqz" },
+            { q: "Sur board pairé, pourquoi bet 50% stack au turn plutôt que shove ?", a: "Nos bluffs (KT, A9) ont peu d'équité, pas de draws. On veut pouvoir fold river si besoin.", tag: "TURN", session: "Session 02", category: "sqz" },
+            { q: "Quels sont les bons bluffs de check-raise OOP après SQZ ?", a: "Backdoor flush draws, pas les gutshots secs. Il faut trouver ses backdoors.", tag: "BLUFF", session: "Session 02", category: "sqz" },
+            { q: "Vs HJ plus tight (~80 combos vs ~110), comment ajuster ?", a: "+3-5% de checks sur les mauvaises textures (low connectés). High cards : rien ne change, toujours range bet.", tag: "AJUSTEMENT", session: "Session 02", category: "sqz" },
+            { q: "Quelles mains disparaissent de la range HJ si il est tight ?", a: "A5s, A3s, K6s, AJo, KQo — les combos marginaux.", tag: "RANGE", session: "Session 02", category: "sqz" },
+            { q: "IP float vs bet 2/3 sur board pairé : quelles mains ?", a: "KTs, AJo, QJo — difficile à trouver mais nécessaire.", tag: "FLOAT", session: "Session 02", category: "sqz" },
+            { q: "Exploit vs weak regs sur brick boards après SQZ ?", a: "Range bet 25% même sur bricks. En théorie IP fold 9%, en pratique ils over-fold K9s, QTs etc.", tag: "EXPLOIT", session: "Session 02", category: "sqz" },
+            { q: "Fréquence de check moyenne sur toutes textures après SQZ SB vs HJ ?", a: "~21-25% de check en moyenne.", tag: "FRÉQUENCE", session: "Session 02", category: "sqz" },
+
+            // ============ SESSION 02: TAKEAWAYS SQZ ============
+            { q: "[TAKEAWAY] SQZ - Action sur boards High Cards (A/K/J) ?", a: "Range bet sans réfléchir. Notre range domine.", tag: "TAKEAWAY", session: "Session 02", category: "sqz", isTakeaway: true },
+            { q: "[TAKEAWAY] SQZ - Action sur Queen High ?", a: "Plus de prudence. QJ, QTs, AQ sont dans la range de call HJ.", tag: "TAKEAWAY", session: "Session 02", category: "sqz", isTakeaway: true },
+            { q: "[TAKEAWAY] SQZ - Règle sur low boards connectés ?", a: "Check 60-70%. IP a TOUS les sets, nous AUCUN.", tag: "TAKEAWAY", session: "Session 02", category: "sqz", isTakeaway: true },
+            { q: "[TAKEAWAY] SQZ - Action sur boards à straights ?", a: "Check range puis check-raise les overpairs et backdoors.", tag: "TAKEAWAY", session: "Session 02", category: "sqz", isTakeaway: true },
+            { q: "[TAKEAWAY] SQZ - Brick boards pairés (4-3-3) - Action ?", a: "Big size polarisé 2/3 pot. JJ+ veut value + protection.", tag: "TAKEAWAY", session: "Session 02", category: "sqz", isTakeaway: true },
+            { q: "[TAKEAWAY] SQZ - Overpairs moyennes (88, 77) sur paired boards ?", a: "Pot control, check. Trop vulnérables pour bet/call 3 streets.", tag: "TAKEAWAY", session: "Session 02", category: "sqz", isTakeaway: true },
+
+            // ============ SESSION 03: Exploits ICM en TF (T. Boivin) - Concepts ============
+            { q: "Quel est le profil de joueur qu'on cherche à exploiter dans ce coaching Boivin ?", a: "Joueur agressif à notre gauche qui 3-bet trop souvent en TF (manque de balance bluff/value).", tag: "PROFIL", session: "Session 03", category: "icm" },
+            { q: "Quels combos un joueur agro 3-bet à tort en TF (RP élevé) ?", a: "A4s, A5s, A7s, A8s, K6s, K7s, K8s, KQo, AJo, parfois A9s — combos qui devraient flat.", tag: "COMBOS", session: "Session 03", category: "icm" },
+            { q: "Scénario 1 - Middle stack vs CO agressif : que devient notre range d'open ?", a: "On open ~2% plus wide. Le 3-bet du CO devient une décision profitable avec toute notre range.", tag: "OPEN", session: "Session 03", category: "icm" },
+            { q: "Pourquoi on open plus wide face à un 3-better trop fréquent ?", a: "Le 3-bet revient à nous avec toute la range, et la décision (fold/call/4-bet) devient pure et profitable.", tag: "LOGIQUE", session: "Session 03", category: "icm" },
+            { q: "Scénario 2 - CL avec range wide vs BU agro : double exploit ?", a: "1) Réduire range d'open (de 42% à 30%) 2) Une fois open, presque jamais fold face au 3-bet, shove tout (paires, suited, KTo, QTo).", tag: "DOUBLE", session: "Session 03", category: "icm" },
+            { q: "Pourquoi le CL avec range wide doit-il réduire son open vs BU agro ?", a: "On ne peut pas 4-bet shove toute la range, donc on est obligé de jouer plus tight pour ne pas fold trop souvent.", tag: "RANGE-RED", session: "Session 03", category: "icm" },
+            { q: "Scénario 3 - CL avec range tight vs CO agro : adaptation ?", a: "On ne change pas le % d'open (33%), mais on modifie la composition pour blocker le 3-bet et 4-bet shove.", tag: "COMPOSITION", session: "Session 03", category: "icm" },
+            { q: "Comment modifier la composition de range pour 4-bet shove plus ?", a: "Enlever les mains qui foldent (Q5, Q6, Q7, Q9, K9, J9) et ajouter des paires basses (33+) et combos shoveable.", tag: "DETAIL", session: "Session 03", category: "icm" },
+            { q: "Que sont les A-blockers et K-blockers en open dans ce contexte ?", a: "On open des mains comme K2s, K8s, J10o, A2o pour blocker la range value du 3-better adverse.", tag: "BLOCKERS", session: "Session 03", category: "icm" },
+            { q: "Côté IP - Si CO fold trop face au 3-bet, comment exploiter au BU ?", a: "Augmenter sa fréquence de 3-bet : de 11% à 16% (modeste si BB peut s'adapter), jusqu'à 27% si BB ne s'adapte pas.", tag: "IP-3BET", session: "Session 03", category: "icm" },
+            { q: "BU vs CO qui under-defend : quelle stratégie de 3-bet ?", a: "Tout en small 3-bet (pas de reshove), même AQo. Si CO 4-bet, on fold tout car sa range est trop forte.", tag: "STRATÉGIE", session: "Session 03", category: "icm" },
+            { q: "Inversion des stacks (BU couvre CO) : exploit IP plus agressif ?", a: "BU peut passer de 12% à 35% de 3-bet (presque triplé) si CO under-defend, voire 40-50% en pratique live.", tag: "BU-COVER", session: "Session 03", category: "icm" },
+            { q: "Pourquoi le RP asymétrique permet d'étendre la range BU rapidement ?", a: "BU a un RP faible (il couvre), CO a un gros RP. BU peut étendre vite, CO ne peut pas s'adapter sans grosses déviations.", tag: "ASYMÉTRIE", session: "Session 03", category: "icm" },
+            { q: "Hit ICM dans ce coaching : que veut dire \"node lock\" ?", a: "Forcer une déviation dans le solver (ex: réduire fréquence de 3-bet de 6% à 4%) pour calculer notre exploit optimal.", tag: "SOLVER", session: "Session 03", category: "icm" },
+            { q: "Pourquoi les bluffs en 4-bet shove sont 0 EV à l'équilibre ?", a: "Par définition, les bluffs sont en général break-even pour balancer la range value. C'est normal.", tag: "THÉORIE", session: "Session 03", category: "icm" },
+
+            // ============ SESSION 03: TAKEAWAYS Exploits ICM ============
+            { q: "[TAKEAWAY] Joueur agro à ma gauche qui 3-bet trop : adaptation préflop ?", a: "J'open un peu plus wide (~+2%) car chaque 3-bet devient une décision profitable.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] Comment identifier un 3-better trop fréquent ?", a: "Il 3-bet K6s-K8s, A4s-A8s, KQo, AJo automatiquement en TF malgré le RP élevé.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] Si je suis CL avec range wide ET joueur agro à gauche : double action ?", a: "1) Tighten mon open 2) Élargir mon 4-bet shove (presque tout shove face au 3-bet).", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] Si je suis CL avec range tight ET joueur agro à gauche : action ?", a: "Garder le % d'open mais blocker-oriented. Je peux ensuite 4-bet shove vraiment large.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] Comment exploiter un PFR qui under-defend face aux 3-bet ?", a: "Augmenter ma fréquence de 3-bet en IP, surtout en small sizing.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] Si je couvre le PFR et qu'il under-defend : combien de 3-bet ?", a: "Je peux passer de 12% à 35-50% selon le profil et l'adaptation des blindes.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] Règle d'or face à un node lock ICM : que retenir ?", a: "Toujours vérifier les hypothèses (qui s'adapte ? qui ne s'adapte pas ?) avant d'exploiter à fond.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true },
+            { q: "[TAKEAWAY] En live vs amateur en TF : peut-on tripler la fréquence de 3-bet ?", a: "Oui dans les bons spots avec bonnes reads, c'est un game changer. Pas la strat par défaut, mais très profitable.", tag: "TAKEAWAY", session: "Session 03", category: "icm", isTakeaway: true }
+        ];
+
+        // ==========================================
+        // QUIZ STATE
+        // ==========================================
+        let currentCards = [...quizData];
+        let currentIndex = 0;
+        let isFlipped = false;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let mistakes = [];
+        let quizStarted = false;
+
+        // ==========================================
+        // QUIZ FUNCTIONS
+        // ==========================================
+        
+        function filterQuiz(category) {
+            // Update filter buttons
+            document.querySelectorAll('.quiz-filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            if (category === 'all') {
+                currentCards = [...quizData];
+            } else if (category === 'takeaway') {
+                currentCards = quizData.filter(card => card.isTakeaway === true);
+            } else {
+                currentCards = quizData.filter(card => card.category === category);
+            }
+            
+            // Update UI
+            document.getElementById('quiz-total').textContent = currentCards.length;
+            document.getElementById('quiz-remaining').textContent = currentCards.length;
+            document.getElementById('progress-total').textContent = currentCards.length;
+            
+            // Reset quiz
+            resetQuiz();
+        }
+
+        function startQuiz() {
+            quizStarted = true;
+            currentIndex = 0;
+            correctCount = 0;
+            incorrectCount = 0;
+            mistakes = [];
+            isFlipped = false;
+            
+            document.getElementById('quiz-controls-start').style.display = 'none';
+            document.getElementById('quiz-controls-playing').style.display = 'flex';
+            document.getElementById('quiz-controls-done').style.display = 'none';
+            document.getElementById('quiz-score').style.display = 'flex';
+            
+            showCard();
+        }
+
+        function shuffleAndStart() {
+            currentCards = currentCards.sort(() => Math.random() - 0.5);
+            startQuiz();
+        }
+
+        function showCard() {
+            if (currentIndex >= currentCards.length) {
+                showComplete();
+                return;
+            }
+            
+            const card = currentCards[currentIndex];
+            const cardEl = document.getElementById('quiz-card');
+            
+            cardEl.classList.remove('flipped');
+            isFlipped = false;
+            
+            document.getElementById('quiz-content').textContent = card.q;
+            document.getElementById('quiz-tag').textContent = card.tag;
+            document.getElementById('quiz-session').textContent = card.session;
+            document.getElementById('quiz-hint').textContent = 'Clique pour voir la réponse';
+            
+            // Update progress
+            document.getElementById('quiz-current').textContent = currentIndex + 1;
+            document.getElementById('quiz-remaining').textContent = currentCards.length - currentIndex;
+            document.getElementById('progress-current').textContent = currentIndex;
+            
+            const progress = (currentIndex / currentCards.length) * 100;
+            document.getElementById('quiz-progress-fill').style.width = progress + '%';
+        }
+
+        function flipCard() {
+            if (!quizStarted) return;
+            
+            const card = currentCards[currentIndex];
+            const cardEl = document.getElementById('quiz-card');
+            
+            isFlipped = !isFlipped;
+            
+            if (isFlipped) {
+                cardEl.classList.add('flipped');
+                document.getElementById('quiz-content').textContent = card.a;
+                document.getElementById('quiz-hint').textContent = 'Clique sur ✓ ou ✗';
+            } else {
+                cardEl.classList.remove('flipped');
+                document.getElementById('quiz-content').textContent = card.q;
+                document.getElementById('quiz-hint').textContent = 'Clique pour voir la réponse';
+            }
+        }
+
+        function markCorrect() {
+            correctCount++;
+            document.getElementById('score-correct').textContent = correctCount;
+            nextCard();
+        }
+
+        function markIncorrect() {
+            incorrectCount++;
+            mistakes.push(currentCards[currentIndex]);
+            document.getElementById('score-incorrect').textContent = incorrectCount;
+            nextCard();
+        }
+
+        function nextCard() {
+            currentIndex++;
+            showCard();
+        }
+
+        function showComplete() {
+            quizStarted = false;
+            
+            document.getElementById('quiz-controls-start').style.display = 'none';
+            document.getElementById('quiz-controls-playing').style.display = 'none';
+            document.getElementById('quiz-controls-done').style.display = 'flex';
+            
+            const percentage = Math.round((correctCount / currentCards.length) * 100);
+            let emoji = percentage >= 80 ? '🏆' : percentage >= 60 ? '👍' : '📚';
+            
+            document.getElementById('quiz-card').classList.remove('flipped');
+            document.getElementById('quiz-content').innerHTML = `
+                <div style="font-size: 3rem; margin-bottom: 16px;">${emoji}</div>
+                <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Quiz terminé !</div>
+                <div style="color: var(--text-secondary);">${correctCount}/${currentCards.length} correct (${percentage}%)</div>
+            `;
+            document.getElementById('quiz-hint').textContent = '';
+            document.getElementById('quiz-tag').textContent = 'RÉSULTAT';
+            document.getElementById('quiz-session').textContent = '';
+            
+            // Update progress to 100%
+            document.getElementById('quiz-progress-fill').style.width = '100%';
+            document.getElementById('progress-current').textContent = currentCards.length;
+        }
+
+        function restartQuiz() {
+            resetQuiz();
+            startQuiz();
+        }
+
+        function reviewMistakes() {
+            if (mistakes.length === 0) {
+                alert('Aucune erreur à revoir ! 🎉');
+                return;
+            }
+            currentCards = [...mistakes];
+            document.getElementById('quiz-total').textContent = currentCards.length;
+            startQuiz();
+        }
+
+        function resetQuiz() {
+            quizStarted = false;
+            currentIndex = 0;
+            correctCount = 0;
+            incorrectCount = 0;
+            mistakes = [];
+            isFlipped = false;
+            
+            document.getElementById('quiz-controls-start').style.display = 'flex';
+            document.getElementById('quiz-controls-playing').style.display = 'none';
+            document.getElementById('quiz-controls-done').style.display = 'none';
+            document.getElementById('quiz-score').style.display = 'none';
+            
+            document.getElementById('quiz-card').classList.remove('flipped');
+            document.getElementById('quiz-content').textContent = 'Clique sur "Commencer" pour démarrer le quiz !';
+            document.getElementById('quiz-hint').textContent = 'Clique pour commencer';
+            document.getElementById('quiz-tag').textContent = 'QUIZ';
+            document.getElementById('quiz-session').textContent = '';
+            
+            document.getElementById('quiz-current').textContent = '1';
+            document.getElementById('quiz-remaining').textContent = currentCards.length;
+            document.getElementById('progress-current').textContent = '0';
+            document.getElementById('progress-total').textContent = currentCards.length;
+            document.getElementById('quiz-progress-fill').style.width = '0%';
+            
+            document.getElementById('score-correct').textContent = '0';
+            document.getElementById('score-incorrect').textContent = '0';
+        }
+
+        // ==========================================
+        // SRS (SPACED REPETITION SYSTEM)
+        // ==========================================
+        // Algorithme inspiré de SM-2 / Mosalingua
+        // Niveaux: 0 (nouvelle) → 1 (apprentissage) → 2 (révision) → 3 (mature) → 4+ (maîtrisée)
+        
+        const SRS_STORAGE_KEY = 'poker-srs-data-v1';
+        
+        // Intervalles en jours selon le niveau et la note
+        // Note: 0=Again, 1=Hard, 2=Good, 3=Easy
+        function calculateNextInterval(currentLevel, rating) {
+            // Si "À revoir" → reset au niveau 0, revoir dans <10 min (0 jour)
+            if (rating === 0) {
+                return { interval: 0, newLevel: 0 };
+            }
+            
+            // Tableau des intervalles de base par niveau
+            // [Hard, Good, Easy] en jours
+            const intervals = [
+                [1, 1, 3],      // Niveau 0 (nouvelle)
+                [1, 3, 7],      // Niveau 1 (apprentissage)
+                [3, 7, 14],     // Niveau 2 (révision)
+                [7, 14, 30],    // Niveau 3 (mature)
+                [14, 30, 60],   // Niveau 4
+                [30, 60, 120],  // Niveau 5
+                [60, 120, 180], // Niveau 6
+                [90, 180, 365]  // Niveau 7+ (maîtrisée)
+            ];
+            
+            const safeLevel = Math.min(currentLevel, intervals.length - 1);
+            const interval = intervals[safeLevel][rating - 1];
+            
+            // Évolution du niveau
+            let newLevel = currentLevel;
+            if (rating === 1) {
+                // Hard : reste au même niveau (ou recule de 1 si niveau > 2)
+                newLevel = Math.max(0, currentLevel - 1);
+            } else if (rating === 2) {
+                // Good : avance d'1 niveau
+                newLevel = currentLevel + 1;
+            } else if (rating === 3) {
+                // Easy : avance de 2 niveaux
+                newLevel = currentLevel + 2;
+            }
+            
+            return { interval, newLevel };
+        }
+        
+        // Charge les données SRS depuis localStorage
+        function loadSRSData() {
+            try {
+                const data = localStorage.getItem(SRS_STORAGE_KEY);
+                return data ? JSON.parse(data) : {};
+            } catch (e) {
+                return {};
+            }
+        }
+        
+        // Sauvegarde les données SRS
+        function saveSRSData(data) {
+            localStorage.setItem(SRS_STORAGE_KEY, JSON.stringify(data));
+        }
+        
+        // Génère un ID unique pour une carte (basé sur son contenu)
+        function getCardId(card) {
+            return card.q.substring(0, 80).replace(/\s+/g, '_');
+        }
+        
+        // Récupère ou initialise l'état d'une carte
+        function getCardState(card) {
+            const data = loadSRSData();
+            const id = getCardId(card);
+            if (!data[id]) {
+                return {
+                    level: 0,
+                    nextReview: new Date().toISOString(), // Nouvelle carte = à réviser maintenant
+                    lastReview: null,
+                    reviewCount: 0
+                };
+            }
+            return data[id];
+        }
+        
+        // Met à jour l'état d'une carte
+        function updateCardState(card, rating) {
+            const data = loadSRSData();
+            const id = getCardId(card);
+            const currentState = getCardState(card);
+            
+            const { interval, newLevel } = calculateNextInterval(currentState.level, rating);
+            
+            const nextReview = new Date();
+            if (interval === 0) {
+                // À revoir aujourd'hui (dans la même session)
+                nextReview.setMinutes(nextReview.getMinutes() + 5);
+            } else {
+                nextReview.setDate(nextReview.getDate() + interval);
+                nextReview.setHours(0, 0, 0, 0); // Début de journée
+            }
+            
+            data[id] = {
+                level: newLevel,
+                nextReview: nextReview.toISOString(),
+                lastReview: new Date().toISOString(),
+                reviewCount: currentState.reviewCount + 1
+            };
+            
+            saveSRSData(data);
+        }
+        
+        // Détermine le statut d'une carte
+        function getCardStatus(state) {
+            if (state.reviewCount === 0) return 'new';
+            if (state.level <= 1) return 'learning';
+            if (state.level <= 4) return 'review';
+            return 'mastered';
+        }
+        
+        // Détermine si une carte est due
+        function isCardDue(state) {
+            const now = new Date();
+            const nextReview = new Date(state.nextReview);
+            return nextReview <= now;
+        }
+        
+        // ==========================================
+        // SRS UI MANAGEMENT
+        // ==========================================
+        
+        let srsCurrentMode = 'srs';
+        let srsCurrentFilter = 'all';
+        let srsDueCards = [];
+        let srsCurrentCardIndex = 0;
+        let srsIsFlipped = false;
+        
+        function switchMode(mode) {
+            srsCurrentMode = mode;
+            document.getElementById('mode-srs-btn').classList.toggle('active', mode === 'srs');
+            document.getElementById('mode-qcm-btn').classList.toggle('active', mode === 'qcm');
+            document.getElementById('mode-free-btn').classList.toggle('active', mode === 'free');
+            document.getElementById('srs-mode-container').style.display = mode === 'srs' ? 'block' : 'none';
+            document.getElementById('qcm-mode-container').style.display = mode === 'qcm' ? 'block' : 'none';
+            document.getElementById('free-mode-container').style.display = mode === 'free' ? 'block' : 'none';
+
+            if (mode === 'srs') {
+                refreshSRSView();
+            } else if (mode === 'qcm') {
+                refreshQCMView();
+            }
+        }
+
+        // ==========================================
+        // QCM MODE (Multiple Choice avec SRS)
+        // ==========================================
+
+        let qcmCurrentFilter = 'all';
+        let qcmDueCards = [];
+        let qcmCurrentCardIndex = 0;
+        let qcmCorrectIndex = -1;
+        let qcmAnswered = false;
+
+        function filterQCM(category) {
+            qcmCurrentFilter = category;
+            document.querySelectorAll('#qcm-mode-container .quiz-filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            refreshQCMView();
+        }
+
+        function refreshQCMView() {
+            let filteredCards = quizData;
+            if (qcmCurrentFilter === 'takeaway') {
+                filteredCards = quizData.filter(c => c.isTakeaway === true);
+            } else if (qcmCurrentFilter !== 'all') {
+                filteredCards = quizData.filter(c => c.category === qcmCurrentFilter);
+            }
+
+            let dueCount = 0, learningCount = 0, reviewCount = 0, masteredCount = 0;
+            qcmDueCards = [];
+
+            filteredCards.forEach(card => {
+                const state = getCardState(card);
+                const status = getCardStatus(state);
+
+                if (status === 'new' || status === 'learning') learningCount++;
+                else if (status === 'review') reviewCount++;
+                else if (status === 'mastered') masteredCount++;
+
+                if (isCardDue(state)) {
+                    dueCount++;
+                    qcmDueCards.push({ card, state });
+                }
+            });
+
+            document.getElementById('qcm-stat-due').textContent = dueCount;
+            document.getElementById('qcm-stat-learning').textContent = learningCount;
+            document.getElementById('qcm-stat-review').textContent = reviewCount;
+            document.getElementById('qcm-stat-mastered').textContent = masteredCount;
+
+            qcmDueCards.sort((a, b) => {
+                if (a.state.reviewCount === 0 && b.state.reviewCount > 0) return -1;
+                if (a.state.reviewCount > 0 && b.state.reviewCount === 0) return 1;
+                return new Date(a.state.nextReview) - new Date(b.state.nextReview);
+            });
+
+            qcmCurrentCardIndex = 0;
+
+            if (qcmDueCards.length === 0) {
+                document.getElementById('qcm-empty-state').style.display = 'block';
+                document.getElementById('qcm-card-container').style.display = 'none';
+            } else {
+                document.getElementById('qcm-empty-state').style.display = 'none';
+                document.getElementById('qcm-card-container').style.display = 'block';
+                showQCMCard();
+            }
+        }
+
+        function getRandomDistractors(currentCard, count) {
+            // Privilégie les cartes de la même catégorie pour des distracteurs plus thématiques
+            let pool = quizData.filter(c =>
+                c.a !== currentCard.a &&
+                c.category === currentCard.category
+            );
+            if (pool.length < count) {
+                const extras = quizData.filter(c =>
+                    c.a !== currentCard.a &&
+                    c.category !== currentCard.category &&
+                    !pool.includes(c)
+                );
+                pool = pool.concat(extras);
+            }
+            // Mélange et prend les N premiers
+            const shuffled = pool.slice().sort(() => Math.random() - 0.5);
+            const seen = new Set();
+            const distractors = [];
+            for (const c of shuffled) {
+                if (distractors.length >= count) break;
+                if (!seen.has(c.a)) {
+                    seen.add(c.a);
+                    distractors.push(c.a);
+                }
+            }
+            return distractors;
+        }
+
+        function showQCMCard() {
+            if (qcmCurrentCardIndex >= qcmDueCards.length) {
+                refreshQCMView();
+                return;
+            }
+
+            const { card, state } = qcmDueCards[qcmCurrentCardIndex];
+            const status = getCardStatus(state);
+            qcmAnswered = false;
+
+            document.getElementById('qcm-question').textContent = card.q;
+            document.getElementById('qcm-tag').textContent = card.tag;
+            document.getElementById('qcm-session').textContent = card.session;
+            document.getElementById('qcm-current-num').textContent = qcmCurrentCardIndex + 1;
+            document.getElementById('qcm-total-num').textContent = qcmDueCards.length;
+
+            const badge = document.getElementById('qcm-level-badge');
+            badge.className = 'srs-level-badge ' + status;
+            const labels = {
+                'new': 'NOUVELLE',
+                'learning': 'APPRENTISSAGE NIV. ' + state.level,
+                'review': 'RÉVISION NIV. ' + state.level,
+                'mastered': 'MAÎTRISÉE NIV. ' + state.level
+            };
+            badge.textContent = labels[status];
+
+            // Génération des 4 options
+            const distractors = getRandomDistractors(card, 3);
+            const options = [card.a, ...distractors];
+            // Mélange avec Fisher-Yates pour position aléatoire
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+            qcmCorrectIndex = options.indexOf(card.a);
+
+            const letters = ['A', 'B', 'C', 'D'];
+            const optionsContainer = document.getElementById('qcm-options');
+            optionsContainer.innerHTML = '';
+            options.forEach((text, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'qcm-option';
+                btn.onclick = () => selectQCMAnswer(i);
+                btn.innerHTML = `
+                    <span class="qcm-option-letter">${letters[i]}</span>
+                    <span class="qcm-option-text"></span>
+                `;
+                btn.querySelector('.qcm-option-text').textContent = text;
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('qcm-feedback').style.display = 'none';
+            document.getElementById('qcm-srs-buttons').style.display = 'none';
+
+            updateQCMIntervalsDisplay(state.level);
+        }
+
+        function selectQCMAnswer(index) {
+            if (qcmAnswered) return;
+            qcmAnswered = true;
+
+            const buttons = document.querySelectorAll('#qcm-options .qcm-option');
+            buttons.forEach((btn, i) => {
+                btn.classList.add('disabled');
+                if (i === qcmCorrectIndex) {
+                    btn.classList.add('correct');
+                } else if (i === index) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            const feedback = document.getElementById('qcm-feedback');
+            if (index === qcmCorrectIndex) {
+                feedback.className = 'qcm-feedback success';
+                feedback.textContent = '✓ Bonne réponse ! Évalue ta confiance ↓';
+            } else {
+                feedback.className = 'qcm-feedback error';
+                feedback.textContent = '✗ Mauvaise réponse — la bonne est en vert. Évalue ↓';
+            }
+            feedback.style.display = 'block';
+
+            document.getElementById('qcm-srs-buttons').style.display = 'grid';
+        }
+
+        function updateQCMIntervalsDisplay(level) {
+            const safeLevel = Math.min(level, 7);
+            const intervals = [
+                [1, 1, 3], [1, 3, 7], [3, 7, 14], [7, 14, 30],
+                [14, 30, 60], [30, 60, 120], [60, 120, 180], [90, 180, 365]
+            ];
+            const [hard, good, easy] = intervals[safeLevel];
+
+            document.getElementById('qcm-int-again').textContent = '< 10 min';
+            document.getElementById('qcm-int-hard').textContent = formatInterval(hard);
+            document.getElementById('qcm-int-good').textContent = formatInterval(good);
+            document.getElementById('qcm-int-easy').textContent = formatInterval(easy);
+        }
+
+        function rateQCM(rating) {
+            if (qcmCurrentCardIndex >= qcmDueCards.length) return;
+
+            const { card } = qcmDueCards[qcmCurrentCardIndex];
+            updateCardState(card, rating);
+
+            if (rating === 0) {
+                const failedCard = qcmDueCards.splice(qcmCurrentCardIndex, 1)[0];
+                failedCard.state = getCardState(failedCard.card);
+                qcmDueCards.push(failedCard);
+            } else {
+                qcmCurrentCardIndex++;
+            }
+
+            updateQCMStats();
+
+            if (qcmCurrentCardIndex >= qcmDueCards.length) {
+                refreshQCMView();
+            } else {
+                showQCMCard();
+            }
+        }
+
+        function updateQCMStats() {
+            let filteredCards = quizData;
+            if (qcmCurrentFilter === 'takeaway') {
+                filteredCards = quizData.filter(c => c.isTakeaway === true);
+            } else if (qcmCurrentFilter !== 'all') {
+                filteredCards = quizData.filter(c => c.category === qcmCurrentFilter);
+            }
+
+            let dueCount = 0, learningCount = 0, reviewCount = 0, masteredCount = 0;
+
+            filteredCards.forEach(card => {
+                const state = getCardState(card);
+                const status = getCardStatus(state);
+
+                if (status === 'new' || status === 'learning') learningCount++;
+                else if (status === 'review') reviewCount++;
+                else if (status === 'mastered') masteredCount++;
+
+                if (isCardDue(state)) dueCount++;
+            });
+
+            document.getElementById('qcm-stat-due').textContent = dueCount;
+            document.getElementById('qcm-stat-learning').textContent = learningCount;
+            document.getElementById('qcm-stat-review').textContent = reviewCount;
+            document.getElementById('qcm-stat-mastered').textContent = masteredCount;
+        }
+        
+        function filterSRS(category) {
+            srsCurrentFilter = category;
+            document.querySelectorAll('#srs-mode-container .quiz-filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            refreshSRSView();
+        }
+        
+        function refreshSRSView() {
+            // Filtrer les cartes selon le filtre actuel
+            let filteredCards = quizData;
+            if (srsCurrentFilter === 'takeaway') {
+                filteredCards = quizData.filter(c => c.isTakeaway === true);
+            } else if (srsCurrentFilter !== 'all') {
+                filteredCards = quizData.filter(c => c.category === srsCurrentFilter);
+            }
+            
+            // Calculer les stats
+            let dueCount = 0, learningCount = 0, reviewCount = 0, masteredCount = 0;
+            srsDueCards = [];
+            
+            filteredCards.forEach(card => {
+                const state = getCardState(card);
+                const status = getCardStatus(state);
+                
+                if (status === 'new' || status === 'learning') learningCount++;
+                else if (status === 'review') reviewCount++;
+                else if (status === 'mastered') masteredCount++;
+                
+                if (isCardDue(state)) {
+                    dueCount++;
+                    srsDueCards.push({ card, state });
+                }
+            });
+            
+            // Mettre à jour les stats affichées
+            document.getElementById('srs-stat-due').textContent = dueCount;
+            document.getElementById('srs-stat-learning').textContent = learningCount;
+            document.getElementById('srs-stat-review').textContent = reviewCount;
+            document.getElementById('srs-stat-mastered').textContent = masteredCount;
+            
+            // Trier les cartes dues : nouvelles d'abord, puis par date
+            srsDueCards.sort((a, b) => {
+                if (a.state.reviewCount === 0 && b.state.reviewCount > 0) return -1;
+                if (a.state.reviewCount > 0 && b.state.reviewCount === 0) return 1;
+                return new Date(a.state.nextReview) - new Date(b.state.nextReview);
+            });
+            
+            srsCurrentCardIndex = 0;
+            
+            if (srsDueCards.length === 0) {
+                document.getElementById('srs-empty-state').style.display = 'block';
+                document.getElementById('srs-card-container').style.display = 'none';
+            } else {
+                document.getElementById('srs-empty-state').style.display = 'none';
+                document.getElementById('srs-card-container').style.display = 'block';
+                showSRSCard();
+            }
+        }
+        
+        function showSRSCard() {
+            if (srsCurrentCardIndex >= srsDueCards.length) {
+                refreshSRSView();
+                return;
+            }
+            
+            const { card, state } = srsDueCards[srsCurrentCardIndex];
+            const status = getCardStatus(state);
+            
+            srsIsFlipped = false;
+            const cardEl = document.getElementById('srs-card');
+            cardEl.classList.remove('flipped');
+            
+            document.getElementById('srs-content').textContent = card.q;
+            document.getElementById('srs-tag').textContent = card.tag;
+            document.getElementById('srs-session').textContent = card.session;
+            document.getElementById('srs-hint').textContent = 'Clique pour voir la réponse';
+            document.getElementById('srs-current-num').textContent = srsCurrentCardIndex + 1;
+            document.getElementById('srs-total-num').textContent = srsDueCards.length;
+            
+            // Badge de niveau
+            const badge = document.getElementById('srs-level-badge');
+            badge.className = 'srs-level-badge ' + status;
+            const labels = {
+                'new': 'NOUVELLE',
+                'learning': 'APPRENTISSAGE NIV. ' + state.level,
+                'review': 'RÉVISION NIV. ' + state.level,
+                'mastered': 'MAÎTRISÉE NIV. ' + state.level
+            };
+            badge.textContent = labels[status];
+            
+            // Cacher les boutons de notation
+            document.getElementById('srs-buttons').style.display = 'none';
+            
+            // Mettre à jour les intervalles affichés sur les boutons
+            updateIntervalsDisplay(state.level);
+        }
+        
+        function updateIntervalsDisplay(level) {
+            const safeLevel = Math.min(level, 7);
+            const intervals = [
+                [1, 1, 3], [1, 3, 7], [3, 7, 14], [7, 14, 30],
+                [14, 30, 60], [30, 60, 120], [60, 120, 180], [90, 180, 365]
+            ];
+            const [hard, good, easy] = intervals[safeLevel];
+            
+            document.getElementById('srs-int-again').textContent = '< 10 min';
+            document.getElementById('srs-int-hard').textContent = formatInterval(hard);
+            document.getElementById('srs-int-good').textContent = formatInterval(good);
+            document.getElementById('srs-int-easy').textContent = formatInterval(easy);
+        }
+        
+        function formatInterval(days) {
+            if (days < 1) return '< 1 jour';
+            if (days === 1) return '1 jour';
+            if (days < 30) return days + ' jours';
+            if (days < 365) return Math.round(days / 30) + ' mois';
+            return Math.round(days / 365) + ' an' + (days >= 730 ? 's' : '');
+        }
+        
+        function flipSRSCard() {
+            if (srsCurrentCardIndex >= srsDueCards.length) return;
+            
+            const { card } = srsDueCards[srsCurrentCardIndex];
+            const cardEl = document.getElementById('srs-card');
+            
+            srsIsFlipped = !srsIsFlipped;
+            
+            if (srsIsFlipped) {
+                cardEl.classList.add('flipped');
+                document.getElementById('srs-content').textContent = card.a;
+                document.getElementById('srs-hint').textContent = 'Évalue ta réponse ↓';
+                document.getElementById('srs-buttons').style.display = 'grid';
+            } else {
+                cardEl.classList.remove('flipped');
+                document.getElementById('srs-content').textContent = card.q;
+                document.getElementById('srs-hint').textContent = 'Clique pour voir la réponse';
+                document.getElementById('srs-buttons').style.display = 'none';
+            }
+        }
+        
+        function rateSRS(rating) {
+            if (srsCurrentCardIndex >= srsDueCards.length) return;
+            
+            const { card } = srsDueCards[srsCurrentCardIndex];
+            updateCardState(card, rating);
+            
+            // Si "À revoir" (rating 0), on remet la carte en fin de file
+            if (rating === 0) {
+                const failedCard = srsDueCards.splice(srsCurrentCardIndex, 1)[0];
+                // On la réinjecte avec son nouvel état
+                failedCard.state = getCardState(failedCard.card);
+                srsDueCards.push(failedCard);
+            } else {
+                srsCurrentCardIndex++;
+            }
+            
+            // Mettre à jour les stats sans recharger toute la vue
+            updateSRSStats();
+            
+            if (srsCurrentCardIndex >= srsDueCards.length) {
+                refreshSRSView();
+            } else {
+                showSRSCard();
+            }
+        }
+        
+        function updateSRSStats() {
+            let filteredCards = quizData;
+            if (srsCurrentFilter === 'takeaway') {
+                filteredCards = quizData.filter(c => c.isTakeaway === true);
+            } else if (srsCurrentFilter !== 'all') {
+                filteredCards = quizData.filter(c => c.category === srsCurrentFilter);
+            }
+            
+            let dueCount = 0, learningCount = 0, reviewCount = 0, masteredCount = 0;
+            
+            filteredCards.forEach(card => {
+                const state = getCardState(card);
+                const status = getCardStatus(state);
+                
+                if (status === 'new' || status === 'learning') learningCount++;
+                else if (status === 'review') reviewCount++;
+                else if (status === 'mastered') masteredCount++;
+                
+                if (isCardDue(state)) dueCount++;
+            });
+            
+            document.getElementById('srs-stat-due').textContent = dueCount;
+            document.getElementById('srs-stat-learning').textContent = learningCount;
+            document.getElementById('srs-stat-review').textContent = reviewCount;
+            document.getElementById('srs-stat-mastered').textContent = masteredCount;
+        }
+        
+        function resetSRSData() {
+            if (confirm('⚠️ Es-tu sûr de vouloir réinitialiser TOUTE ta progression SRS ?\n\nCette action est irréversible. Toutes tes cartes redeviendront "nouvelles".')) {
+                localStorage.removeItem(SRS_STORAGE_KEY);
+                refreshSRSView();
+                alert('✅ Progression SRS réinitialisée !');
+            }
+        }
+
+        // ==========================================
+        // NAVIGATION
+        // ==========================================
+        function showSession(sessionId) {
+            document.querySelectorAll('.session-content').forEach(session => {
+                session.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.getElementById(sessionId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Initialiser le SRS quand on arrive sur le quiz
+            if (sessionId === 'session-quiz') {
+                if (srsCurrentMode === 'srs') {
+                    refreshSRSView();
+                } else if (srsCurrentMode === 'qcm') {
+                    refreshQCMView();
+                } else {
+                    resetQuiz();
+                }
+            }
+        }
+
+        // ==========================================
+        // CHECKLIST PERSISTENCE
+        // ==========================================
+        document.querySelectorAll('.checklist-box').forEach((box, index) => {
+            const key = `checkbox-${window.location.pathname}-${index}`;
+            
+            if (localStorage.getItem(key) === 'checked') {
+                box.classList.add('checked');
+            }
+            
+            box.addEventListener('click', function() {
+                if (this.classList.contains('checked')) {
+                    localStorage.setItem(key, 'checked');
+                } else {
+                    localStorage.removeItem(key);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
