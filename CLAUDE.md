@@ -12,6 +12,9 @@ mettre à jour le dashboard et générer les cartes Anki associées.
 ```
 Coaching Poker/
 ├── CLAUDE.md                          ← ce fichier (instructions agent)
+├── README.md                          ← index de navigation (versions, liens)
+├── USAGE.md                           ← mode d'emploi pour l'utilisateur final
+├── CHANGELOG.md                       ← historique des versions (à tenir à jour, voir étape 6)
 ├── poker-dashboard-LATEST.html        ← version toujours à jour
 ├── poker-dashboard-YYYY-MM-DD.html    ← versions horodatées (historique)
 ├── anki/
@@ -98,6 +101,17 @@ cp poker-dashboard-LATEST.html poker-dashboard-$(date +%Y-%m-%d).html
 
 # Le fichier LATEST est ensuite mis à jour
 # Le fichier horodaté garde l'historique
+```
+
+### 6. Mettre à jour l'historique et pousser sur GitHub
+
+**Règle obligatoire** : à chaque mise à jour de `poker-dashboard-LATEST.html`, ajouter une entrée dans [CHANGELOG.md](CHANGELOG.md) (nouvelle section datée, avec ce qui a été ajouté/modifié — sessions, flashcards, fonctionnalités). Mettre aussi à jour le tableau des versions dans [README.md](README.md) si une nouvelle version horodatée a été créée.
+
+Puis committer et pousser :
+```bash
+git add -A
+git commit -m "Description courte de la mise à jour"
+git push
 ```
 
 ---
