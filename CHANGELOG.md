@@ -4,10 +4,12 @@ Toutes les évolutions notables du dashboard sont consignées ici, de la plus r�
 
 > **Règle** : ce fichier doit être mis à jour à chaque mise à jour de `poker-dashboard-LATEST.html` (voir le workflow dans [CLAUDE.md](CLAUDE.md)).
 
-## [Non publié] — en cours sur `poker-dashboard-LATEST.html`
+## [2026-07-05] — `poker-dashboard-2026-07-05.html`
 
 ### Ajouté
-- Éditeur de QCM personnalisé : question + image collée (Ctrl+V) + 4 réponses définies manuellement (fini les mauvaises réponses générées au hasard et trop décalées).
+- Éditeur de QCM personnalisé : question + image collée (Ctrl+V) + réponses définies manuellement (fini les mauvaises réponses générées au hasard et trop décalées).
+- Nombre de réponses flexible (2 à 4) pour un QCM perso — permet les questions type Oui/Non.
+- Image d'explication optionnelle, révélée après avoir répondu (comme le verso d'une carte Anki).
 - Choix d'une catégorie existante (PKO & ICM, SQZ 80bb, Exploits ICM, Maths) ou création d'une nouvelle catégorie à la volée pour un QCM perso.
 - Export / Import des QCM perso au format JSON, pour les partager avec quelqu'un d'autre sans backend.
 - Les QCM perso sont suivis par le même système de répétition espacée (SRS) que les flashcards existantes.
