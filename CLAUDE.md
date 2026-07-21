@@ -162,12 +162,17 @@ git push
 | session-sqz-80bb | Pots SQZ 80bb SB vs HJ (CO fold) | sqz | 19 |
 | session-exploit-icm | Exploits ICM en TF (T. Boivin) | icm | 15 |
 | session-maths | Mathématiques du Poker (T. Sacquet) | math | 28 |
+| session-hu-shortstack | Jeu Heads-Up — Short Stack 7,5-15 BB (Part 1) | hu | 24 |
+| session-xr-flop | Check-Raise Flop en défense BB (Cédric / Pure Poker) | xr | 24 |
 
-**Total actuel : 79 flashcards** (dont 21 takeaways)
+**Total actuel : 127 flashcards** (dont 33 takeaways)
 
 > Note : les comptes ont évolué après une passe de revue (cartes supprimées/reformulées via REVIEW-flashcards.xlsx).
-> Catégorie `math` = couleur violette (`--accent-purple`), classe sidebar `nav-item math`, badge `session-badge purple`.
-> Modes de quiz : SRS, QCM (4 choix) et Mode Libre — chacun a sa liste de filtres à mettre à jour (`filterSRS`, `filterQCM`, `filterQuiz`).
+> Catégorie `math` = violet (`--accent-purple`), classe `nav-item math`, badge `session-badge purple`.
+> Catégorie `hu` (Heads-Up) = bleu (`--accent-blue` / `#6b78ff`), classe `nav-item hu`, badge `session-badge blue`, section-icon `.hu`.
+> Catégorie `xr` (Check-Raise flop) = rouge (`--accent-red`), classe `nav-item xr`, badge `session-badge red`, section-icon `.xr`.
+> Le coaching HU se fait en plusieurs parties : Part 1 = short stack 7,5-15 BB. La Part 2 (mid/deep stack) viendra compléter la même session.
+> Modes de quiz : SRS, QCM (4 choix, + builder « Mes QCM » catégorie `custom`) et Mode Libre — chacun a sa liste de filtres à mettre à jour (`filterSRS`, `filterQCM`, `filterQuiz`).
 
 ## Fonctionnalités du dashboard (ne pas modifier)
 

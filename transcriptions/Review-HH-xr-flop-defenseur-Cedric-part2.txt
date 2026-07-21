@@ -1,0 +1,233 @@
+(Transcrit par TurboScribe. Passez à Illimité pour supprimer ce message.)
+
+Checker 100, c'est un peu plus raisonnable. Décidément, il y a beaucoup de mains fortes pour l'instant, et du coup on a juste check-raise et trois barres et l'all-in. Je pense que je suis quand même assez intéressé de voir le play à la turn ici.
+
+Le sizing flop, je pense que c'est cool de faire cher, parce qu'on check-raise quand même bien polar ici. Donc Valet 10-6. Aussi deep, on n'a même pas envie de check-raise As-Valet, enfin en tout cas pas pur.
+
+Donc à mon avis, ça fait sens de faire cher. Lui il a fait, je pense, un tiers pot ou pas. Il est censé bet range.
+
+As-Valet s'est mixé, effectivement. C'est quand même souvent pris contre small, surtout quand il split ses sizes au flop, paire de 6 pure raise. Je vais faire une strat avec un seul size.
+
+Je n'aime pas quand il y a des strats mixés comme ça, parce qu'on arrive avec une range différente. Donc vous voyez que si on a un size, il bet 67 range. Donc ça c'est pareil, c'est un litre du fil de ne pas mettre assez d'argent dans le pot sur ces boards-là.
+
+Tout l'intérêt de vraiment check-raise notre value range. Déjà de base, ça check-raise. Donc 6.7, c'est exactement le size que j'ai pris.
+
+6-6 pur, As-Valet pour le coup. Vous voyez la grosse différence avec avant ? Quand il bet small, avec des sizes, des strats de bet plus cher, As-Valet était quasiment plus raise. Quand il bet 30 avec l'intégralité de sa range, et qu'on a une main un peu close comme ça, on ne veut pas trop l'aider à rattraper son erreur.
+
+On lui dit, ok, tu ne mets pas assez d'argent dans le pot avec ta range ici au low jack. Moi ici, j'ai un désavantage d'Equity, évidemment, en BB. Vous voyez qu'on a seulement 36,8% d'Equity contre 63, qui lui donne range tie.
+
+Donc on ne va pas l'aider à rattraper son erreur. Alors évidemment, on continue à check-raise quand on a nuts, parce qu'on veut jouer pour stack. Mais quand on a une main un peu close, ou quand on a des bluffs, ou quand on a un draw, on est assez passif overall.
+
+On a très peu de check-raise. La range de check-raise, c'est vraiment double paire, double paire et brelan, et quelques high-Equity bluffs, et quelques mains un peu genre As-6 avec l'As de cœur et tout. Mais pas beaucoup de check-raise, en fait, overall.
+
+Et As-Valet, quand sa range, il a toutes ses mains fortes dans sa range parce qu'il n'a qu'un seul size, il faut faire attention à ne pas check-raise trop dépolarisé avec As-Valet. S'il a plusieurs sizes et qu'il bet small avec une range plus faible, là, on peut check-raise. Mais là, ce n'est plus le cas.
+
+Donc check-raise. À mon avis, l'As, normalement, ça ne devrait pas trop nous stopper, parce qu'on n'a pas Roi-Valet. Donc l'As ne change pas une tonne pour nous.
+
+Ça fait rentrer Roi-Dame, mais on a toujours pas mal de mains fortes. Dans certains spots, c'est des check-raises sur l'As. Et l'As, c'est mixé.
+
+Mais il y a quand même pas mal de checks. Il y a quand même 10-6 et Valet-6 qui perdent beaucoup en equity sur ce board. Donc c'est vrai qu'on n'a pas que Breland.
+
+Donc Breland peut continuer à bet souvent, mais 10-6 et Valet-6 sont des purs checks parce que juste les equities viennent de beaucoup changer sur cet As et ça commence à devenir ambitieux de jouer pour stack. Donc si vous regardez, par exemple, l'equity de 10-6, on a double paire, on est passé à 57% d'equity, ce qui n'est quand même pas ouf. Alors que 6-6 à 78%.
+
+Vous voyez, 78% pour un 7, ce n'est pas non plus... Normalement, on a plus quoi avec Breland. Sur un board où il n'y a pas de flush possible. Donc j'ai quand même décidé de bet.
+
+Vous voyez que c'est mixé. Donc l'idée, c'était de voir que ce n'est pas un check range, mais ça reste une carte sur laquelle on est assez passif quand même. Et une fois qu'on arrive là avec paire de 6, c'est toujours tout dedans au tapis et on espère se faire payer par double paire.
+
+OK, on est plutôt content de comment j'ai joué. Quand même, notre acteur est un peu mixé. Mais en tout cas, on n'est pas forcé de checker.
+
+Vous voyez, il doit folder des As-Dame pures et tout. Je trouve ça dommage de ne pas bet quand on voit à quel point il est censé taille contre ça. Je ne suis pas sûr que les gens vont avoir la force de folder As-Dame As-Roi comme ça à la turn contre notre bet.
+
+Peut-être que déjà de base, il a foldé pas mal de paires. Je ne vois pas pourquoi il… Il est censé bet call paire de 9 et tout. À mon avis, sa range sera plus orientée vers des paires plus draws.
+
+Il a déjà fold pas mal ça. Donc contre un humain, je ne vois pas trop l'intérêt de checker dans le sens où on va souvent se faire payer par pas mal de trucs. Vous voyez, Roi-Valet et tout.
+
+Je vois bien que les gens sont plus sticky ici, donc on va juste value bet nous-mêmes. OK, on continue à check raise un gros size ici. Celle-là, je ne vais pas la vérifier. 
+
+On a juste bottom 2. À noter que je pense que Roi-3 jouerait en check call et 7-3 et Roi-7 joueraient en check raise beaucoup plus. On va juste regarder cette logique et ensuite on va s'arrêter là. Peut-être regarder quand même le sizing de check raise.
+
+Donc Roi-7-3. Il ne doit pas bet range. 7-3 pur prix. 
+
+OK. Roi-7 off pur prix. Roi-3 mixé.
+
+Roi-3 suité mixé. OK, la logique a l'air d'être là. Sizing, raise 55, raise 50.
+
+Donc un sizing un peu comme j'ai fait. J'ai fait un petit peu plus cher, vu que je n'avais pas trop d'infos sur le bilan, et que peut-être c'est un récréatif. Peut-être plutôt un call à vue d'œil, ça.
+
+Mais bon, on va voir la taille de mon KO aussi. OK, donc c'est plus en deep run vu qu'on est assez deep. OK, donc ça c'est un spot intéressant vu qu'on est quand même très short SPR.
+
+Donc ce que je vais faire, c'est déjà regarder le genre de range qu'il va open, qu'il devrait quand même open assez tight parce qu'il open sur un stack de 10 blindes avec 27 et 20 ici. Donc il ne peut pas open une range de 40 BB effectivement. Normalement, après des fois les gens se chauffent un peu, mais on va rester sur une range d'open de 20 BB deep.
+
+Et on va mettre ce board-là. Donc 10, 6, 2. Je me rends compte aussi que j'ai dû faire une erreur, il n'y a que des HH de minimax. Alors que normalement, ce n'est pas le cas, donc je me suis un petit peu gouré sur la configuration de N2Notes.
+
+J'aurais bien aimé aussi mettre des HH de coin poker, poker star, etc. Mais tant pis, c'est fait. Donc on va voir un petit peu.
+
+Vous voyez que 10-3 de pique s'est pris, mais 10-3 de trèfle, c'était un petit peu mon intuition, c'est que c'est un petit peu trop fort. Il n'y a pas de top pair plus flush draw, c'est un bon moyen de protéger notre range de check-call. Quelques 10-8, 10-9 de trèfle, mais overall on check-raise les autres 10-x, mais celui-là est un petit peu trop fort.
+
+Donc c'était un petit peu mon intuition, je ne vais pas joker, mais je pense qu'avec le KO, on va aussi faire face à plus de playback. Ah bah, il y a des HH de coin, donc c'est cool. OK, on check-raise un combo draw, on se fait jam, on gagne contre As-Roi, ça run good, un pk, pas grand-chose à dire.
+
+Si on check-raise sur un board à doublette, donc ça c'est le genre de stratégie où cutoff, hijack, lowjack, plus vilain bet cher, plus je vais jouer ma range en check-raise, et plus vilain bet small, et plus je vais m'autoriser à avoir du check-call. Donc voilà, c'est la logique à retenir de ce genre de spot sur board à doublette low SPR. Et je pense que c'est une bonne règle à avoir.
+
+Donc là, il a à bet un sizing, évidemment, ma main veut check-raise, mais je parle de comment on joue notre range. Et normalement, il y a une différence en fonction du genre de sizing qu'il utilise. Et pas mal de gens font l'inverse, ils se disent OK, c'est petit, c'est faible, je check-raise, bon pas tout le monde, mais en fait, c'est plus l'inverse, plus c'est small, plus c'est un bet, une blinde, et plus on veut jouer notre range avec du call.
+
+Donc déjà, on va garder le sizing qu'il a pris, c'est-à-dire quart pot. Je pense que contre quart pot, on a quand même beaucoup de raise et assez peu de call. Vous voyez, c'est 30% de raise, notre main est un pur raise, OK, on a très peu de call.
+
+Donc on va garder ce chiffre en tête, 30,6 et 5,8, et maintenant, on va lui faire bet une BB. Et normalement, ce qui va se passer, donc c'est B18, ce qui va se passer, c'est qu'il y a plus de call qui va apparaître, parce que juste les autres sont meilleurs, et le SPR va être plus grand. Ce n'est pas... OK, bon, ce n'est quand même pas choquant, il y a un peu plus de call, mais normalement, je vais vérifier peut-être comme ça, et je vais mettre aussi avec un bet genre B33 et faire la différence.
+
+Donc là, honnêtement, ce n'est pas le plus choquant, on va dire. Normalement, sur les bornes à doublette, c'est un truc qui revient souvent. Donc si on lui fait bet, on va peut-être comparer même B30 et une BB.
+
+Normalement, on a cette logique-là qui apparaît. OK, B31. Donc là, vous allez voir qu'on joue avec 28% de raise pour seulement 2% de call.
+
+Si c'est aussi contre une range lowjack, c'est peut-être quelque chose, je ne sais pas, qui s'apprête plus aux ranges un peu plus low, je ne sais pas, je ne suis pas sûr. Mais normalement, là, il va y avoir une différence. Donc si on bet une BB, on est passé quand même de 1,8% de call à 9,3% de call.
+
+Vous voyez qu'il y a quand même cette tendance à avoir tout de suite beaucoup plus de call quand le bet est petit. C'est moins flagrant sur ce flop que d'autres, mais amusez-vous un petit peu à mettre différents flops, vous allez voir que la tendance est réelle. OK, j'aurais bien aimé faire un poil plus small ici, du coup, je décide de check et check fold.
+
+Donc ça, c'est le genre de spot où je pense qu'il faut faire un petit peu attention à nos fréquences. Ça peut être vite tentant de prendre beaucoup de bottom pair sans re-draw comme ça. Mais ce que je vais faire, c'est que je vais mettre un vilain qui bet range sur ce flop-là.
+
+Et ensuite, il y a une fois où il n'a pas bet pour l'instant, mais ça ne veut pas dire grand-chose. Déjà, regardez les deux bases, et je pense qu'avoir une bottom pair qui va bloquer un peu les mains les plus faibles qui vont continuer avec les gutshots suités, sans flush draw, ce n'est pas mal. Mais je ne sais pas si c'est mieux qu'une autre bottom pair comme 2 et 3 suités qui unblock tous les folds aussi.
+
+Je pense que 2 et 3 de trèfle, c'est probablement meilleur que ma main. On va vérifier. OK, donc il doit bet quand même high frequency, mais pas par range, 80%.
+
+Et vous voyez que 9 et 2 s'est pris un petit peu, mais 2 et 3 s'est pris plus. Je pense qu'en termes de bottom pair, c'est un petit peu mieux d'avoir third pair. C'est tout ça.
+
+Les pires, c'est ceux-là, évidemment. Ceux-là, c'est pure call. Par contre, 9 et 2, c'est descendre.
+
+Et plus on descend bas, plus on unblock les folds du bouton, et plus ça devient un petit peu intéressant de mettre un petit check-raise ici. On va le faire bet B28 range et voir si ça change quelque chose. Je pense qu'avoir le 2 et le 3, c'est vraiment… On unblock tous les randoms cartes.
+
+Et avoir le 9, c'est OK aussi, dans le sens où on bloque quelques folds, évidemment, mais on bloque aussi quelques continues de mains très faibles. Et s'il continue ses mains faibles, c'est cool de dominer 8-9 off sans cœur quand on a 9 et dessous, de dominer Valet-9 off sans cœur quand on check-raise petit. C'est cool.
+
+Je vais mettre un raise plus petit, comme ça. Je crois que j'ai fait peut-être même un peu plus small. Donc, 4-2, 5-2, c'est vraiment ce qu'on préfère ici.
+
+C'est low bottom pair. Et une fois qu'on se fait call et que ça devient A-turn, j'imagine qu'on est en mode divock avec ces mains-là et qu'on ne continue pas à mettre de l'argent dans le pot. On va attendre d'avoir plus d'équity une fois qu'on s'est fait payer.
+
+Ça continue quand même plus que ce que je pensais. Ça, c'est double pair. Les 3-2 bluffent beaucoup plus que ce que je pensais.
+
+Donc, j'aurais peut-être été un peu trop passif avec ces non-équity hands. Mais d'un autre côté, c'est facile d'être plus agro avec d'autres types de mains, comme Valet-6 off avec le Valet de cœur. C'est plus un problème de splitage de range plutôt que de fréquence parce que les autres bluffs sont super faciles à trouver.
+
+Donc, je pense que j'aurais bluff beaucoup trop ça et pas assez ça. Donc, probablement que si un cœur arrive river, je vais manquer de bluff. C'est ce qui va se passer.
+
+Il faut encore que les gens arrivent à comprendre ça. Ça, c'est les boards sur lesquels on check-raise polar. On en a parlé.
+
+Donc, ça, c'est des boards sur lesquels, lui, il peut facilement avoir différents sizes. Vous voyez ici qu'il a split pour l'instant 69% de bet small, 31% de bet big. Il a beaucoup bet.
+
+Donc, ça, ça montre qu'il a des bets chers. Il n'a pas encore river bet, mais il a des bets chers. Donc, le fait qu'il ait des bets chers tout de suite, ça me laisse penser que quand il bet small une texture comme ça, sa range est plus weak.
+
+Et du coup, c'est cool de check-raise un peu plus. Donc là, il y a l'aspect KO. J'avoue que notre main est un peu forte.
+
+Donc, ce n'est jamais mauvais de check-raise, mais on a un deep run apparemment. J'aurais aimé me voir faire plus small. 10 blindes, je trouve que c'est un peu bourrin.
+
+Je ne sais pas pourquoi j'ai fait 10 BB. Je ne sais pas ce qui m'a motivé à prendre ce size. J'aurais aimé faire plus small, genre 9 BB ou quoi.
+
+Mais bon, d'un autre côté, quand on a vraiment As-10, Roi-10 contre le bouton, on veut aussi vraiment faire cher, mais pas trop cher non plus parce qu'il a déjà sa raise up. En vrai, je pense que ce n'est pas si déconnant. Je pense juste que la main est un petit peu forte, je trouve, pour jouer comme ça.
+
+Mais bon, on a une super equity contre un 10, évidemment. On n'est pas mécontent de directement faire fold une main comme Roi-Dame, d'embêter Roi-Dame avec le Roi de pique. Il va peut-être quand même nous call une fois, mais quand ça vient pique, on prend aussi beaucoup.
+
+J'ai l'impression qu'il y a un peu du pour et du contre ici. On ne peut pas faire d'erreur en check-raising cette main, mais je me demande si on ne préfère pas avoir Roi-5 de pique plutôt que Dame-Valet de pique ou As-2 de pique. Je pense que ça va être un peu plus agressif.
+
+Mais bon, il a déjà sa raise up, donc c'est aussi ça. Je vais le faire. Probablement qu'il joue différents sizes sur une texture comme ça.
+
+On va garder la sim ici. Il a fait B55, ce qui est un sizing complètement legit. Par contre, il est censé pas mal checker.
+
+Ça, vous êtes moins sûr. Vous voyez, c'est un petit peu trop fort. On préfère largement avoir Roi-5 de pique ou As-2 de pique qui est pur, comme je vous disais.
+
+Je ne sais pas trop ce qui m'a motivé à faire ça in-game. Quand on check-call, il va beaucoup barrel nos cartes. On peut continuer à check-call les brick-turns, etc.
+
+C'est bien ce qui me semblait. C'est trop fort, en fait. Il y a assez peu de 2 overcards avec flush draws.
+
+Vous voyez, même si on a Roi-Valet, Dame-Valet. Donc, un petit peu trop fort. Pas grand fan de ce play.
+
+Ah oui, je me rappelle. C'est contre mon élève et ami bordelais. En gros, on avait une petite discussion.
+
+On s'amusait beaucoup à parler des 3-bet flop, 4-bet flop, ce genre de choses, et on spéculait pas mal là-dessus. Et du coup, c'est marrant, parce que premier spot, il a commencé à me 3-bet. Et justement, on disait que c'était un peu cool-off-shit, les 3-bets sur board dry.
+
+Du coup, j'ai décidé de click, et il a call. Sur le 10 de carreau, avec mon KO, c'était sur un 250, j'ai le jam. Et il avait ici As de carreau-x.
+
+Il m'a dit la HH. Du coup, il a été un petit peu obligé de forcer parce qu'il s'est retrouvé à ne pas avoir les autres. Et je pense que notre main a envie de jam, ici, parce qu'on va se faire call par des As-Roi avec un carreau, et dans le même temps, on fait fold pas mal d'équities parce que pas mal de ses bluffs vont être des mains comme As de carreau-x, voire As de carreau-2.
+
+Bon, ça, c'est un petit peu du spot un peu leveling. C'est marrant. Une autre double paire.
+
+OK, on se fait jam, on call. Impeccable. Pas grand-chose à dire là-dessus.
+
+Ça, c'est en SB, du coup. On a pas mal de Valet-x off, ici, donc je pense que ça fait sens de commencer à bluffer. Turn, on a pick-up de l'équity.
+
+On va attaquer des random As-10 de cœur, etc. Donc, ça me paraît très bien. Pas grand-chose à dire là-dessus.
+
+Peut-être le flop. Après la turn, je pense que c'est standard de prendre le 2-barrel. Et 2-barrel, c'est cher, quand même, parce que vu que je suis en SB, je n'ai pas vraiment trop de 5-x.
+
+C'est plus des pockets et tout. Et même le 9, c'est une carte qui rajoute pas mal d'équities à pas mal de ses floats. Donc, je pense que même si on a une pocket paire, on n'a pas trop envie de bet small, donc je pense que j'aime bien le size.
+
+Ça fait sens d'être assez polar, ici. On va voir, déjà, lui, sa strat, et nous, si les gens peuvent avoir un peu de lead au flop, donc ça, c'est plutôt bon signe sur le fait que c'est un board qui est pas mal pour nous. Est-ce que c'était le bouton ? Je ne crois pas que c'était le bouton.
+
+C'est bien ce qu'il me semblait, c'était le cutoff, donc je me suis trompé. Donc, on va faire encore 2-3 mains et on va arrêter la vidéo. Je ne me rends pas compte à quel point ça fait longtemps que je recorde, mais c'est possible.
+
+Je suis en train de vous faire une vidéo un peu trop longue. OK, Valet-Valet-5. Vraiment qu'on conserve un peu de lead, sur le cas.
+
+Ouais, ça reste un bon board. Lui, vous voyez qu'il ne peut pas bet range. On a beaucoup de Valet-x off.
+
+On a une range qui est assez strong en SB. Vous voyez que notre main, elle est quand même pas mal prise. Si jamais il fait l'erreur, entre guillemets, de bet range, probablement qu'on va être encore plus agressif.
+
+On va check-raise encore plus, probablement pure notre main. Et en plus, ça, c'est la strat de c-bet si on a du lead. Donc, si jamais on retire le lead, je ne vais pas lead.
+
+Pourquoi je lead si il a un bet range ? Aucun intérêt. D'ailleurs, vous voyez que c'est ce qui va se passer. Si on force le bet range, la range de... Oula, qu'est-ce qu'il se passe ? Ah oui, c'est ici.
+
+Si on force IP à bet range, pourquoi on n'a plus d'intérêt à lead ? Parce qu'il met l'argent pour nous. Donc, c'est ce que je fais. Je lui laisse over c-bet.
+
+Et avec ce genre de combos qui sont cools, je pense que c'est bien de jouer super agressivement. À mon avis, la notre strat, elle va être bien agro. Voilà, 42% de raise.
+
+Allons-y. On peut aussi évidemment check-call, mais check-raise et 2 barrels quand on pick-up de l'equity. OK, il met un petit coup de molette, ce que j'ai trouvé un petit peu bizarre.
+
+Là, je pense que c'est fine de prendre ce combo. On peut aussi call, mais j'aurais clairement call les Roi-7, Roi-8, Roi-9. Mais Roi-4, Roi-5, je pense que c'est ceux qui sont un peu plus intéressés à raise.
+
+On a fait une paire, on a check-call la turn, check-check, et on perd contre une Dame. Je pense que c'est relativement standard. Je pense qu'il aurait pu c-bet plus cher la turn, mais on est plutôt contents de ça.
+
+Donc, il faut faire attention à ne pas prendre tous les Roi-x backdoor, etc., parce que ça va vite abuser un petit peu du spot. Je pense que Roi-4, Roi-5 sont ceux qui sont les plus pris, et au-dessus, j'aurais plutôt call. Donc, c'est Dame-2-3.
+
+Je pense qu'il peut bet à haute fréquence, mais vu qu'il est bouton sans deep, je dirais pas range. En tout cas, si c'est Dame-5-6, Dame-6-7, il y aurait beaucoup de check-back. La Dame-2-3, je pense qu'il peut bet plus, quand même.
+
+Le 2 et le 3, c'est un peu des blanks. Vous voyez que ça reste quand même un board sur lequel il y a beaucoup de check-back. Au bouton, les gens c-bet 3. Je pense que c'est un bon concept à revenir.
+
+Donc, Roi-4, Roi-5, très souvent pris. Roi-6, quasiment plus. Roi-7, Roi-8, jamais.
+
+Donc, oui, j'aurais fait exactement ça. Et du coup, turn, on fait une paire. On ne peut pas non plus bet range, ce genre de cartes, même si on veut bet pas mal.
+
+Et oui, je pense que ça joue tout seul. Allez, on va voir encore quelques-unes. Je pense que ça fait le genre de combo qui est good avec Dame de pique et 7 de cœur.
+
+Je pense que c'est un peu meilleur d'avoir Roi de pique et une low card. Je pense que notre main peut aussi call. Je pense que ce que j'aurais fait, c'est que j'aurais pu call cette main et prendre un petit peu plus Dame de pique 3, Dame de pique 4, Roi de pique 3, Roi de pique 4. Il ne faut aussi pas manquer de reverse float.
+
+Par exemple, Dame de pique 8, Dame de pique 9, ça commencera à devenir… Alors, Dame de pique 9, c'est spécifique parce que ça fait aussi backdoor gutshot, donc c'est cool aussi. Mais je pense qu'il ne faut aussi pas hésiter à check-call des fois et pas tout le temps prendre l'option agressive avec ce genre de combo. On va voir un petit peu.
+
+Je pense qu'on va faire Seine là et on va s'arrêter. Donc 10, 5, 2. Bet tiers pot. Oui, c'est un petit peu… Est-ce qu'il a fait vraiment tiers pot ? C'est aussi sensible au size.
+
+Oui, il a fait tiers pot. Il a fait tiers pot. OK.
+
+Notre combo est un petit peu out of line. Par contre, vous voyez que c'est marrant, mais Dame de pique 7 fold et Dame de pique 4, Dame de pique 3 raise. C'est un peu ce que je vous avais dit au début.
+
+C'est qu'en gros, c'est mieux d'avoir Dame de pique et une low card parce qu'on non-bloque les folds. C'est-à-dire que là, le 7… C'est le 7 de cœur, donc c'est un peu meilleur. Mais le 7 non-bloque des mains comme 7-8 off, etc., des mains comme Roi-7 off qui vont être les folds premiers de bouton parce qu'il n'a absolument aucun redraw.
+
+Du coup, c'est bien meilleur d'avoir une low card, qui vrappe avec le 5 et le 2. Donc, c'est un petit peu plus précis d'avoir ces mains-là. Vous voyez ? Ça, c'est des gutshots en plus, donc c'est encore plus facile à trouver. Maintenant, si jamais il bet range B33, je ne sais même pas si ça va suffire.
+
+Probablement qu'on va garder un fold avec notre main. Pourquoi on prendrait cette main ? Ça serait si il a overfold versus le check raise. Ce qui, je pense, est le cas quand ils sont en bouton par rapport à s'ils étaient low jack.
+
+Donc, il ne faudrait vraiment pas prendre ce combo si on est contre un joueur au, par exemple, high jack parce que la data montre que les gens overcall les check raise quand ils sont early position parce qu'ils sont assez inélastiques. Et par contre, ils undercall souvent au bouton parce qu'en fait, une range bouton est tellement wide que pour MDF contre un check raise, on est censé call des mains vraiment inconfortables. Et par contre, quand on est low jack, on a une range qui est tellement strong.
+
+Vous voyez, là, il call quand il bet range. Mais pareil, il préfère largement call que raise. Donc, ça, c'est le premier truc.
+
+C'est que notre main aurait été un petit peu meilleur à call s'il bet range et s'il ne bet pas range. Est-ce que j'ai node lock ? Je n'ai même pas besoin de node lock. Il bet range de base.
+
+Donc, contre un bet range, c'est un call. Bon, raise, ça ne perd pas énormément de V. Maintenant, qu'est-ce qui potentiellement fold trop ? J'ai raise S43. Est-ce que ça va overfold ? Il ne va même pas forcément overfold. 
+
+On va essayer de voir. Il va devoir call des trucs assez inconfortables pour sûr, vu qu'il est bouton. Valet 8 off avec le 8 de pique.
+
+7-8 off avec un pique, etc. 6-7 off avec un pique. Ce n'est pas forcément évident de call autant.
+
+Il y a des joueurs qui vont le faire, mais pas tous. Alors que par exemple, s'il est high jack, il va devoir commencer à fold des As-Dame. D'un autre côté, ils vont probablement plus call As-Roi sans pique.
+
+Mais il y a quand même pas mal de floats inconfortables. Cette fois-ci, c'est passé, mais je pense qu'on peut largement call. On a call parce que c'est en PKO.
+
+Après, avec quelques check-raises un petit peu out of line. Ouh là ! C'est parti assez loin. On a bien fait de s'arrêter ici, parce qu'après, il y a l'air d'avoir quelques cingeries.
+
+Anyway, je pense que c'est cool. On a appris pas mal de trucs, que ce soit les sizing de check-raises et aussi les plays à la turn et river. On va s'arrêter ici.
+
+Dites-moi si le format vous plaît. On pourra reproduire l'expérience dans d'autres temps.
+
+(Transcrit par TurboScribe. Passez à Illimité pour supprimer ce message.)

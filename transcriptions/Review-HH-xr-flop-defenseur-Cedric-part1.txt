@@ -1,0 +1,289 @@
+(Transcrit par TurboScribe. Passez à Illimité pour supprimer ce message.)
+
+Salut à tous, c'est Cédric pour Pure Poker. On se retrouve aujourd'hui pour une nouvelle vidéo de review sur des spots de check-raise. Ce que j'ai fait, c'est que j'ai décidé de trier tous les spots de check-raise en tant que défendeur en BB que j'ai eus récemment.
+
+Et l'idée, c'est de voir déjà le play au flop, mais aussi voir comment on a joué turn river et faire une petite review avec solver. Peut-être quelques nodes locks, je ne sais pas. On va voir s'il y a besoin ou pas.
+
+Et essayer de voir les erreurs qui ont pu être commises. C'est comme ça que j'aime bien review mon game. Généralement, je note des mains et ensuite je les review.
+
+Mais j'ai décidé qu'on allait rester sur un thème précis pour éviter de s'éparpiller. Et je pense que les check-raise flop, c'est un spot qui devrait vous intéresser. Donc, on va commencer tout de suite.
+
+Là, on a un premier spot en space KO. On a un joueur qui open 22-10 bouton, donc normalement une range assez tight. Notre main devrait pure call, ce n'est pas un problème.
+
+Et on fait face à ce small bet. Je pense que c'est un board sur lequel il peut bet un peu plus cher et checker, je ne pense pas qu'il peut bet range. Le fait qu'il utilise ce petit size, je trouve ça pas complètement anodin.
+
+On va voir un petit peu. Pour l'instant, on voit que dans ses strats de c-bet, il a principalement bet small. Peut-être qu'il bet small un petit peu tous les boards.
+
+Je pense que notre main veut pure check-raise. C'est ce que j'ai fait, sinon ça ne serait pas dedans. J'ai pris un check-raise non-anodin, il a fait tapis, on a call.
+
+Assez standard, à part que Roi-7 off, je pense, est un petit peu loose comme open quand il est couvert par la small blind, mais qu'il nous coupe quand même. Le premier truc qu'on va faire, c'est regarder comment il est censé jouer sa strat sur Wizard. Vous voyez que si je lui propose son size, qui est quart pot, il bet 70% du temps, il est censé check 30.
+
+Et contre ça, vous voyez que quasiment tous les 8 sont des check-raise. Ça, c'est les 8x off, et vous voyez que les 8x suité qui ne sont pas des check-raise, c'est double paire. Généralement, c'est spot de short S-pair.
+
+On fast-play nos top-paires et on slow-play avec nos nuts, donc nos double-paires et aussi nos straights, comme vous pouvez le voir, qui n'ont absolument jamais check-raise. Et on mixe du check-jam et du check-raise size. Notre main préfère largement check-raise size, mais on a des mains comme 7-5, 6-5, donc paire plus gutshot, qui font tapis direct.
+
+10-8 aussi, qui aiment bien faire tapis directement. Intéressant. Je pense que c'est cool d'un bloc pas mal de broadways avec 10-8 et en même temps de se faire call pas moins bien suffisamment souvent.
+
+On n'a pas trop As-8. Pourquoi on n'a pas ces mains-là, déjà ? Parce qu'on les lead beaucoup au flop. Ok, intéressant.
+
+Donc déjà, de base, vous voyez que notre main est censée pas mal lead. Moi, ce que j'aurais fait, c'est que j'aurais juste pas lead en partant du principe que bouton allait juste 3-cbet. Et encore, vous voyez, c'est un lead cher.
+
+Donc ça, c'est le premier truc intéressant dans cette main. Si je mets un autre lead cher pot, il aime vraiment lead cher. D'accord, donc ça, c'est un spot qui est cool.
+
+Du coup, il ne veut pas lead small, il veut lead cher et polar, en gros, top pair et des bluffs. Donc le premier truc que je vais faire, c'est juste d'enlever le lead, parce que je vous avoue qu'in-game, c'est comme ça que j'aurais joué, en m'attendant à ce que ça va avoir c-bet. On va voir, quand on ne lead jamais, il est censé c-bet seulement 46 %. Sa main, elle est là.
+
+Vous voyez qu'il l'a en open, mais il est censé check back super souvent. Et donc là, je pense que clairement, les gens vont over c-bet. Donc là, c'est le premier truc.
+
+Vous voyez qu'on n'a plus du tout de jam, parce que je ne sais pas exactement pourquoi, mais probablement qu'il ne veut juste jouer qu'en check-raising une fois qu'on n'a plus de lead flop, peut-être parce qu'il bet beaucoup moins souvent, overall. Et notre main, ça reste un pur check-raise. Cette fois-ci, on check-raise quasiment tous nos 8-x.
+
+Il y a juste 8-2, 8-3 et 8-9 offsuit qui en call. Sinon, tout le reste va être check-raise. Donc, ce qu'on peut faire aussi, c'est qu'est-ce qui se passe si jamais il a un bet range, ce qui est possiblement le cas.
+
+Donc là, on a dit qu'on va juste check-raise beaucoup plus. Et là, on a énormément de jam. Notre main, même s'il bet range, vous voyez que top paire plus gutshot, plus je ne sais pas s'il est backdoor fold ou pas, mais ça reste trop fort.
+
+Il préfère juste size. Mais par contre, on a quand même beaucoup de plus de jam et beaucoup plus de check-raise overall. Donc, on joue très agressivement dès que vilain bet drop.
+
+OK, donc plutôt intéressant. Oui, on pourrait voir ce qu'il était censé faire avec sa main, control size. Donc c'est Roi-7.
+
+Donc oui, il peut faire tapis, il peut call. Les deux sont fine. Si je check-raise autant.
+
+Ouais, 15%, ça se trouve relativement facilement, je pense. Surtout si on jam moins que ça, on peut vite avoir plus. OK, donc là, on a un open cutoff.
+
+Il bet small. On check-raise avec brelan. On 2-barrel half-pot.
+
+Et on jam la river et on se fait call par full. Bon, ça a l'air relativement standard, mais on va quand même vérifier, voir si… Est-ce qu'on veut vraiment jouer pour stack ? Est-ce qu'il y a un moment où on peut checker ? Le Roi, ça peut paraître être une mauvaise carte, mais je ne suis pas sûr qu'on veuille forcément avoir tant de check qu'on a beaucoup de Valets qui veulent continuer à bet, même si c'est une high card, donc on va voir un petit peu. Je pense que potentiellement, sur une brique, ma vision du spot, c'est que sur une brique, on peut continuer à bet small après avoir check-raise, et sur un Roi, on va se polariser et on va plutôt bet half-pot, voire deux tiers-pot minimum, et pas avoir de small.
+
+En tout cas, c'est comme ça que je jouerais ma strat. Donc lui, il doit bet range, small, OK. Contre le bet small, on va voir qu'on a plus de 22% de check-raise et Dame-Valet est quand même très souvent check-raise, donc on va le prendre.
+
+On ne va pas forcément regarder avec l'AI. Je pense que du coup, vu qu'il n'y a quasiment qu'un size utilisé, ça va suffire. Turn, Roi de carreau.
+
+Du coup, on va voir les sizes. Vous voyez, B83, donc ce n'est vraiment que du share. Là, je l'ai utilisé, en l'occurrence, je ne sais plus, B55, un truc comme ça, mais des fois, le solver s'en fiche de jouer géométrique, et là, en fait, il a vraiment envie de jouer polar.
+
+Peut-être que le SPR est un peu plus petit, mais je ne crois même pas. Donc apparemment, il ne s'en fiche vraiment de bet très cher, puisqu'il n'y a plus beaucoup river. En tout cas, l'idée, ce n'est vraiment pas d'avoir de small.
+
+Donc si vous avez un sizing un peu entre les deux, c'est fine. Si vous avez B55, il ne doit pas être une paire de V extraordinaire. Oui, d'ailleurs, Dame-Valet fait partie des Valets qui check le plus.
+
+Intéressant. Par contre, les autres Valets sont très agros, mais Dame-Valet spécifiquement, Roi-Valet top full, OK, on bloque tout, on check. Dame-Valet check beaucoup aussi.
+
+Donc on va voir si ma logique est bonne sur un 4, et là, je m'attends à ce qu'il y ait déjà beaucoup plus de small. Oui, vous voyez, effectivement, c'est le cas. Il n'y a même plus du tout de B83.
+
+On barrait l'high frequency, mais c'est beaucoup B33, B20, B55. L'idée, c'est qu'on a beaucoup de 3x, beaucoup de 4x qui veulent continuer à bet small. Pocket 5, des bluffs, etc.
+
+Tous les floats high card du cutoff, on miss, donc on attaque ça maintenant avec un small size. Vous voyez que c'est en B33, il va devoir continuer à call des Rois-Dame et tout, normalement. Il va continuer à call des Rois-Dame, des Ace high, des Rois-10 off.
+
+On challenge toute cette partie de range-là. Alors que sur le Roi, vu que c'est une high card, on n'a plus trop d'intérêt à bet nos 3x, on n'a plus d'intérêt à bet Pocket 5, on n'a plus trop d'intérêt à bet tout ça, donc on veut vraiment se polariser en disant… Vous voyez que même si on a hit un Roi, d'ailleurs, même si on a genre Roi-8, Roi-9, on ne bet juste jamais. Roi-10 off, on ne bet jamais.
+
+Donc on lui dit juste, j'ai un Valet au mieux. Donc Dame-Valet fait partie des Valets qu'on a le plus envie de check, donc ça, c'est intéressant à noter. Je vous avoue que je n'aurais pas forcément capté ça in-game.
+
+Et ensuite, on fait tapis nous-mêmes avec tous nos Valets. C'est juste que, du coup, Dame-Valet aime vraiment soit check, soit bet mon size, du coup, B55. Bon, je vous avoue que je n'avais pas ça en tête.
+
+Je ne vais pas vous mentir. J'avais la bonne logique sur les bons sizes à utiliser en fonction des différentes turns. Mais le fait que Dame-Valet, spécifiquement, bet 55 par rapport aux autres, qu'il bet 83, bon, ça, on l'a « chaté » entre guillemets.
+
+Donc on va voir ce qu'il se passe quand on check. Du coup, quand on check, lui, il est censé avoir des sizes modérées, B33, B55, donc on va voir contre le B33 ce qu'on fait avec Dame-Valet. On double check-raise.
+
+J'ai l'impression qu'on va avoir beaucoup de force. J'aime bien le faire en bluff, mais j'ai l'impression qu'en value, ça va donner un petit peu trop de crédit à cette line. Donc je ne suis pas sûr que ça soit excellent contre la pop.
+
+Contre B55, il check-jam, etc. Bon, ça a l'air d'être un petit peu un play de solver. J'ai l'impression qu'on trame 8 mains, ça sera peut-être un petit peu meilleur de juste 3 barrels all-in.
+
+Et on voit que même sur un As, même si on va run dans des fools et des mains meilleures, overall, on se fait call suffisamment par moins bien. Valet-9 off, Roi-Dame, As-Dame, As-6 de carreau, etc. OK, donc là, on est 20 deep, on a défendu contre le hijack.
+
+Il a B33, quelque chose comme ça. On part pour un check-raise, on se fait call. Turn 3, je décidais de jam.
+
+C'est vrai qu'en plus, il y a le KO, donc on va avoir un petit peu… Je ne vais pas forcément tout solver en PKO, mais honnêtement, ça a son importance. Du coup, c'est chaud. Désolé, j'ai un petit peu de mal. 
+
+J'ai un petit bug. Le KO vaut 5 500, donc ça vaut quand même beaucoup d'argent. Allez hop, un petit Valet.
+
+Ça vaut pas mal, donc je pense que c'est relativement standard. En PKO, ici, je pense qu'éventuellement, on pourrait trouver un spot similaire en PKO. 100 % fill left, non, on n'aura pas.
+
+75, on est au hijack. Un hijack qui a une vingtaine de blindes. Ça, c'est pas mal.
+
+Il va avoir une range d'open plus tight, je crois, parce qu'il est couvert par pas mal de gens. Il est couvert par tout le monde. Il a un KO qui vaut… Voyons voir. 
+
+Je dirais 5 BB, c'est ça ? Non, il a un KO qui vaut plutôt 9 BB, donc un assez gros KO. Je me demande s'il n'y a pas aussi des arguments pour juste jam le flop, ici. On va déjà regarder qu'il y a un KO de 5 BB, parce que je ne suis pas sûr de réussir à trouver mieux.
+
+21, donc là, c'est… Ah, si, on peut trouver mieux. Il y a ça. Il a, du coup, un KO qui vaut 14 BB, donc vous voyez que la range de RFI… D'ailleurs, voilà, juste un petit conseil, si jamais vous jouez ce spot en PKO, parce que je vois énormément d'erreurs.
+
+Ce n'est pas le sujet de la vidéo, mais tant pis, on va en parler. Une range de RFI ou de hijack avec un KO de 15 BB, 21 deep, ça ressemble à ça. C'est censé être extrêmement tight.
+
+Et si jamais les gens commencent à RFI les 10x off, les Valet x off, tous les As x suités, 8-9 suités et tout, si vous êtes bouton, vous pouvez 3-bet call 4-5 suit, vous pouvez 3-bet call As 4 off, etc. Il faut vraiment punir les gens qui ne respectent pas ça et qui open beaucoup trop loose. Ça, c'est un petit aparté.
+
+Je ne pense pas qu'on va regarder cette sim, parce que juste la range est totalement… On pourrait modifier la range aussi. Mais surtout, le KO ne vaut pas 15 blindes, c'est quand même moins que ça. Donc, si on se met ici, le KO vaut 7 blindes.
+
+Ce n'est pas mal, on va partir là-dessus. On ne va pas chipoter pour 2 BB. Je crois qu'en plus, ça vaut moins de 10 blindes.
+
+OK, on va déjà regarder la range d'open. Qu'est-ce qu'il est censé open ? Vous voyez qu'il est censé open quand même bien tight. Ce n'est pas tous les 10x off, etc.
+
+Il est couvert par… Il couvre quand même la small blind. Le bouton, pardon. Nous, en BB, voilà notre range.
+
+On est censé être super loose dans les défenses. Pourquoi ? C'est un min-raise, il y a un KO de 7 BB. Donc, il faut vraiment faire attention à défendre suffisamment loose dans ce paysse KO ici, ou en payse KO quand on couvre.
+
+Le KO par rapport à son stack est vraiment très gros. Donc, voilà. Et ensuite, le board, c'est Valet 8-3, flush draw.
+
+Et je pense qu'avec un KO aussi cher, on va voir les différentes options. Pas de lead, OK. Lui, il est censé bet cher en mode let's go.
+
+En l'occurrence, il a bet… On va mettre bet 33. Alors ça, c'est un single… J'ai mis en single, ça va être bon. Ce n'est pas grave.
+
+On va mettre un coup d'AI pour qu'on puisse customise. Je ne sais pas pourquoi. Là, il voulait faire B-50 ou check, alors que l'AI va probablement bet small quasi-range.
+
+OK, on va lui mettre B-33. Est-ce que… Oui, c'est bon. Donc, vous voyez qu'on a un RP de moins 7%, du coup.
+
+OK, donc B-33. Beaucoup de size, OK. On va lui proposer une option… Moi, c'est à peu près ce que j'ai fait, je crois.
+
+Enfin, le sizing de check-raise. Je fais un peu plus cher, un petit peu plus… Le sizing est un petit peu plus cher, donc on va mettre 5.5 et aussi lui proposer le all-in et voir à quel point le fait qu'il y ait un gros KO, ça peut donner envie de faire tapis direct. Non, pas d'all-in.
+
+Par contre, notre main est un pur check-raise. Donc, vous voyez qu'on strap avec Valet-8 et on n'attend pas forcément d'avoir Valet-10. On n'attend pas forcément d'avoir des mains super fortes, même si on est contre une range tight.
+
+Vous voyez que si vous avez Valet-2, un certain suit comme Valet-2 avec le 2 de carreau sont des purs check-raises go. Il y a des gens qui ne défendent déjà pas de base Valet-2, mais on n'attend pas d'avoir les meilleurs Valets à ce stack size. La plupart des top pairs vont juste être dans le check-raise.
+
+On va avoir des bluffs comme As de carreau-x. On va avoir des gutshots. On va avoir des bottom pairs qui se font call par des mains qu'on domine, comme Dame-9, 10-9, etc.
+
+Il n'est peut-être pas 10-9 dans sa range, mais s'il a 10-9 dans sa range, il n'est pas 10-9 off, évidemment. Donc, ici, il est censé jam pas mal en mode fast play avec les overpairs les plus vulnérables, les meilleurs Valets. En l'occurrence, ça a call et je crois que la turn, c'était un random 3. Ouais.
+
+Et là, vous voyez juste qu'apparemment, il y a pas mal de B40. C'est quoi, all-in ? Le problème, c'est que ce n'est pas le même stack size. Nous, il ne nous restait pas B110 à la turn.
+
+Donc, il nous reste moins que ça. Donc, on va juste ajuster légèrement la sim pour que ça soit plus proche de ce qui s'est passé en termes de SPR. On va mettre comme ça.
+
+Ça ne va pas trop changer la strat. Hop, B33. Ça prend un petit peu de temps, mais je pense que c'est important juste de vérifier.
+
+Là, ce ne sont pas les spots les plus techniques, on ne va pas se mentir. Mais de bien regarder les sizes, de bien rajouter les KOs, etc. Vous voyez que les strats peuvent vraiment changer.
+
+Ne serait-ce que les ranges préflop sont bien différentes. Donc, on reste en pure check-raise, OK. Lui, même type de strat, et maintenant, 3. On va voir s'il y a avec le KO.
+
+Donc là, vous voyez qu'effectivement, n'importe quelle Valet, c'est tapis. Lui, qu'est-ce qu'il est censé call ? Il est censé call des As-Roi qui unblock les flush draws. Ça, je pense que les joueurs peuvent le trouver.
+
+C'est As-Roi, deux overcards sur le Valet, on unblock tous les flush draws. On est quand même pas mal contre tous les As-x et les Rois-x flush draws. 9-9, pareil, ce n'est vraiment pas bon d'avoir un carreau pour le joueur IP.
+
+Donc, on veut unblock ça pour unblock les flush draws parce que la plupart de nos bluffs, ça vient de flush draws. Vous voyez, si je mets les carreaux ici, c'est beaucoup de combos. Et si je mets les piques, c'est plus que des Valets ou des trips.
+
+Donc, ouais. OK, bon, malheureusement, on s'est fait call par paire d'As, mais heureusement, on a fait le Valet-River. OK, donc ça, c'est un spot intéressant, je pense.
+
+On fait straight, mais je pense que c'est un spot où on veut check-raise polar et probablement que le solver choisit un size probablement encore plus cher que ce que j'ai fait ici. Mais d'expérience, je pense que quand on check-raise vraiment super cher, ces boards As-x, les gens peuvent faire des gros folds. Donc, j'ai fait un mistake spot de faire un peu moins cher.
+
+Ça fold anyway. Donc là, on ne va pas avoir de turn, on va juste regarder le sizing de check-raise si ma logique est bonne. Cut-off, hijack, lowjack, j'ai toujours du mal avec ça.
+
+70 deep, on va se mettre 90, puis on va ajuster. En plus, il va falloir mettre 5-3 parce que c'était un min-raise, c'est pour ça qu'on a une easy dépense contre min-raise, alors que contre 2.3, on est indifférent. Donc, c'est juste regarder les suits, c'est As-2-4.
+
+On va faire un high-solve, on va se mettre 100-100-10, on va rajouter ça pur, ça pur, ça pur. Ça, c'est mixé 3-bet, OK, on va juste rajouter un petit peu de main parce que contre min-raise, évidemment, il faut défendre beaucoup plus loose que cette sim-là, mais on va laisser comme ça. On va voir un petit peu ce qui se passe.
+
+Si jamais il bet par range, on va le forcer à bet range parce que j'ai l'impression que beaucoup de joueurs vont jouer comme ça. En l'occurrence, on va avoir ces stades de bet. Il a eu 8 occasions de ces betflop, il les a toutes prises.
+
+À chaque fois, pour un small size, 2 occasions de 2 barrels, ça a été pris. Ça, pour le coup, c'est moins d'occurrence. Et à chaque fois, il a un bet entre B25 et B40, OK.
+
+On voyait qu'il est censé bet assez peu, overall. Quelle size il a pris ? Il a bet genre B32, un truc comme ça, B31. On voit qu'effectivement, il est censé quand même beaucoup check ses As low-low.
+
+Il a beaucoup de mains qui n'ont pas d'intérêt à bet. Les As-xs, les pocket pairs, des mains comme Roi-Dame, etc. Nous, dans ce spot, on a As-4 off, As-2 off, 3-5 off.
+
+On n'a pas tous les As-x offs, etc. Donc, ce n'est pas un bon spot pour lui. Quand il bet ce size, vous voyez le size de check-raise effectivement qu'il veut prendre direct 8.4. Je vais mettre un autre raise à 45, un raise à 30 et un raise à 90 et voir un petit peu les différences à utiliser.
+
+Bon, straight, évidemment, c'est pur check-raise, quasi pur. Donc, vous voyez que quand je mets raise 90, raise 30, raise 45, il n'en veut pas. Donc, déjà, ça, on peut virer. 
+
+On se dit, OK, ça ne m'intéresse pas. Et allez, raise 110 tant qu'à faire, raise 115. Et voir s'il utilise un bet encore plus cher.
+
+Ça commence à devenir un peu trop. Vous voyez qu'en gros, le check-raise, c'est entre 8.5 et 10 blindes. Donc, c'est exactement ce que j'avais en tête.
+
+Mais, oui, j'ai fait un petit peu plus small. Donc, moi, mon size, c'est quoi ? C'est 6.5, c'est ça. Du coup, on va remettre le size que j'ai fait.
+
+Quelque chose comme ça. Et c'est un petit peu sous-optimal à l'équilibre. C'est un petit peu trop small.
+
+Ce n'est pas déconnant non plus. Vous voyez qu'il prend aussi… Vous voyez qu'il mixe un peu tout. Donc, du moment, vous ne faites pas plus small que ce que j'étais.
+
+Je pense que c'est bien. Vous voyez qu'il les prend quasiment tous à la même fréquence. Donc, oui, je pense que mon size, il est OK aussi.
+
+Il doit directement fold des paires, mais quasiment pas. Il n'y a quasiment aucune paire qui fold. Un petit peu de 7-7, c'est tout.
+
+Il est censé call quand même bien loose contre ce size. Alors que si on commence à envoyer un énorme parpaing comme Raise 90, je pense que ça va quand même overfold les paires beaucoup plus. Mais par contre, ça ne va jamais fold un As.
+
+Vous voyez que c'est assez marrant à quel point… Je pense qu'en value, Raise 90, ça doit être pas mal quand même. Parce que le fait qu'il doit fold des top paires dès le flop, comme ça, je vous avoue que je n'y crois pas du tout. Donc, ça va peut-être overfold d'autres trucs, comme 6-6.
+
+Mais par contre, en fait, on est tellement polar qu'avoir As-Dame ou 6-6, bon, le 6, les implieds sont pas mal. Il y a plus de backdoor. Vu qu'on est très deep, on peut redraw un petit peu plus facilement avec 6-6 et avec le 6 de carreau que genre As-Dame sans carreau.
+
+As-Dame sans carreau, c'est OK, on a top paire, mais quand on draine super polar, ça redraw un peu moins bien. Et quand on est deep, on veut redraw. Donc, oui, c'est intéressant.
+
+OK, maintenant, ce qu'on peut faire, c'est node lock et dire, ce vilain-là, on le voit dans ses stats pour l'instant, il a tout le temps bet. On va partir du principe que vilain bet range. OK, là, vous voyez que la fréquence de raise a explosé.
+
+Par contre, on a beaucoup plus de small size parce qu'en fait, il a une range trop wide. Donc, vous voyez que là, par exemple, 5-3 préfère le small size. Il prend aussi les autres options, mais notre range a beaucoup plus de mon size.
+
+Parce que juste, il a trop de mains faibles et ça suffit à attaquer une range super wide. OK, intéressant, plutôt cool, du coup, de voir ce size qui me paraissait pas mal d'un point de vue. Donc, là, 4-2 off, ça va être une easy defense contre un min-raise.
+
+Toujours pareil, surtout contre le bouton. Il bet small, on check raise à peu près le même size, donc on est resté cohérent en bluff et en value, enfin en bluff, si on peut appeler ça un bluff. Et du coup, j'ai décidé de check et de check et de check fold.
+
+OK, donc la question, c'est est-ce que potentiellement avec le 2 de carreau, du coup, avec le 4 de carreau, j'aurais tout le temps continué turn, histoire de bloquer des 4x de carreau qui vont avoir un easy continue. Et vu qu'il a open bouton, il en a quand même pas mal. Donc, ce que j'aurais fait in game, c'est continuer avec le 4 de carreau en bluff pour faire fold les paires intermédiaires et checker sans le 4 de carreau.
+
+Donc, on va voir si la logique est bonne. Encore une fois, c'est une main que je n'ai pas sold, mais c'est ce que j'aurais fait in game. Les mains, c'est récent, donc je me rappelle pas mal des process.
+
+J'ai trié par main le plus récent. Donc là, c'est As3-4. Il va falloir probablement modifier parce que vu qu'il 2.3 bouton, 4-2 ne sera pas dans la range de bébé.
+
+Normalement, ça va être peut-être 4-3 mixé, mais 4-2 ne serait pas là. Voilà, c'est ça. Donc, il va falloir rajouter ça.
+
+Parce que je ne vais pas vous montrer les sims HRC, mais faites-moi confiance, c'est un pur call. OK, donc on va se mettre 64 deep, 64, et en bébé, on va rajouter 5-2 up aussi. C'est un call. 
+
+Ça, c'est un call. Ça, c'est un call, parce que c'est un min-raised. 9-5 aussi.
+
+Donc, on va rester sur quelque chose comme ça. On ne va pas toucher à la range bouton. Et on va regarder un petit peu.
+
+Déjà, le sizing de check-raise-flop, ça ressemble beaucoup à l'autre spot. Encore une fois, probablement qu'il ne va pas bet range aussi deep, alors que plus short, ça sera bet range. Vous voyez, ce n'est pas du tout bet range.
+
+Quel size il a pris ? Je devrais essayer de m'en rappeler un peu plus. Ça ressemble à carpot. Oui, c'est carpot.
+
+Donc, on va mettre B-25. C'est bien, c'est déjà ça. Alors, sizing utilisé, il a pris plus small.
+
+Il a choisi plus small par rapport à tout à l'heure. À mon avis, c'est vraiment cette logique. On est contre bouton, donc bouton, c'est une range beaucoup plus loose.
+
+Et donc, apparemment, dès que c'est une range qui est loose, qu'il c-bet, il a l'air d'attaquer un peu moins polar que quand c'est une range tight. Mais bon, pas tant que ça, parce que vous voyez que si je lui propose les options de raise plus chères, il les prend direct. Là, il faut toujours faire vos propres tests parce que des fois, il vous prépare un size, et en fait, si vous lui proposez des sizes différents, il les préfère.
+
+Donc, je vous conseille de bien regarder. Vous voyez, carrément, il a envie de commencer à juste se polar. Donc, en fait, c'est la même logique que contre le lowjack.
+
+À partir du moment où bouton respecte bien la strat de c-bet. Maintenant, on va quand même vérifier si jamais il bet range, et probablement qu'on va retomber sur l'autre type de logique. OK, donc on a exploré un petit peu les sizes.
+
+Notre main, elle n'est pas trop prise pour le coup, mais bon, il y a 5-3 qui est prise. Il y a 4-3 c-double paire, par contre, 4-5, OK. Bon, elle n'est pas trop prise, notre main, apparemment.
+
+Donc déjà, ça, c'est le premier truc à voir, à l'équilibre, évidemment. Nous, on veut jouer contre un humain. Donc, je pense que le premier truc qu'on va faire, c'est de le forcer à bet range.
+
+Et on va laisser tous les sizes pour voir quelle size il préfère. Peut-être qu'il bet par range, peut-être qu'il bet 80% et tout, mais la plupart des gens, ils simplifient beaucoup ici. Il y a eu 3 occurrences, mais les 3 fois, il a bet.
+
+La plupart des gens, au bouton, juste c-bet 3 sur ces boards-là. Vous voyez, là, ça commence à être pris un petit peu, mais pas tant que ça. Et par contre, vous voyez que c'est clairement le small size.
+
+Donc, dès qu'il a un bet range, la fréquence de check-raise augmente et le sizing descend. L'idée, c'est juste, qu'est-ce que tu vas faire maintenant avec 18 offs ? Tu ne peux juste rien faire, donc je n'ai pas besoin de me polar autant si juste tu as trop de mains faibles. Donc, oui. 
+
+Mais ça reste quand même plutôt call. Ce que je vais faire, c'est que je vais prendre un seul size et je vais prendre le size que j'ai pris. Comme ça, ça évitera d'avoir une range trop splittée.
+
+Ça nous permet d'arriver à la turn avec une range qui ressemble plus à ce que j'aurais eu in-game. Ok, donc petite fréquence. Je me demande si je ne vais pas le forcer à le prendre un peu plus parce que sinon, ça va être… Je vais juste faire un rapide node lock et je vais rajouter… Je pense que j'aurais mixé quelque chose comme 50-50, un truc comme ça.
+
+On va juste changer la fréquence de cette main-là. Attention, on va y arriver un jour. Ok, donc.
+
+L'idée, c'est de l'avoir un petit peu plus souvent en vrai. On va pouvoir même la mettre plus souvent histoire de vraiment voir comment il split avec ses suits. Évidemment, on a déjà d'autres bluffs qui sont les gutshots et tout.
+
+Donc, avoir une paire plus gutshot, c'est un petit peu abusé parce qu'on a déjà suffisamment de 5x off et de 2x off pour bluffer. Petite imprécision. Je pense qu'honnêtement, j'aurais été plus… Après, il faut aussi qu'il trouve tous ces 3-bets-là.
+
+Donc, s'il commence à skip des 3-bets chers et des As-x en thin value pour nous mettre un petit peu dans l'embarras avec le type de main qu'on a, et des random mains comme Roi-10 de pique, 9-7, 10-3, Roi-4, etc. Il y a quand même pas mal de 3-bets. Donc, je pense que contre la pop, ça va un petit peu mieux marcher.
+
+Et probablement qu'on peut générer un peu d'overfall pour notre side. Peut-être que ça ne va pas tout le temps float avec les 10-8, les 8-7 quand les joueurs ont beaucoup de tables. Donc, je pense que ça performera bien, honnêtement.
+
+Et ce n'est pas forcément une erreur, mais ce n'est pas très précis d'un point de vue théorique. Mais en faisant un ou deux autres node-locks supplémentaires, ça devrait passer sans problème. Sans vouloir justifier, sans chercher à justifier le play, évidemment.
+
+Je pense que ça reste… Je pense que ça reste fine. Donc, on va mettre un 8 et on va voir si notre combo avec le 2 de carreau ou le 4 de carreau… Enfin, le 4 de trèfle, dans ce cas-là, ça change quelque chose. Donc non, apparemment, il veut juste pure check.
+
+Vous voyez que d'ailleurs, une fois qu'on s'est fait call, on est super passif. Je vais lui proposer d'autres options, mais j'avoue que ça ne fait pas trop de sens de ne pas jouer polar la turn, ici. Je pense que si on arrive avec même un autre… Déjà, de base, on n'a pas beaucoup d'As-x.
+
+Notre range, c'est beaucoup double paire plus. Donc, je vais lui proposer un… Donc, vous voyez quand même, la logique n'est pas complètement débile parce qu'en mettant B80, vous voyez que 4 de trèfle qui bloquent les mains qui continuent bluffent genre 20% du temps. Et les 2 de trèfle que j'avais, du coup, pure check.
+
+Donc, la logique était là. C'est juste que j'ai un petit peu abusé avec les fréquences. OK.
+
+Par contre, donc B80, B66, ce n'est pas un size. On va être beaucoup plus polar que ça. Donc, on pourrait même mettre B130.
+
+Allez, hop. B… Allez, on l'espère. Il y a quand même ce qu'il est.
+
+On va mettre B115. Vraiment, tout ce qui est autour de pot, c'est bien. Et tout ce qui est pro-share, comme overbet, c'est un peu overkilled.
+
+Donc, on va mettre B155. Là, il s'est rééquilibré. Il a eu pas mal de B80 aussi.
+
+Je vais juste lui laisser B80 et B100 à la turn. Et il s'est pris de la même manière. Donc, notre main, OK.
+
+La logique était bonne, mais les fréquences, pas non plus une tonne. Donc, on va voir aussi. Il est quand même censé continuer à call beaucoup de paires contre ce size, donc… Je pense qu'à la turn, ça peut assez vite overfold.
+
+Contre B100, par contre, il fold beaucoup. Contre B100, je pense que là, ça va bien jouer parce qu'il doit call quelques paires de Dames et il doit fold quelques As-6. J'ai l'impression que là, ça sera un petit peu plus close.
+
+Il call pas mal de Dames-4, etc. OK. Je ne vais pas no-block la turn.
+
+Ça va prendre trop de temps sur une seule main et je n'ai pas envie. Mais j'essaie de vous montrer le plus de spots possible. Mais je pense que du coup, continuer avec le 4 de carreau en espérant que ça overfold un petit peu les paires.
+
+(Transcrit par TurboScribe. Passez à Illimité pour supprimer ce message.)

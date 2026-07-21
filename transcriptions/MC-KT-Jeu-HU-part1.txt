@@ -1,0 +1,167 @@
+(Transcrit par TurboScribe. Passez à Illimité pour supprimer ce message.)
+
+Salut Flav, je pense que c'est la première d'une longue série. C'est vrai que l'année prochaine, pour ceux de cette année, vous n'y aurez pas eu droit. Pour ceux de l'année prochaine, vous y aurez sans doute droit.
+
+Aujourd'hui, le thème va être les heads-up. On a décidé de la faire un peu différemment de d'habitude. Je pense que Chichi a très peu d'expérience de heads-up en MTT, donc on va la faire tous les deux.
+
+Je pense que tu as une plus grosse base théorique que moi, et puis on a tous les deux une base pratique, a priori, du nombre de tournois qu'on a joué. Je vais te laisser un peu le lead, je vais te laisser tout ça, et puis je te poserai des questions, puisque je serais assez curieux de tout un tas de choses. Donc voilà, je te laisse faire.
+
+Ok, ben écoute, allons-y. L'idée aujourd'hui, c'est de focus sur le pré-flop en heads-up. On n'aura pas le temps de faire du post-flop.
+
+Et focus sur une bonne construction de range, parce que si votre construction de range est claire, vous avez déjà gagné beaucoup de Vs contre la majorité des joueurs que vous allez rencontrer en heads-up en fin de tournoi. Donc on va réfléchir à comment construire nos ranges de raise, de limp, d'iso, quand on est en big blind face à un limp, ou de all-in, selon les profondeurs de tapis effectives. On va voir que les stratégies vont être quand même assez différentes selon les blocs de profondeur effectives qu'on va avoir.
+
+On va partir sur une construction qui est théorique, ça vient du solver, sans prendre initialement en compte les ligues de la population. Mais toutefois, si on comprend quelles sont les logiques derrière, les mécaniques de construction de nos ranges, on va aussi savoir comment exploiter certaines tendances. Par exemple, si ça iso pas assez, comment on ajuste nos ranges de raise, de limp.
+
+On va très vite le comprendre une fois qu'on aura vu ça ensemble. Comme je le disais précédemment, il va y avoir plusieurs blocs de profondeur où les stratégies vont changer. Par exemple, il y aura très peu de raise au bouton à 15 BB deep et moins.
+
+On va voir pourquoi. Par exemple, à partir de 17 BB environ, il n'y aura quasiment aucun open shove. Le risk reward va être tout simplement pas assez bon pour avoir beaucoup d'open shove à ces profondeurs-là.
+
+On va avoir plusieurs grandes notes stratégiques sur les blocs. Ça sera aussi plus clair dans votre tête à partir de quels blocs de profondeur on commence à raise plus de mains, à quels blocs de profondeur on joue quasiment que des limps. Évidemment, on pourra toujours réfléchir à des exploits.
+
+L'idée, c'est qu'à la fin de la vidéo, que ce soit au bouton ou en big blind, on sache quand on est au bouton quelle catégorie de mains on va limp call, quelle catégorie de mains on va limp shove, quelle catégorie de mains on va open quand on sera plus deep. Comme je l'ai dit, il y a très peu d'open à 15 BB et moins. Ensuite, en big blind, quelle catégorie de mains on va iso shove, quelle catégorie de mains on va iso non-all-in face à un limp et quelle catégorie de mains on va 3-bet quand on aura des stacks plus profonds.
+
+Je pense qu'une fois qu'on aura fait tout ça, on pourra aussi leur dire les plus grosses tendances, les plus grosses faiblesses générales des joueurs de heads-up, qu'est-ce qu'on remarque le plus souvent. Faire aussi la liaison avec ce qu'on a vu précédemment avant le heads-up puisque j'ai envie de dire qu'en heads-up de MTT, il y a un truc assez incroyable, c'est qu'on peut presque avoir un meilleur win rate que si je jouais un sit-and-go heads-up alors même qu'on est moins deep, pour la simple et bonne raison qu'on a des reads sur l'adversaire au moment où on joue la main numéro 1 d'un heads-up. C'est ce qui fait qu'on peut avoir un énorme edge.
+
+Si on arrive en heads-up d'un MTT, on va quand même avoir un bon sample de mains, que ce soit sur la table finale, les demi-finales. Bon, des fois ça va être que la table finale, mais on va avoir au moins une bonne idée du profil adverse, donc on va savoir si c'est un joueur qui est plutôt passif, un joueur agressif, voire un joueur maniaque. Dans ce cas-là, on va pouvoir s'adapter tout à fait.
+
+Je pense qu'on réservera tout ça à la fin de la vidéo, comme ça on leur fait d'abord un blog, un petit peu, aller manger ça, un petit peu de range, et puis ensuite on verra après l'adaptation. De toute façon, même au fur et à mesure, on pourra en parler, mais c'est peut-être bien de partir plus sur une partie vraiment théorique, et puis après on se rallie aux exploits selon les profils auxquels on a affaire. Alors du coup, j'ai mis quelques grandes notes, pour on va dire trois grandes catégories de stack effectifs.
+
+Tout premièrement, le jeu short stack, donc c'est entre 7 et 15 big blinds. Donc là, quand on est au bouton, on va vouloir jouer principalement limp ou check, donc quasiment aucun raise. Pour quelles raisons ? Alors attends, tu dis limp ou check, pourquoi check ? J'ai du mal à saisir cette phrase.
+
+Pardon, limp ou jam. Ok, d'accord. J'étais en mode, il y a des tournois où c'est en blindes 1-1, sur des sites obscurs.
+
+Ok. Heureusement qu'il y a Flavien qui est là pour me... Ok, limp ou jam, très bien. Pour corriger.
+
+Ouais, limp ou jam, effectivement limp ou check, ça ne fait pas beaucoup de sens. Donc ouais, pour quelles raisons ? Alors on est en position, on a des bonnes codes pour compléter, il ne faut pas oublier qu'il y a des antés aussi. Comparé par exemple à un Expresso ou un Stango, il y a quand même 0,2 big blinds d'antés.
+
+Potentiellement, si vous jouez un tournoi live, si vous jouez un tournoi live avec big blinds d'antés, ça arrive. Là, pour le coup, ça va être encore plus important. Ce n'est pas l'objectif du cours d'aujourd'hui.
+
+L'idée, c'est que même si il y a 0,2 big blinds d'antés, forcément, on a des meilleures codes, donc on veut compléter plus de mains. Et donc oui, on veut essayer de profiter de notre avantage de la position pour pouvoir jouer post-flop, même des mains très faibles. Et pour le coup, aussi exploiter le fait que la majorité des joueurs ne vont pas assez nous iso, ne vont pas iso assez agressivement, que ce soit à tapis ou avec des merguez quand on limp.
+
+L'idée, grosso modo, c'est qu'on a envie de VIP très élevé grâce à nos codes et on va vouloir couvrir tous ces limps très faibles avec également nos mains fortes qui vont limp. Ça veut dire qu'on va créer notre stratégie de manière à ce qu'on puisse limper le plus de mains possible et ça va entraîner dans son sillage qu'on limpe les mains très fortes également et qu'on n'ait qu'une stratégie de limp. Ça, c'est une bonne précision.
+
+L'idée, c'est que vu qu'on veut VIP beaucoup de mains, comme tu le dis, on veut aller voir beaucoup de flops. Du coup, la majorité de notre range, elle limp et c'est important de limp les mains fortes parce que si on commence à raise nos mains fortes et à limp que des mains moyennes ou faibles, c'est facile d'exploiter ça. Ça peut déjà être un exploit si l'adversaire a tendance à auto-check quand on limp et à faire beaucoup de bêtises post-flop et au contraire, juste à auto-check quand on limp.
+
+Je pense que la phrase se suit elle-même. En fait, on va tout simplement limp déséquilibré et on va pouvoir raise certaines mains. Dans ce cas-là, entre 7 et 15 dips, on pourrait très bien raise des mains comme Valet2 off au bouton et puis limp des 8-9 off et tapis d'autres mains.
+
+On pourrait avoir une adaptation complète où on est méga polarisé sur nos raise et voilà. Tout à fait. On verra en tous les cas, même en théorie, dès qu'on est un peu plus deep, il y a quand même déjà des opens polarisés.
+
+On va raise des mains faibles quand on veut commencer à raise forcément des mains fortes. Mais c'est toujours bien de le souligner. Ensuite, le deuxième bloc, c'est le jeu plutôt mid stack.
+
+Entre 16 et 30 BB environ. Donc là, le bouton va commencer à avoir une range d'open et les open shove vont majoritairement disparaître. Puisque je l'ai dit déjà précédemment, d'un coup, open shove, par exemple 20 BB, le risk reward est vraiment… Même avec une main comme paire de 2 ou As3 off, tu ne peux pas… En gros, c'est les seules mains, on verra, qui vont continuer à open shove jusqu'à… 16-20, on va dire.
+
+16-20. 18 blindes. Au final, ça va faire très peu de combos et c'est vraiment, comme tu l'as dit, c'est uniquement paire de 2, paire de 3, peut-être As3, As4, As2 offsuit.
+
+Mais ça fait du coup vraiment très peu de combinaisons. Du coup, vu qu'on a une range d'open, la big blind va forcément commencer à avoir une range de re-shove, de re-steal la tapis, mais également une range de 3-bet non all-in. Donc ça, c'est quand même pas négligeable.
+
+Donc c'est important que si on a une range de 3-bet non all-in, forcément en value, avec le top de notre range, on peut aussi inclure des bluffs, on peut aussi prendre des blockers, on verra. Et il y a également beaucoup d'isos qui vont être assez agressifs face aux limps, parce que forcément, les limps, c'est beaucoup de mains faibles, beaucoup de mains moyennes. Tu veux parler du type de main qui iso ou tu veux le faire plus tard, ça ? On va le faire après.
+
+Là, on reste sur les grandes lignes, les grandes choses à retenir sur les différents blocs et puis après, on va aller dans le détail. On va les faire bloc par bloc. On va regarder tout ça sur GT Wizard.
+
+Dernier point, sur le jeu mid stack, à partir de 20 BB, c'est un point qui est surtout entre 20 et 30 BB, mais surtout pas mal à 20 BB. Pour ceux qui jouent des expresso, des spins, ils doivent connaître ça. La BB va préférer iso 1 tiers de son stack, donc environ 16,5 BB avec certaines combinaisons, ce qui n'est pas forcément naturel, mais ça va être une meilleure revêt pour certaines combinaisons.
+
+Je pense qu'aussi, la majorité des joueurs, s'ils n'ont jamais vu ça, ils ne sauront pas forcément comment bien s'ajuster à cette stratégie-là. C'est aussi quelque chose d'important. Tu veux dire que plutôt que de rester à tapis, ils vont iso 3 bêtes ? Plutôt qu'iso, par exemple, à 3 BB ou 3,5 BB, on va iso 1 tiers du stack.
+
+Là, tu parles face à un limp ? Quand on est en big blind, face à un limp. Ah ok, face à un limp, excusez-moi. Quand on est en big blind, face à un limp.
+
+Et donc, la troisième partie, le troisième bloc, le jeu deep stack, 30 BB et plus, même si on peut encore faire une autre distinction. Par exemple, à partir de 60 BB et plus, c'est un jeu très deep stack, quand même pété, mais ça ne va pas arriver souvent, pour être tout à fait honnête. À un moment donné, je joue une structure extraordinaire, mais c'est rare qu'on joue quand même très, très deep.
+
+Donc là, forcément, on va avoir davantage d'open du bouton, du coup, moins de limp. La big blind va shove moins de mains face à un open, mais elle va continuer à restyle all-in certaines catégories de mains jusqu'à environ 40 BB. Donc, en majorité, des AX offsuit, des pocket pair.
+
+Et donc, la majorité de sa stratégie de 3 bêtes, maintenant, face à un open, ça va être plutôt des 3 bêtes non all-in. Ok. Donc, voilà pour les grandes lignes stratégiques.
+
+C'est très clair. Maintenant, on va aller voir en détail. On va aller voir la micro-stratégie.
+
+On va commencer par le jeu short stack. On va commencer par le début. Je te propose de commencer avec la stratégie au bouton, en small blind, en heads up, à 7,5 BB.
+
+On a 7 BB vu qu'on a déjà posté la petite blinde. Et comme tu le vois, il n'y a pas de stratégie de raise à ces profondeurs-là. Ça fait du sens parce qu'on veut quand même encore pour voir V pip, quelques mains assez faibles.
+
+Ça peut paraître étonnant de vouloir limper une main comme 8-3 suité ou 7-5 offsuit. Alors, certes, ce sont des mains qui ne vont pas générer une énorme EV à limp, mais si on n'a pas d'info sur le fait que notre adversaire va être ultra agressif face au limp, on a envie d'aller jouer un maximum de mains en position. Donc évidemment, on va limp aussi toutes nos mains fortes.
+
+Toutes ces mains-là, toutes les overpairs, elles vont beaucoup bénéficier d'un limp. Essayer de faire une paire, de faire deuxième paire à une main faible sur la big blind pour pouvoir le stacker. Ce sont des mains qui vont générer beaucoup d'extra value postflop.
+
+Et je pense qu'en l'occurrence, les limps, genre les Valet-5, les 5-7, les trucs comme ça, il est probable que la plupart des gens qui nous regardent, quand ils limpent ces mains-là, ils gagnent encore plus que ce que dit la théorie et d'assez loin. Je ne sais pas, si tu mets de limp, voir ce que la personne doit iso-raise face au limp, mais il est probable que les gens n'iso-raisent pas assez de manière générale. Et il est également probable que les gens jouent un peu trop passivement postflop et qu'ils puissent réaliser un peu plus leurs écoutilles.
+
+Exactement, c'est les deux points. Les deux points principaux, à mon avis, c'est qu'on ne va pas se faire iso assez. On voit qu'il y a des iso all-in avec des mains qui ont des bloqueurs, qui sont assez faibles, des Dame-4 offsuit, des Valet-2 off, des iso avec des mains comme Dame-7, Valet-8 offsuit.
+
+À quoi sert cet iso à 3.5 plutôt qu'all-in ? Ça m'a l'air d'être une face aissie de la théorie. Oui, c'est ça. Quand il y a deux sizings, c'est probablement un peu une face aissie de la théorie pour réduire le SPR, réduire la taille des stacks effectifs.
+
+Parce que pour ceux qui l'ont fait, je ne pense pas que vous ayez besoin d'avoir de stratégie, évidemment. Si on voulait iso, je pense qu'un iso de 2.5 BB uniquement, assez profondeur, un tiers du tapis, ce serait largement suffisant. Mais l'idée, c'est qu'on ne va pas se faire iso assez, tout en ce qui va avoir trop de check et aussi trop de passivité post-flop, trop de check-call ou trop de check-fold également.
+
+Comme tu le dis, même ces mains faibles, elles vont générer plus de V, évidemment, que contre un bot, un ordinateur. On a vraiment envie de limper les mains faibles. Après, on voit que toutes les mains moyennes, en gros, elles veulent open shove.
+
+C'est, en général, la folie d'équité. Et évidemment, on a quand même toute cette catégorie de mains fortes qui jouent très bien. Ces mains-là, elles veulent garder des mains dominées, elles veulent aller post-flop parce qu'elles vont très bien jouer, elles vont très bien flopper.
+
+Et c'est pas forcément intuitif de voir limper 10-9 suités ou 10-8 suités face à 7,5 blindes deep. Mais pourtant, ça sera quand même une V légèrement supérieure au shove. Et si on regarde, quand tu les limpes, ces mains-là et que tu fais face à un all-in, c'est quoi le bottom de ce que tu dois call, du coup ? En fait, ce qui est bien, c'est que c'est assez simple.
+
+C'est tout, quoi ? C'est tout ce que t'as limpé ? Toutes les mains fortes qu'on limpe, qui sont assez bonnes, on les fold. Donc au moins, c'est simple. On limp-fold toutes les mains un peu pourries qui étaient le bas de range.
+
+Voilà, c'est tous les trashs qu'on les fold. La stratégie, ça. Et on voit qu'au final, évidemment, la stratégie d'Iso shove, elle est relativement agressive, mais pas si agressive que ça non plus.
+
+Parce qu'au final, il y a même certains As qui shove pas ici. Donc, même face à un joueur qui iso moins, vu le V que ça génère de limp-call à 10-8 suités, je veux dire, c'est sûr qu'on ne doit pas limp-fold. OK, on ne doit jamais limp-fold, ça c'est une certitude, mais est-ce que ces mains-là, on ne doit pas les basculer en jam potentiellement si les gens shovent pas assez ? Parce qu'elles étaient juste à la frontière de ce qu'on limpait par rapport à ce qu'on shove. 
+
+Si l'Iso shove pas assez, peut-être que ça génère plus de... Ah, quoique, ça va générer beaucoup As qui check. Ouais, dans l'autre. Ces mains-là, elles ne génèrent pas tant le V avec la folie. 
+
+Non, t'as raison. Ils génèrent plus le V à les jeux post-flop. Non, c'est vrai.
+
+Quand tu regardes un 10-8, forcément, tu regardes le bottom, ça va être toujours très close dans le V. Par exemple, Valet-8-8-8, contre all-in et call, c'est la même V qu'on trouve sur le solver. Non, mais c'est vrai qu'en réalité, c'est juste que s'il shove pas assez, quand tu limp-call, tu gagnes moins d'argent que là, les 0.45, mais en réalité, tu génères plus sur les fois où il check. Exactement.
+
+Voilà, exactement. OK. Voilà, ça c'est simple.
+
+En tout cas... Et si tu bouges, genre, si on fait un palier à mi-course, genre à 11, puis ensuite à 15 ? On peut aller à 10. On peut aller à 10. L'idée, c'était de faire 10.
+
+Donc du coup, beaucoup moins d'open shove, d'un coup, à deep big blind. Forcément, le risk-reward, il est moins bon. Donc on va majoritairement open shove tous nos AX offsuit, la majorité de nos Rois AX offsuit, ça, on peut le garder en tête.
+
+Les connecteurs suités, les plus faibles, en gros, parce qu'ils ont une bonne fold équité. Quand on est payé à tapis, on a quand même toujours une équité correcte. Qu'est-ce qui n'est pas naturel ? On peut regarder une autre catégorie de mains, je pense qui n'est pas naturelle, c'est la majorité des pocket pair.
+
+Je pense qu'il y a beaucoup de joueurs, ils n'ont pas envie de voir un flop, ils ont un peu peur, ils ont paire de 5, paire de 6, ils se disent, je vais faire taper directement. En fait, dans l'idée, quand on a paire de 5, pardon si on limp, notre adversaire est censé ease a shove un Dame-3 offsuit, ou même juste un blocker, un Roi-3 off, un Roi-4 off. Alors que si on fait all-in, par exemple, il est censé fold Roi-2, il est censé fold Dame-3.
+
+Donc au final, c'est des mains qui sont assez fortes pour un bus, un shove-up en fait. Un bus, un miso avec une merguez. Et là, il est possible que par contre, ces mains-ci, si jamais l'adversaire est trop passif, que paire de 5, paire de 4, ce soit auquel le shove, puisqu'elles ne vont pas générer une extra value gigantesque quand le mec check en big blind.
+
+Oui, tout à fait. On voit que la différence de vie, c'est entre... contre le solver, évidemment, c'est 0,1 big blind. Mais voilà, contre un joueur qui sera plus passif, c'est vrai qu'on peut shove un peu plus de mains offsuit, et un peu plus de pocket pair aussi. 
+
+Et du coup, la question, moi, c'est par rapport à ce qu'on limp-call all-in, c'est que du coup, toutes les mains qui étaient au-dessus du violet, parce qu'on a tendance à se dire que ce qui est en-dessous du violet c'est limp-fold, et ce qui est au-dessus c'est limp-call, c'est ce qu'il y a pour cet ennemi. Mais est-ce que du coup, Roi-5 suit est un limp-call deep blind ? Oui, tu l'as bien identifié. Tout ce qui est au-dessus du violet, on limp-call tout.
+
+Et le V, elle est quand même vraiment assez forte. Donc, je pense que les seules mains qu'on pourrait limp-fold potentiellement contre des joueurs plus passifs, ça serait les bottom. 10-9 offsuit, on peut limp-fold, il n'y a pas de soucis.
+
+J'imagine d'ailleurs que de toute façon, le V est proche entre... le V est proche entre toutes les décisions. Donc autant open shove 10-9 plutôt que limp-fold. Je pense que ça gagnera plus d'argent contre la population.
+
+Et c'est un truc... C'est bien, ça me permet de faire le parallèle. Je leur fais un petit truc, je le remonte là. Quand on avait fait des ranges short stack, on leur avait dit voilà ce qu'il faut raise call, voilà ce qu'il faut raise fold, voilà ce qu'il faut open shove.
+
+Et on avait finalement le même concept, c'est-à-dire qu'il y avait des mains middle qui allaient shove, il y avait des mains plus hautes qui allaient raise call, des mains en-dessous qui allaient raise fold. C'est le même concept qu'on retrouve ici. Et c'est pour ça qu'on identifiait les mains qui étaient au-dessus des all-in, ça allait forcément être des limp-call, et les mains qui étaient en-dessous, ça allait forcément être des limp-fold.
+
+C'est le même concept. Je leur ai montré mon petit range manager en même temps. Vas-y.
+
+Voilà, l'idée c'est qu'en théorie, en tout cas, pour l'instant, jusqu'à 10 BB, on n'a aucun raise. Parce qu'on veut vraiment avoir beaucoup de mains. Pas de raise, donc on joue uniquement limp. 
+
+Peut-être qu'est-ce qu'on iso ? Parce que c'est toujours intéressant de voir qu'est-ce qu'on doit iso. Une fois encore, il y a deux sizings. De toute façon, quand on voit un truc comme ça sur un solver, ça veut dire qu'on peut avoir la même levée avec une stratégie beaucoup plus simplifiée.
+
+On fait un seul sizing. On iso 3 BB. Il n'y a pas évidemment besoin de compliquer la vie.
+
+L'idée, c'est qu'on va iso shove la majorité des Roi of Suits, la majorité des As of Suits, également, jusqu'à As-10 off. Les pocket pairs, quelques connecteurs suités. Elles sont assez intuitives, ces mains, à priori.
+
+En gros, tous les As suités sont assez forts pour vouloir mettre beaucoup d'argent au milieu. On voit que le cut-off, c'est As-5 suité qui est assez fort pour iso non-online et qui est content d'aller jouer post-slop. C'est marrant de voir que les mains que tu as envie d'induce ici, c'est à peu près le même type de mains que celles qui voulaient limper au bouton pour induce à ce stax.
+
+Oui, c'est une bonne manière de retenir la construction des ranges. Comme tu dis, les mains qui veulent iso, en gros, le bas des mains qui veulent iso, c'est aussi un peu les mains les plus fortes qu'on va limper. Qu'est-ce qu'il y a d'autre à dire ? Je pense que ce n'est pas naturel de penser à l'iso des marguez.
+
+Évidemment, dans l'idée, il ne faut pas essayer de randomiser ou de se dire, le solver, la stratégie me dit de raise 20% du temps avec 9-5 offsuit. Je vais prendre un randomiseur, je vais regarder, il me dit que c'est 20% du temps, donc j'open. L'idée, c'est de regarder en gros plutôt à quelle fréquence, globalement, on iso ces mains-là, ces marguez.
+
+Par exemple, de choisir quelques combos qu'on va tout le temps iso. C'est le plus simple. On a des mains faibles, on a des bluffs.
+
+Ce n'est pas du tout problématique d'avoir tout le temps 10-3, tout le temps 9-3, tout le temps 8-4, typiquement, puisque déjà, votre adversaire ne va pas l'identifier, ça va être très très dur à identifier. Ce ne sont pas des mains qui vont aller spécialement souvent en showdown, en plus. Ça va être compliqué, donc je pense que c'est une meilleure idée de faire comme ça.
+
+L'idée, c'est tout simplement d'attaquer la partie faible de leur range de limp. Par exemple, on va voir si on open 2,5 BB, face à un limp, notre adversaire est quand même censé fold 39% du temps. Comme ça, c'est évidemment toujours en GTO, donc peut-être qu'un humain va fold encore un peu plus souvent.
+
+C'est possible qu'il fold un Dame-4, un 9-7. J'ai envie de mettre un mais, c'est qu'un humain va peut-être plus folder, mais il est probable qu'il y ait des humains qui limpent moins initialement. Donc, en réalité, ça ferait que notre iso n'aurait plus autant de valeur.
+
+Parce que si tu joues contre quelqu'un qui est un peu trop passif, qui n'limpe pas Dame-3, Dame-4, Dame-5, déjà dans un premier temps, ça veut dire que cette iso-là qui attaque les mains faibles va avoir beaucoup moins d'intérêt en soi. C'est vrai, c'est un bon point à mentionner. L'autre point à mentionner, c'est en tout cas moi ce que je vois de temps en temps quand j'ai fait, on peut le passer, un peu de volume sur les spins, les expresso.
+
+Plus pour m'entraîner que pour vraiment grinder le format. Et chez beaucoup de joueurs récréatifs, il y a beaucoup plus de limps, d'IBB, dans la région des Rois Offsuit, c'est sûr, même les As Offsuit. Beaucoup de joueurs récréatifs ont tendance à vouloir beaucoup trop trap, trop de mains avec un blocker qui préfèrent Jam et qui n'ont pas une super jouabilité pour ce jeu-là. 
+
+Pourquoi pas, ça peut être un bon exploit de limper ces mains-là si on pense que la big blind va trop iso. Mais du coup il faut faire attention comme tu le dis, parce que s'il limpe aussi trop de mains fortes et pas assez de mains faibles, dans ce cas-là, il faut faire attention sur les isos avec les merguez. Et puis n'oubliez pas que quand vous êtes au bouton comme ça avec 10 blindes, l'intérêt de faire tapis avec des mains comme As-10, il y a un intérêt qui est souvent sous-estimé par le joueur, c'est que parfois on joue contre des joueurs qui sont un peu trop passifs et quand vous allez limper As-10 et qu'ils vont check back, vous allez rater la value ou en fait vous aurez open shove et ils auraient collé Roi-7 suit, ils auraient collé As-10 suit.
+
+Et ça c'est une grosse value de perdu parce qu'on se dit ok j'ai envie de jouer low variance ou j'ai envie de jouer post-fop contre quelqu'un qui joue pas bien mais il y avait des mains que vous dominiez qui l'auraient payé tapis en fait, c'est une grosse value. Si ils overfold, c'est un shove sur l'absolu, c'est pas très grave parce qu'au final nos mains les plus faibles vont générer plus de V, nos mains les plus fortes un peu moins de V mais bon il faut quand même garder en tête qu'on fait tapis 10 blindes, on va quand même se faire payer par un Roi-7 au moins de 100% du temps, un Roi-8, ça va vraiment dépendre des profils qu'elles auront avec leur bottom de range de call évidemment mais l'idée c'est qu'on a quand même plein de mains plus faibles qui nous payent donc c'est important de prendre le max de value avec ces mains-là avec les As-7 en particulier. Ok.
+
+Tu vois on pourrait garder pour finir sur la partie short stack pour finir sur 15 BB Donc voilà à partir de 15 BB il y a quasiment plus d'all-in on voit que c'est seulement 5% de notre stratégie donc c'est vraiment que paire de 2, paire de 3 quelques petits As offsuit également et là on commence à avoir envie d'open on commence à avoir envie d'open quelques mains pour construire l'oppo parce que quand on limp du coup le SPR reste assez élevé Et on voit qu'on a surtout envie de tout limp On a envie de tout limp et au final lever de raise de limp par exemple paire d'As elle va pas apparemment que vous soyez face à un joueur ultra passif évidemment je pense que face à un joueur ultra passif vous pouvez préférer open mais sinon en théorie le lever va quand même être très proche entre limp Je crois que personnellement la plupart du temps quand je suis contre quelqu'un de décent mon adaptation à ce moment là c'est de limp 100% il y a quelques open shove et c'est de limp tout quasiment ça me permet en plus de rajouter 2 et 3 7 d'off d'ailleurs mais c'est pas très loin ça quoi Ce qu'on voit aussi c'est que du coup on n'est pas encore beaucoup de mains fortes on peut se permettre de limp toutes les mains on fold en fait rien fold rien parce que d'un coup le risk reward maintenant pour la small blind pour la BB pour l'iso shove il est beaucoup moins intéressant donc il y aura beaucoup moins d'iso shove ce qui nous permet du coup de vip de limp plus de mains bon là on fold quasiment plus rien on peut retourner voir en arrière par exemple quand on était à 7,5 BB on foldait quand même le 22% du bottom quand on était à 10 on foldait 10% du bottom et là quand on est à 15 on fold quasiment plus rien savoir que ces 22 et 10% peuvent vite évoluer contre des joueurs trop passifs on peut limper encore plus et folder plus que 15 et 7% typiquement contre des joueurs qui iso vraiment très peu typiquement moi ce que je recommanderais aussi c'est quand même de jouer majoritairement en limp si on n'a pas d'info précise on n'a pas de reads sur l'adversaire mais pourquoi pas open quand même minraise ces mains là contre des joueurs passifs et en profiter pour rajouter quelques bluffs rajouter des mains suitées qui n'ont pas une super jouabilité qui sont contentes en fait de raise et c'est gagné beau préflop un petit 10 et 3 suité, un petit 7 et 3 suité si vous avez des adversaires qui défendent pas assez on est content de les faire folder regardez ce que la big blind est censée défendre face à un minraise on voit qu'il n'est pas censé folder grand chose 19% pourtant on a une range qui est assez forte, qui est polarisée il y a quand même des mains offsuit il y a quand même des bluffs mais il n'est pas censé folder grand chose il est censé restyle assez agressivement de temps en temps des mains comme Valet 5 suité restyle des connecteurs suité voire en 3bet une partie quand je vois l'adaptation je pense qu'il y a beaucoup de gens qui vont défendre presque ça quand on raise 2 il y a beaucoup plus de gens qui par contre vont pas assez isoler quand on limp je pense en termes de population ça c'est vrai que c'est intéressant de se poser la question où est-ce que la population va faire la plus grosse erreur est-ce que c'est face à un raise alors peut-être qu'ils vont pas assez restyle à tapis ou pas assez 3bet mais ils vont peut-être quand même défendre assez t'as sûrement raison t'as sûrement raison par contre effectivement face à un limp on va probablement réaliser plus d'équité parce que on voit qu'ils sont censés quand même iso plus de 40% de leur range et ça ça va sûrement probablement pas arriver donc je pense qu'on va probablement générer aussi plus de V entre guillemets dans le nœud du jeu où on va limper la stratégie où on limp t'as d'autres questions du coup ? non écoute ça me semble clair on peut attaquer le mid stack de toute façon on a vu après on peut regarder 15BB vite fait qu'est-ce qu'on fait face à un iso 3BB on voit déjà que même à 15BB la stratégie un tiers iso commence à arriver chez la big blind c'est marrant que dans la stratégie un tiers iso il y a 7-2 off il y a vraiment des grosses merguez typiquement c'est que tu veux un max c'est des mains qui sont tellement mauvaises qui peuvent quasiment tellement flopper en gros c'est des mains qui n'ont pas d'espoir donc moins elles ont d'espoir et en fait au plus t'as envie d'iso cher de temps en temps attends parce que quand tu iso et que tu te commis t'as 5 ennemis avec 7-2 off il se passe quoi quand tu l'as fait all-in ? mais t'as fait 5 ennemis avec 14 ? ah non pardon t'avais 15 ennemis on a 15 BB ok t'avais 15 ça perd quand même on peut pas iso call 7-2 off je pensais qu'on avait mis 45% du stack après c'est comme toujours en tout façon au GTO si on a des mains fortes qui le font on a toujours envie de prendre des mains plus faibles on voit des connecteurs suité qui vont le faire pour avoir des mains fortes aussi sur certaines catégories de board plus connectées et puis des mains vraiment faibles déconnectées qui veulent essayer de gagner les pots sachant que je dirais pour des joueurs qui jouent en basse limite le fait d'avoir des mains très faibles c'est très intéressant le fait d'avoir les mains un petit peu plus dans le milieu du panier comme les 8-7s et les trucs comme ça et avec la notion de board coverage qui est liée est sans doute moins intéressante c'est moins important c'est beaucoup moins important de faire moins de jeux contre un très bon joueur qui du coup peut potentiellement nous mettre beaucoup de pression c'est relatif parce que le SPR va être de 1 quand on iso et qu'on va avoir un flop le SPR est très faible ah mais il y a des boards où on peut juste check et il va overjam parce que c'est des textures où on ne rentre pas
+
+(Ce fichier dure plus de 30 minutes. Passez à Illimité sur https://turboscribe.ai/fr/ pour transcrire des fichiers jusqu'à 10 heures.)
