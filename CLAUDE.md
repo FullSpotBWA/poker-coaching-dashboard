@@ -46,22 +46,18 @@ Extraire depuis la transcription fournie :
 ### 3. Mettre à jour le dashboard HTML
 Modifier `poker-dashboard-LATEST.html` pour :
 
-**a) Ajouter l'onglet dans la sidebar :**
-```html
-<div class="nav-item pko" onclick="showSession('session-NOM-ID')">
-    <div class="nav-item-icon">0N</div>
-    <div class="nav-item-content">
-        <div class="nav-item-title">Titre Court</div>
-        <div class="nav-item-meta">Catégorie • Niveau</div>
-    </div>
-</div>
+**a) Ajouter l'entrée dans `sessionsIndex` (sidebar dynamique, ne pas écrire le HTML de la sidebar à la main) :**
+Depuis la refonte du bandeau (recherche + groupes pliables par Thématique/Coach/Provenance), la sidebar se génère automatiquement à partir du tableau `sessionsIndex` défini dans le `<script>` (juste avant `quizData`). Ajouter une entrée à la fin du tableau :
+```javascript
+{ id: "session-NOM-ID", icon: "0N", navClass: "categorie", title: "Titre Court", meta: "Catégorie • Niveau", theme: "categorie", themeLabel: "Libellé Thématique", coach: "Nom du Coach" /* ou null si non précisé */, source: "Coaching Vidéo" /* ou "Coaching 1-to-1", "Review + Solver", etc. */, minutes: 35 },
 ```
+- `navClass` doit correspondre à une classe CSS existante (`.nav-item.<navClass> .nav-item-icon`) pour la couleur de l'icône ; créer une nouvelle classe + variable `--accent-*` si c'est une thématique inédite (voir section couleurs).
+- `theme`/`themeLabel` = regroupement par thématique (aligné sur les catégories du quiz : pko, sqz, icm, math, hu, xr, mw...).
+- `coach` = nom du coach (ou `null` → regroupé sous « Non précisé »).
+- `source` = provenance du coaching (Coaching Vidéo / Coaching 1-to-1 / Review + Solver / autre — libre, les groupes se créent automatiquement à partir des valeurs utilisées).
+- `minutes` alimente directement le total « ⏱️ ~N min de contenu » de la sidebar (estimer ~35-45 min par coaching, moins si la session est partielle/en cours).
 
-**b) Mettre à jour les statistiques sidebar :**
-- Nombre de sessions
-- Minutes de contenu (estimer ~35-45 min par coaching)
-- Nombre de takeaways (additionner)
-- Nombre de flashcards (additionner)
+Les compteurs de la sidebar (nombre de sessions, minutes, takeaways, flashcards) et le nombre de cartes du Quiz Mode se recalculent automatiquement depuis `sessionsIndex` et `quizData` (`refreshNavStats()`) — **ne pas les coder en dur**, ne pas modifier `renderSidebarSessions`, `groupSessions`, `toggleNavGroup`, `setNavGrouping`, `handleNavSearch`/`clearNavSearch`, `syncActiveNavItem` ou `refreshNavStats` (logique de nav déjà en place, ne toucher que le tableau `sessionsIndex`).
 
 **c) Ajouter la nouvelle session dans le `<main>` :**
 Structure complète :
@@ -124,6 +120,9 @@ git push
 | `session-content active` | Session visible |
 | `nav-item pko` | Onglet PKO (vert) |
 | `nav-item postflop` | Onglet Postflop (cyan) |
+| `nav-item icm` / `math` / `hu` / `xr` / `mw` | Onglets par thématique (teal / violet / bleu / rouge / or) |
+| `nav-group` / `nav-group-header` / `nav-group-items` | Groupe pliable de la sidebar (généré par JS, voir `sessionsIndex`) |
+| `nav-search-input` | Champ de recherche de la sidebar |
 | `concept-tag` | Badge catégorie sur les cards |
 | `situation-block errors` | Bloc erreurs communes (rouge) |
 | `checklist-box` | Checkbox takeaway |
@@ -131,16 +130,33 @@ git push
 
 ---
 
-## Couleurs CSS disponibles
+## Design system — Thèmes (Clair / Sombre / Soft)
+
+Depuis la refonte « Editorial Clean », le dashboard a 3 thèmes commutables (bouton en haut de la sidebar, sous le logo) : **Clair** (défaut), **Sombre**, **Soft**. Un attribut `data-theme="dark"` ou `data-theme="soft"` sur `<html>` fait basculer tous les tokens CSS ci-dessous (posé par `setDashboardTheme()`, persisté en localStorage, appliqué avant le premier rendu par un petit script inline en tête de `<head>` pour éviter un flash).
+
+**Règle d'or : tout le CSS consomme des variables, jamais de couleur en dur.** Si tu ajoutes une nouvelle règle CSS avec une couleur, utilise une variable existante (ou crée-en une nouvelle déclinée dans les 3 blocs de thème) — ne jamais écrire un hex ou un rgb littéral directement dans un sélecteur de contenu (badges, tags, icônes, cartes...).
+
+Tokens neutres (fond/texte/bordure) — définis dans `:root` (Clair), `[data-theme="dark"]`, `[data-theme="soft"]` :
+`--bg-primary`, `--bg-secondary`, `--bg-card`, `--bg-card-hover`, `--text-primary`, `--text-secondary`, `--text-muted`, `--border-color`, `--border-glow`.
+
+Polices : `--font-heading` (Source Serif 4, titres), `--font-body` (Public Sans, texte courant), `--font-label` (Public Sans, tags/meta/labels — remplace l'ancien JetBrains Mono).
+
+Couleurs d'accent par catégorie — identité **stable entre les 3 thèmes** (seule la teinte exacte varie légèrement pour rester lisible sur chaque fond) :
 
 ```css
---accent-green: #00ff87    /* PKO, ICM */
---accent-cyan: #00d4ff     /* Postflop, SQZ */
---accent-purple: #a855f7   /* Concepts */
---accent-blue: #3742fa     /* Situations */
---accent-orange: #ffa502   /* Citations, Quiz */
---accent-red: #ff4757      /* Erreurs, Ranges */
+--accent-green   /* PKO, Takeaways, valeurs positives */
+--accent-cyan    /* Postflop, SQZ, valeurs neutres */
+--accent-purple  /* Concepts, Maths */
+--accent-blue    /* Situations, Heads-Up */
+--accent-orange  /* Citations, Quiz / Mode Révision */
+--accent-red     /* Erreurs, Ranges, Check-Raise, valeurs négatives */
+--accent-gold    /* Coaching Technique (Multiway) + couleur d'état actif de l'UI (onglets, sidebar) */
+--accent-teal    /* ICM Préflop */
 ```
+
+**Chaque accent a aussi une variante `-rgb`** (ex. `--accent-gold-rgb: 176, 141, 63;`, un triplet sans `rgba()`) pour les fonds teintés : toujours écrire `background: rgba(var(--accent-X-rgb), 0.15)` plutôt qu'un `rgba(R, G, B, 0.15)` en dur — sinon le fond ne suivra pas le changement de thème alors que le texte oui (bug déjà rencontré et corrigé une fois, ne pas le réintroduire).
+
+Voir les valeurs exactes dans le bloc `:root` / `[data-theme="dark"]` / `[data-theme="soft"]` en tête du `<style>`.
 
 ---
 
@@ -149,6 +165,9 @@ git push
 - **Conserver le vocabulaire FR/EN** tel qu'utilisé par le coach
 - **Ne jamais modifier** le système SRS (fonctions `rateSRS`, `flipSRSCard`, etc.)
 - **Ne jamais modifier** le mode Libre (fonctions `startQuiz`, `flipCard`, etc.)
+- **Ne jamais modifier** la logique de la sidebar dynamique (`renderSidebarSessions`, `groupSessions`, `toggleNavGroup`, `setNavGrouping`, `handleNavSearch`, `clearNavSearch`, `syncActiveNavItem`, `refreshNavStats`) — ajouter uniquement des entrées à `sessionsIndex`
+- **Ne jamais modifier** la logique du toggle de thème (`setDashboardTheme`, le script inline anti-flash en tête de `<head>`) — pour une nouvelle teinte, ajouter un 4e bloc `[data-theme="..."]` + un 4e bouton, sans toucher à la fonction
+- **Ne jamais coder une couleur en dur** dans une nouvelle règle CSS — toujours passer par les tokens ci-dessus (voir « Design system » plus haut)
 - **Prioriser clarté > exhaustivité** dans les synthèses
 - Les **citations** doivent être des verbatims réels, pas des paraphrases
 
@@ -164,14 +183,17 @@ git push
 | session-maths | Mathématiques du Poker (T. Sacquet) | math | 28 |
 | session-hu-shortstack | Jeu Heads-Up — Short Stack 7,5-15 BB (Part 1) | hu | 24 |
 | session-xr-flop | Check-Raise Flop en défense BB (Cédric / Pure Poker) | xr | 24 |
+| session-mw-oripbb | OR/IP/BB en Multiway (Alexis Taxigalloise, Part 1 — en cours) | mw | 20 |
 
-**Total actuel : 127 flashcards** (dont 33 takeaways)
+**Total actuel : 147 flashcards** (dont 37 takeaways)
 
 > Note : les comptes ont évolué après une passe de revue (cartes supprimées/reformulées via REVIEW-flashcards.xlsx).
 > Catégorie `math` = violet (`--accent-purple`), classe `nav-item math`, badge `session-badge purple`.
 > Catégorie `hu` (Heads-Up) = bleu (`--accent-blue` / `#6b78ff`), classe `nav-item hu`, badge `session-badge blue`, section-icon `.hu`.
 > Catégorie `xr` (Check-Raise flop) = rouge (`--accent-red`), classe `nav-item xr`, badge `session-badge red`, section-icon `.xr`.
+> Catégorie `mw` (Multiway, coaching technique Alexis Taxigalloise) = or (`--accent-gold` / `#ffd23f`), classe `nav-item mw`, badge `session-badge gold`, section-icon `.mw`. Section sidebar dédiée « Coaching Technique — A. Taxigalloise » (nav-section séparée des autres coachs).
 > Le coaching HU se fait en plusieurs parties : Part 1 = short stack 7,5-15 BB. La Part 2 (mid/deep stack) viendra compléter la même session.
+> Le coaching Multiway (A. Taxigalloise) se fait aussi en plusieurs parties : Part 1 = fréquences de c-bet IP en SRP vs MW + exploits OR/BB. La suite (probes turn, sizing tells détaillés) viendra compléter la même session `session-mw-oripbb`.
 > Modes de quiz : SRS, QCM (4 choix, + builder « Mes QCM » catégorie `custom`) et Mode Libre — chacun a sa liste de filtres à mettre à jour (`filterSRS`, `filterQCM`, `filterQuiz`).
 
 ## Fonctionnalités du dashboard (ne pas modifier)

@@ -12,7 +12,9 @@ Dashboard interactif de synthèse de coachings poker : sessions, flashcards en r
 
 | Version | Date | Sessions | Flashcards | Fichier |
 |---|---|---|---|---|
-| **LATEST** (en cours) | à jour en continu | 4 | 79 + QCM perso | [poker-dashboard-LATEST.html](poker-dashboard-LATEST.html) |
+| **LATEST** (en cours) | à jour en continu | 7 | 147 + QCM perso | [poker-dashboard-LATEST.html](poker-dashboard-LATEST.html) |
+| v6 | 2026-08-27 | 7 | 147 + QCM perso | [poker-dashboard-2026-08-27.html](poker-dashboard-2026-08-27.html) |
+| v5 | 2026-07-21 | 6 | 127 + QCM perso | [poker-dashboard-2026-07-21.html](poker-dashboard-2026-07-21.html) |
 | v4 | 2026-07-05 | 4 | 79 + QCM perso | [poker-dashboard-2026-07-05.html](poker-dashboard-2026-07-05.html) |
 | v3 | 2026-07-01 | 4 | 79 | [poker-dashboard-2026-07-01.html](poker-dashboard-2026-07-01.html) |
 | v2 | 2026-05-08 | 3 | 66 | [poker-dashboard-2026-05-08.html](poker-dashboard-2026-05-08.html) |

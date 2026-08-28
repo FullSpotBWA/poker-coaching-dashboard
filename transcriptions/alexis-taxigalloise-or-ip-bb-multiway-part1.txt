@@ -1,0 +1,53 @@
+Coaching technique 1-to-1 — Alexis Taxigalloise
+Sujet : OR/IP/BB — Multiway (Part 1, en cours — suite la semaine prochaine)
+Source : notes brutes du coach (Google Docs), converties depuis "OR_IP_BB - Google Docs.html"
+
+---
+
+OR/IP/BB
+
+→ Les grandes lignes/guidelines sur ce spot pour toutes les positions
+→ Les leaks que t'identifies
+
+as IP, moins se protéger pour deny de l'équité
+as BB on joue no xr vs stab IP sauf board particulier
+
+
+gros bullets et explo vs la pop
+→ En srp oop → IP stab environ 50% du temps et pas équité driven
+→ en mw en théorie, IP est censé + qu'en srp peu importe le board
+As IP on stab beaucoup et on ne slow play pas → On stab très mergé et on ne slowplay pas
+protection contre 4 cartes;
+deny l'équité de BB
+
+Ecart en théorie et pratique → Ip stab en srp (environ 50% comme en théorie mais équité driven vs théorie qui stab random), par contre en mw understab énormissime de IP
+
+Comment dévier pour exploiter cet écart?
+→ Être + agressif turn/river;
+–> vs random qui est IP quand on est OR, on peut + cbet car on veut faire le travail de deny de l'équité à sa place;
+
+
+C'est ok d'overcbet quand t'es OR en exploit:
+→ BU va pas assez stab;
+→ BU va pas assez raise IP
+
+En conséquence, tu peux bien raise IP si tu soupçonnes un overcbet d'OOP → Ah/Kh déco qui sont assez pas peu cbet pas OR en théorie et bcp en pratique
+
+As OOR OP, on cbet que les meilleurs board en théorie → ceux où notre range off connecte
+
+As BB, on ne raise pas vs stab IP, en revanche dès qu'on clos l'action on joue très très agressivement (peu importe la pos)
+Vs cbet OR flat IP, on fastplay toujours pair + FD
+
+As BB on est globalement assez tight/aggro et on va souvent fold TP no redraw vs cbet/call → on veut continue que des bckdr
+
+Hard exploit
+En théorie : Turn BB joue no probe sauf board hyper particulier → Bb est censé x range turn 95% du temps
+
+Si BB probe avec sizing tell sur un board qu'il doit x range turn, massif attaquer ce spot
+
+Autre leak massif qui découle de ça
+Dans le noeud XXX, on est un bon joueur donc on x range as BB sur la plupart des boards.
+Le leak massif c'est que dans le noeud XXX X, OR va utiliser des sizes qui sont pas corrélés avec l'équité de leur range.
+
+→ Ils vont utiliser des bigs sizes avec des médians car ils vont penser à tort qu'on est cappé;
+→ Si on est un bon reg et qu'on utilise en corrélation avec l'équité de notre range, on va aggro à tort → pas overfold ce spot.

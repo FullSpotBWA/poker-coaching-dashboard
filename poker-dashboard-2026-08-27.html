@@ -4,114 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poker Coaching Notes | PKO Mastery</title>
-    <script>
-        // Applique le thème mémorisé avant le premier rendu (évite le flash de thème).
-        (function () {
-            try {
-                var t = localStorage.getItem('dashboardTheme');
-                if (t === 'dark' || t === 'soft') document.documentElement.setAttribute('data-theme', t);
-            } catch (e) { /* stockage indisponible, on garde le thème clair par défaut */ }
-        })();
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ==========================================
-           THÈMES — Clair (Editorial Clean, par défaut),
-           Sombre et Soft. Toggle via data-theme sur <html>.
-           Ne change QUE les tokens ci-dessous par thème ;
-           tout le reste du CSS consomme ces variables.
-           ========================================== */
         :root {
-            /* Thème CLAIR — Editorial Clean */
-            --bg-primary: #faf6ee;
-            --bg-secondary: #f3ede0;
-            --bg-card: #fffdf9;
-            --bg-card-hover: #f6f1e7;
-            --accent-green: #2f7d52;
-            --accent-green-dim: #24623f;
-            --accent-red: #a2453a;
-            --accent-orange: #b0791f;
-            --accent-blue: #3a4f8a;
-            --accent-purple: #7c4a9e;
-            --accent-cyan: #2b7a99;
-            --accent-gold: #b08d3f;
-            --accent-teal: #2f8f7a;
-            --accent-green-rgb: 47, 125, 82;
-            --accent-red-rgb: 162, 69, 58;
-            --accent-orange-rgb: 176, 121, 31;
-            --accent-blue-rgb: 58, 79, 138;
-            --accent-purple-rgb: 124, 74, 158;
-            --accent-cyan-rgb: 43, 122, 153;
-            --accent-gold-rgb: 176, 141, 63;
-            --accent-teal-rgb: 47, 143, 122;
-            --text-primary: #1b2a4a;
-            --text-secondary: #5c5648;
-            --text-muted: #9a9484;
-            --border-color: #e3d9c2;
-            --border-glow: rgba(139, 109, 31, 0.12);
-            --font-heading: 'Source Serif 4', Georgia, serif;
-            --font-body: 'Public Sans', system-ui, sans-serif;
-            --font-label: 'Public Sans', system-ui, sans-serif;
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #171310;
-            --bg-secondary: #1e1912;
-            --bg-card: #251f17;
-            --bg-card-hover: #2c251b;
-            --accent-green: #4fae7f;
-            --accent-green-dim: #3d9068;
-            --accent-red: #d97a6c;
-            --accent-orange: #e0ab55;
-            --accent-blue: #7a90d9;
-            --accent-purple: #a883c9;
-            --accent-cyan: #5bb8d4;
-            --accent-gold: #e5c158;
-            --accent-teal: #4bbfa8;
-            --accent-green-rgb: 79, 174, 127;
-            --accent-red-rgb: 217, 122, 108;
-            --accent-orange-rgb: 224, 171, 85;
-            --accent-blue-rgb: 122, 144, 217;
-            --accent-purple-rgb: 168, 131, 201;
-            --accent-cyan-rgb: 91, 184, 212;
-            --accent-gold-rgb: 229, 193, 88;
-            --accent-teal-rgb: 75, 191, 168;
-            --text-primary: #f2ead3;
-            --text-secondary: #beb29a;
-            --text-muted: #7d7566;
-            --border-color: #3a3225;
-            --border-glow: rgba(229, 193, 88, 0.15);
-        }
-
-        [data-theme="soft"] {
-            --bg-primary: #f8f5ef;
-            --bg-secondary: #f1ece2;
-            --bg-card: #fdfbf7;
-            --bg-card-hover: #f5f0e6;
-            --accent-green: #5a9b78;
-            --accent-green-dim: #4a8265;
-            --accent-red: #c17b70;
-            --accent-orange: #c79a52;
-            --accent-blue: #6b7aa8;
-            --accent-purple: #9678ad;
-            --accent-cyan: #5a95a8;
-            --accent-gold: #c2a05c;
-            --accent-teal: #5aa294;
-            --accent-green-rgb: 90, 155, 120;
-            --accent-red-rgb: 193, 123, 112;
-            --accent-orange-rgb: 199, 154, 82;
-            --accent-blue-rgb: 107, 122, 168;
-            --accent-purple-rgb: 150, 120, 173;
-            --accent-cyan-rgb: 90, 149, 168;
-            --accent-gold-rgb: 194, 160, 92;
-            --accent-teal-rgb: 90, 162, 148;
-            --text-primary: #3d3a33;
-            --text-secondary: #6e6a5e;
-            --text-muted: #a19c8d;
-            --border-color: #ece5d6;
-            --border-glow: rgba(139, 109, 31, 0.08);
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --bg-card-hover: #222230;
+            --accent-green: #00ff87;
+            --accent-green-dim: #00cc6a;
+            --accent-red: #ff4757;
+            --accent-orange: #ffa502;
+            --accent-blue: #3742fa;
+            --accent-purple: #a855f7;
+            --accent-cyan: #00d4ff;
+            --text-primary: #f1f1f3;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border-color: #2a2a3a;
+            --border-glow: rgba(0, 255, 135, 0.15);
         }
 
         * {
@@ -121,7 +34,7 @@
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
@@ -166,11 +79,14 @@
         }
 
         .logo h1 {
-            font-family: var(--font-heading);
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: -0.3px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -179,41 +95,7 @@
             font-weight: 400;
             display: block;
             margin-top: 4px;
-            font-family: var(--font-label);
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            display: flex;
-            gap: 4px;
-            padding: 0 16px;
-            margin-bottom: 24px;
-        }
-
-        .theme-toggle-btn {
-            flex: 1;
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 7px 4px;
-            font-family: var(--font-body);
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .theme-toggle-btn:hover {
-            color: var(--text-secondary);
-            border-color: var(--text-muted);
-        }
-
-        .theme-toggle-btn.active {
-            background: var(--border-glow);
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .nav-section {
@@ -251,7 +133,7 @@
             top: 0;
             height: 100%;
             width: 3px;
-            background: var(--accent-gold);
+            background: var(--accent-green);
             transform: scaleY(0);
             transition: transform 0.2s ease;
         }
@@ -296,11 +178,11 @@
         .nav-item-meta {
             font-size: 0.7rem;
             color: var(--text-muted);
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .nav-item.pko .nav-item-icon {
-            background: linear-gradient(135deg, var(--accent-green), #1f5c3c);
+            background: linear-gradient(135deg, var(--accent-green), #00b36b);
             color: var(--bg-primary);
         }
 
@@ -315,193 +197,18 @@
         }
 
         .nav-item.math .nav-item-icon {
-            background: linear-gradient(135deg, var(--accent-purple), #5c3678);
+            background: linear-gradient(135deg, var(--accent-purple), #6d28d9);
             color: var(--bg-primary);
         }
 
         .nav-item.hu .nav-item-icon {
-            background: linear-gradient(135deg, var(--accent-blue), #253564);
+            background: linear-gradient(135deg, var(--accent-blue), #1e3a8a);
             color: var(--text-primary);
         }
 
         .nav-item.xr .nav-item-icon {
-            background: linear-gradient(135deg, var(--accent-red), #7a3128);
+            background: linear-gradient(135deg, var(--accent-red), #b91c1c);
             color: var(--text-primary);
-        }
-
-        .nav-item.mw .nav-item-icon {
-            background: linear-gradient(135deg, var(--accent-gold), #8a6d2f);
-            color: var(--bg-primary);
-        }
-
-        .nav-item.icm .nav-item-icon {
-            background: linear-gradient(135deg, var(--accent-teal), #1f6b5a);
-            color: var(--bg-primary);
-        }
-
-        /* Sidebar Search */
-        .nav-search-wrap {
-            position: relative;
-            padding: 0 16px;
-            margin-bottom: 16px;
-        }
-
-        .nav-search-icon {
-            position: absolute;
-            left: 28px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 15px;
-            height: 15px;
-            color: var(--text-muted);
-            pointer-events: none;
-        }
-
-        .nav-search-input {
-            width: 100%;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 9px 32px 9px 34px;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            color: var(--text-primary);
-            transition: border-color 0.2s ease;
-        }
-
-        .nav-search-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .nav-search-input:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-        }
-
-        .nav-search-clear {
-            position: absolute;
-            right: 22px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 0.75rem;
-            padding: 4px;
-            line-height: 1;
-        }
-
-        .nav-search-clear:hover {
-            color: var(--text-primary);
-        }
-
-        /* Sidebar Grouping Tabs */
-        .nav-group-tabs {
-            display: flex;
-            gap: 4px;
-            padding: 0 16px;
-            margin-bottom: 16px;
-        }
-
-        .nav-group-tab {
-            flex: 1;
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 6px 4px;
-            font-family: var(--font-label);
-            font-size: 0.62rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .nav-group-tab:hover {
-            color: var(--text-secondary);
-            border-color: var(--text-muted);
-        }
-
-        .nav-group-tab.active {
-            background: var(--border-glow);
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-        }
-
-        /* Collapsible Groups */
-        .nav-group-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px;
-            margin-bottom: 4px;
-            border-radius: 6px;
-            cursor: pointer;
-            user-select: none;
-            transition: background 0.2s ease;
-        }
-
-        .nav-group-header:hover {
-            background: var(--bg-card);
-        }
-
-        .nav-group-chevron {
-            font-size: 0.6rem;
-            color: var(--text-muted);
-            transition: transform 0.2s ease;
-            flex-shrink: 0;
-        }
-
-        .nav-group-chevron.collapsed {
-            transform: rotate(-90deg);
-        }
-
-        .nav-group-title {
-            flex: 1;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--text-muted);
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .nav-group-count {
-            font-size: 0.65rem;
-            font-family: var(--font-label);
-            color: var(--text-muted);
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 1px 7px;
-            flex-shrink: 0;
-        }
-
-        .nav-group-items {
-            display: grid;
-            grid-template-rows: 1fr;
-            opacity: 1;
-            transition: grid-template-rows 0.25s ease, opacity 0.2s ease;
-        }
-
-        .nav-group-items.collapsed {
-            grid-template-rows: 0fr;
-            opacity: 0;
-        }
-
-        .nav-group-items-inner {
-            min-height: 0;
-            overflow: hidden;
-        }
-
-        .nav-empty {
-            padding: 16px 8px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
         }
 
         /* Main Content */
@@ -538,8 +245,8 @@
             align-items: center;
             gap: 6px;
             padding: 6px 12px;
-            background: rgba(var(--accent-green-rgb), 0.1);
-            border: 1px solid rgba(var(--accent-green-rgb), 0.2);
+            background: rgba(0, 255, 135, 0.1);
+            border: 1px solid rgba(0, 255, 135, 0.2);
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 600;
@@ -547,47 +254,41 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 16px;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .session-badge.cyan {
-            background: rgba(var(--accent-cyan-rgb), 0.1);
-            border: 1px solid rgba(var(--accent-cyan-rgb), 0.2);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
             color: var(--accent-cyan);
         }
 
         .session-badge.orange {
-            background: rgba(var(--accent-orange-rgb), 0.1);
-            border: 1px solid rgba(var(--accent-orange-rgb), 0.2);
+            background: rgba(255, 165, 2, 0.1);
+            border: 1px solid rgba(255, 165, 2, 0.2);
             color: var(--accent-orange);
         }
 
         .session-badge.purple {
-            background: rgba(var(--accent-purple-rgb), 0.1);
-            border: 1px solid rgba(var(--accent-purple-rgb), 0.2);
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.2);
             color: var(--accent-purple);
         }
 
         .session-badge.blue {
-            background: rgba(var(--accent-blue-rgb), 0.12);
-            border: 1px solid rgba(var(--accent-blue-rgb), 0.28);
-            color: var(--accent-blue);
+            background: rgba(55, 66, 250, 0.12);
+            border: 1px solid rgba(55, 66, 250, 0.28);
+            color: #6b78ff;
         }
 
         .session-badge.red {
-            background: rgba(var(--accent-red-rgb), 0.1);
-            border: 1px solid rgba(var(--accent-red-rgb), 0.25);
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.25);
             color: var(--accent-red);
         }
 
-        .session-badge.gold {
-            background: rgba(var(--accent-gold-rgb), 0.1);
-            border: 1px solid rgba(var(--accent-gold-rgb), 0.25);
-            color: var(--accent-gold);
-        }
-
         .session-title {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             line-height: 1.2;
@@ -644,20 +345,19 @@
             font-size: 1rem;
         }
 
-        .section-icon.concepts { background: rgba(var(--accent-purple-rgb), 0.15); color: var(--accent-purple); }
-        .section-icon.situations { background: rgba(var(--accent-blue-rgb), 0.15); color: var(--accent-blue); }
-        .section-icon.takeaways { background: rgba(var(--accent-green-rgb), 0.15); color: var(--accent-green); }
-        .section-icon.quotes { background: rgba(var(--accent-orange-rgb), 0.15); color: var(--accent-orange); }
-        .section-icon.ranges { background: rgba(var(--accent-red-rgb), 0.15); color: var(--accent-red); }
-        .section-icon.textures { background: rgba(var(--accent-cyan-rgb), 0.15); color: var(--accent-cyan); }
-        .section-icon.maths { background: rgba(var(--accent-purple-rgb), 0.15); color: var(--accent-purple); }
-        .section-icon.formula { background: rgba(var(--accent-green-rgb), 0.15); color: var(--accent-green); }
-        .section-icon.hu { background: rgba(var(--accent-blue-rgb), 0.18); color: var(--accent-blue); }
-        .section-icon.xr { background: rgba(var(--accent-red-rgb), 0.15); color: var(--accent-red); }
-        .section-icon.mw { background: rgba(var(--accent-gold-rgb), 0.15); color: var(--accent-gold); }
+        .section-icon.concepts { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); }
+        .section-icon.situations { background: rgba(55, 66, 250, 0.15); color: var(--accent-blue); }
+        .section-icon.takeaways { background: rgba(0, 255, 135, 0.15); color: var(--accent-green); }
+        .section-icon.quotes { background: rgba(255, 165, 2, 0.15); color: var(--accent-orange); }
+        .section-icon.ranges { background: rgba(255, 71, 87, 0.15); color: var(--accent-red); }
+        .section-icon.textures { background: rgba(0, 212, 255, 0.15); color: var(--accent-cyan); }
+        .section-icon.maths { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); }
+        .section-icon.formula { background: rgba(0, 255, 135, 0.15); color: var(--accent-green); }
+        .section-icon.hu { background: rgba(55, 66, 250, 0.18); color: #6b78ff; }
+        .section-icon.xr { background: rgba(255, 71, 87, 0.15); color: var(--accent-red); }
 
         .section-title {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.25rem;
             font-weight: 600;
             letter-spacing: -0.3px;
@@ -681,7 +381,7 @@
 
         .card:hover {
             background: var(--bg-card-hover);
-            border-color: rgba(var(--accent-green-rgb), 0.2);
+            border-color: rgba(0, 255, 135, 0.2);
             transform: translateY(-2px);
         }
 
@@ -689,7 +389,7 @@
             position: absolute;
             top: 16px;
             right: 16px;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             color: var(--text-muted);
             opacity: 0.5;
@@ -713,17 +413,17 @@
         .concept-tag {
             display: inline-block;
             padding: 3px 8px;
-            background: rgba(var(--accent-purple-rgb), 0.15);
+            background: rgba(168, 85, 247, 0.15);
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 600;
             color: var(--accent-purple);
             margin-bottom: 12px;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .concept-tag.cyan {
-            background: rgba(var(--accent-cyan-rgb), 0.15);
+            background: rgba(0, 212, 255, 0.15);
             color: var(--accent-cyan);
         }
 
@@ -757,7 +457,7 @@
             background: var(--bg-secondary);
             border-radius: 4px;
             font-size: 0.75rem;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
             color: var(--accent-green);
             font-weight: 500;
         }
@@ -771,7 +471,7 @@
         }
 
         .position-badge.blue {
-            color: var(--accent-blue);
+            color: #6b78ff;
         }
 
         .position-badge.red {
@@ -779,27 +479,18 @@
         }
 
         .concept-tag.purple {
-            background: rgba(var(--accent-purple-rgb), 0.15);
+            background: rgba(168, 85, 247, 0.15);
             color: var(--accent-purple);
         }
 
         .concept-tag.blue {
-            background: rgba(var(--accent-blue-rgb), 0.18);
-            color: var(--accent-blue);
+            background: rgba(55, 66, 250, 0.18);
+            color: #6b78ff;
         }
 
         .concept-tag.red {
-            background: rgba(var(--accent-red-rgb), 0.15);
+            background: rgba(255, 71, 87, 0.15);
             color: var(--accent-red);
-        }
-
-        .concept-tag.gold {
-            background: rgba(var(--accent-gold-rgb), 0.15);
-            color: var(--accent-gold);
-        }
-
-        .position-badge.gold {
-            color: var(--accent-gold);
         }
 
         .formula-box.purple {
@@ -866,7 +557,7 @@
         }
 
         .checklist-item:hover {
-            border-color: rgba(var(--accent-green-rgb), 0.3);
+            border-color: rgba(0, 255, 135, 0.3);
             background: var(--bg-card-hover);
         }
 
@@ -885,7 +576,7 @@
         }
 
         .checklist-box:hover {
-            background: rgba(var(--accent-green-rgb), 0.1);
+            background: rgba(0, 255, 135, 0.1);
         }
 
         .checklist-box.checked {
@@ -918,8 +609,8 @@
 
         /* Quote Cards */
         .quote-card {
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(var(--accent-orange-rgb), 0.05) 100%);
-            border: 1px solid rgba(var(--accent-orange-rgb), 0.2);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 165, 2, 0.05) 100%);
+            border: 1px solid rgba(255, 165, 2, 0.2);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 16px;
@@ -951,7 +642,7 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             padding-left: 20px;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* Diagram Container */
@@ -994,7 +685,7 @@
         }
 
         .range-hands {
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
             color: var(--accent-green);
             word-break: break-all;
@@ -1022,7 +713,7 @@
         }
 
         .stat-value {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 2rem;
             font-weight: 700;
             color: var(--accent-green);
@@ -1042,15 +733,11 @@
         }
 
         .stat-value.blue {
-            color: var(--accent-blue);
+            color: #6b78ff;
         }
 
         .stat-value.red {
             color: var(--accent-red);
-        }
-
-        .stat-value.gold {
-            color: var(--accent-gold);
         }
 
         .stat-label {
@@ -1113,7 +800,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 16px 20px;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
             color: var(--accent-green);
             margin: 16px 0;
@@ -1156,7 +843,7 @@
         }
 
         .quiz-progress-text {
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             color: var(--text-muted);
             white-space: nowrap;
@@ -1179,11 +866,11 @@
 
         .quiz-card:hover {
             border-color: var(--accent-orange);
-            box-shadow: 0 0 30px rgba(var(--accent-orange-rgb), 0.1);
+            box-shadow: 0 0 30px rgba(255, 165, 2, 0.1);
         }
 
         .quiz-card.flipped {
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(var(--accent-green-rgb), 0.05) 100%);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 255, 135, 0.05) 100%);
             border-color: var(--accent-green);
         }
 
@@ -1192,12 +879,12 @@
             top: 20px;
             left: 20px;
             padding: 4px 10px;
-            background: rgba(var(--accent-orange-rgb), 0.15);
+            background: rgba(255, 165, 2, 0.15);
             border-radius: 4px;
             font-size: 0.7rem;
             font-weight: 600;
             color: var(--accent-orange);
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .quiz-card-session {
@@ -1206,7 +893,7 @@
             right: 20px;
             font-size: 0.7rem;
             color: var(--text-muted);
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .quiz-card-content {
@@ -1222,7 +909,7 @@
             transform: translateX(-50%);
             font-size: 0.75rem;
             color: var(--text-muted);
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .quiz-controls {
@@ -1242,7 +929,7 @@
             border: 1px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-primary);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
         }
 
         .quiz-btn:hover {
@@ -1266,7 +953,7 @@
         }
 
         .quiz-btn.danger:hover {
-            background: rgba(var(--accent-red-rgb), 0.1);
+            background: rgba(255, 71, 87, 0.1);
         }
 
         .quiz-btn.success {
@@ -1275,7 +962,7 @@
         }
 
         .quiz-btn.success:hover {
-            background: rgba(var(--accent-green-rgb), 0.1);
+            background: rgba(0, 255, 135, 0.1);
         }
 
         .quiz-filters {
@@ -1295,7 +982,7 @@
             border: 1px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-secondary);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
         }
 
         .quiz-filter-btn:hover {
@@ -1325,7 +1012,7 @@
         }
 
         .quiz-score-value {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
         }
@@ -1360,7 +1047,7 @@
         }
 
         .quiz-complete-title {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 12px;
@@ -1391,7 +1078,7 @@
         }
 
         .srs-stat-value {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 2px;
@@ -1432,7 +1119,7 @@
             border: none;
             background: transparent;
             color: var(--text-secondary);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
         }
 
         .srs-mode-btn:hover {
@@ -1459,7 +1146,7 @@
             transition: all 0.2s ease;
             border: 2px solid;
             background: var(--bg-card);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1482,7 +1169,7 @@
         .srs-btn-interval {
             font-size: 0.7rem;
             opacity: 0.7;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .srs-btn.again {
@@ -1490,7 +1177,7 @@
             color: var(--accent-red);
         }
         .srs-btn.again:hover {
-            background: rgba(var(--accent-red-rgb), 0.1);
+            background: rgba(255, 71, 87, 0.1);
         }
 
         .srs-btn.hard {
@@ -1498,7 +1185,7 @@
             color: var(--accent-orange);
         }
         .srs-btn.hard:hover {
-            background: rgba(var(--accent-orange-rgb), 0.1);
+            background: rgba(255, 165, 2, 0.1);
         }
 
         .srs-btn.good {
@@ -1506,7 +1193,7 @@
             color: var(--accent-cyan);
         }
         .srs-btn.good:hover {
-            background: rgba(var(--accent-cyan-rgb), 0.1);
+            background: rgba(0, 212, 255, 0.1);
         }
 
         .srs-btn.easy {
@@ -1514,7 +1201,7 @@
             color: var(--accent-green);
         }
         .srs-btn.easy:hover {
-            background: rgba(var(--accent-green-rgb), 0.1);
+            background: rgba(0, 255, 135, 0.1);
         }
 
         .srs-card-info {
@@ -1526,7 +1213,7 @@
             border-radius: 8px;
             margin-bottom: 16px;
             font-size: 0.8rem;
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .srs-level-badge {
@@ -1537,10 +1224,10 @@
             text-transform: uppercase;
         }
 
-        .srs-level-badge.new { background: rgba(var(--accent-red-rgb), 0.15); color: var(--accent-red); }
-        .srs-level-badge.learning { background: rgba(var(--accent-orange-rgb), 0.15); color: var(--accent-orange); }
-        .srs-level-badge.review { background: rgba(var(--accent-cyan-rgb), 0.15); color: var(--accent-cyan); }
-        .srs-level-badge.mastered { background: rgba(var(--accent-green-rgb), 0.15); color: var(--accent-green); }
+        .srs-level-badge.new { background: rgba(255, 71, 87, 0.15); color: var(--accent-red); }
+        .srs-level-badge.learning { background: rgba(255, 165, 2, 0.15); color: var(--accent-orange); }
+        .srs-level-badge.review { background: rgba(0, 212, 255, 0.15); color: var(--accent-cyan); }
+        .srs-level-badge.mastered { background: rgba(0, 255, 135, 0.15); color: var(--accent-green); }
 
         .srs-empty-state {
             text-align: center;
@@ -1556,7 +1243,7 @@
         }
 
         .srs-empty-title {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 8px;
@@ -1577,7 +1264,7 @@
             border: 1px solid var(--border-color);
             background: transparent;
             color: var(--text-muted);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
             margin-top: 16px;
         }
 
@@ -1602,7 +1289,7 @@
             border: 2px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-primary);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
             font-size: 0.9rem;
             line-height: 1.5;
             cursor: pointer;
@@ -1628,7 +1315,7 @@
             border-radius: 6px;
             background: var(--bg-secondary);
             color: var(--accent-orange);
-            font-family: var(--font-label);
+            font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
             font-size: 0.85rem;
             flex-shrink: 0;
@@ -1640,7 +1327,7 @@
 
         .qcm-option.correct {
             border-color: var(--accent-green);
-            background: rgba(var(--accent-green-rgb), 0.1);
+            background: rgba(0, 255, 135, 0.1);
             color: var(--text-primary);
         }
 
@@ -1651,7 +1338,7 @@
 
         .qcm-option.incorrect {
             border-color: var(--accent-red);
-            background: rgba(var(--accent-red-rgb), 0.1);
+            background: rgba(255, 71, 87, 0.1);
         }
 
         .qcm-option.incorrect .qcm-option-letter {
@@ -1680,13 +1367,13 @@
         }
 
         .qcm-feedback.success {
-            background: rgba(var(--accent-green-rgb), 0.1);
+            background: rgba(0, 255, 135, 0.1);
             border: 1px solid var(--accent-green);
             color: var(--accent-green);
         }
 
         .qcm-feedback.error {
-            background: rgba(var(--accent-red-rgb), 0.1);
+            background: rgba(255, 71, 87, 0.1);
             border: 1px solid var(--accent-red);
             color: var(--accent-red);
         }
@@ -1754,7 +1441,7 @@
         }
 
         .qcm-modal-header h3 {
-            font-family: var(--font-heading);
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.2rem;
         }
 
@@ -1791,7 +1478,7 @@
             border: 1px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-primary);
-            font-family: var(--font-body);
+            font-family: 'Outfit', sans-serif;
             font-size: 0.9rem;
             resize: vertical;
         }
@@ -2034,46 +1721,100 @@
         <nav class="sidebar">
             <div class="logo">
                 <h1>Poker Notes</h1>
-                <span>journal de coaching</span>
-            </div>
-
-            <div class="theme-toggle">
-                <button class="theme-toggle-btn" data-theme-btn="light" onclick="setDashboardTheme('light')">Clair</button>
-                <button class="theme-toggle-btn" data-theme-btn="dark" onclick="setDashboardTheme('dark')">Sombre</button>
-                <button class="theme-toggle-btn" data-theme-btn="soft" onclick="setDashboardTheme('soft')">Soft</button>
+                <span>// coaching syntheses</span>
             </div>
 
             <div class="nav-section">
+                <div class="nav-section-title">Mode Révision</div>
+                
                 <div class="nav-item quiz" onclick="showSession('session-quiz')">
                     <div class="nav-item-icon">🎯</div>
                     <div class="nav-item-content">
                         <div class="nav-item-title">Quiz Mode</div>
-                        <div class="nav-item-meta" id="nav-quiz-meta">127 cartes • Flashcards</div>
+                        <div class="nav-item-meta">127 cartes • Flashcards</div>
                     </div>
                 </div>
             </div>
 
-            <div class="nav-search-wrap">
-                <svg class="nav-search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Rechercher une session…" oninput="handleNavSearch(this.value)" onkeydown="if(event.key==='Escape'){clearNavSearch();}">
-                <button class="nav-search-clear" id="nav-search-clear" onclick="clearNavSearch()" style="display:none;">✕</button>
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions PKO</div>
+                
+                <div class="nav-item pko active" onclick="showSession('session-pko-icm')">
+                    <div class="nav-item-icon">01</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">PKO & ICM + Postflop</div>
+                        <div class="nav-item-meta">Série PKO • Avancé</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="nav-group-tabs" id="nav-group-tabs">
-                <button class="nav-group-tab" data-group="theme" onclick="setNavGrouping('theme')">Thématique</button>
-                <button class="nav-group-tab" data-group="coach" onclick="setNavGrouping('coach')">Coach</button>
-                <button class="nav-group-tab" data-group="source" onclick="setNavGrouping('source')">Provenance</button>
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions Postflop</div>
+                
+                <div class="nav-item postflop" onclick="showSession('session-sqz-80bb')">
+                    <div class="nav-item-icon">02</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Pots SQZ 80bb SB vs HJ</div>
+                        <div class="nav-item-meta">C-Bet • Textures</div>
+                    </div>
+                </div>
             </div>
 
-            <div id="nav-sessions-container"></div>
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions ICM</div>
+
+                <div class="nav-item pko" onclick="showSession('session-exploit-icm')">
+                    <div class="nav-item-icon">03</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Exploits ICM en TF</div>
+                        <div class="nav-item-meta">T. Boivin • Préflop</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions Théorie</div>
+
+                <div class="nav-item math" onclick="showSession('session-maths')">
+                    <div class="nav-item-icon">04</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Mathématiques du Poker</div>
+                        <div class="nav-item-meta">T. Sacquet • Fondamentaux</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions Heads-Up</div>
+
+                <div class="nav-item hu" onclick="showSession('session-hu-shortstack')">
+                    <div class="nav-item-icon">05</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Jeu Heads-Up — Short Stack</div>
+                        <div class="nav-item-meta">Preflop 7,5-15 BB • Part 1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">Sessions Postflop BB</div>
+
+                <div class="nav-item xr" onclick="showSession('session-xr-flop')">
+                    <div class="nav-item-icon">06</div>
+                    <div class="nav-item-content">
+                        <div class="nav-item-title">Check-Raise Flop en Défense</div>
+                        <div class="nav-item-meta">Cédric • Review solver</div>
+                    </div>
+                </div>
+            </div>
 
             <div class="nav-section">
                 <div class="nav-section-title">Statistiques</div>
                 <div style="padding: 12px 16px; color: var(--text-muted); font-size: 0.85rem;">
-                    <div style="margin-bottom: 8px;" id="nav-stat-sessions">📚 7 sessions</div>
-                    <div style="margin-bottom: 8px;" id="nav-stat-minutes">⏱️ ~255 min de contenu</div>
-                    <div style="margin-bottom: 8px;" id="nav-stat-takeaways">🎯 37 takeaways</div>
-                    <div id="nav-stat-cards">🃏 147 flashcards</div>
+                    <div style="margin-bottom: 8px;">📚 6 sessions</div>
+                    <div style="margin-bottom: 8px;">⏱️ ~240 min de contenu</div>
+                    <div style="margin-bottom: 8px;">🎯 33 takeaways</div>
+                    <div>🃏 127 flashcards</div>
                 </div>
             </div>
         </nav>
@@ -2135,7 +1876,6 @@
                             <button class="quiz-filter-btn" onclick="filterSRS('math')">Maths</button>
                             <button class="quiz-filter-btn" onclick="filterSRS('hu')">Heads-Up</button>
                             <button class="quiz-filter-btn" onclick="filterSRS('xr')">Check-Raise</button>
-                            <button class="quiz-filter-btn" onclick="filterSRS('mw')">OR/IP/BB Multiway</button>
                             <button class="quiz-filter-btn" onclick="filterSRS('takeaway')">Takeaways</button>
                         </div>
 
@@ -2229,7 +1969,6 @@
                             <button class="quiz-filter-btn" onclick="filterQCM('math')">Maths</button>
                             <button class="quiz-filter-btn" onclick="filterQCM('hu')">Heads-Up</button>
                             <button class="quiz-filter-btn" onclick="filterQCM('xr')">Check-Raise</button>
-                            <button class="quiz-filter-btn" onclick="filterQCM('mw')">OR/IP/BB Multiway</button>
                             <button class="quiz-filter-btn" onclick="filterQCM('takeaway')">Takeaways</button>
                             <span id="qcm-custom-category-filters"></span>
                             <button class="quiz-filter-btn" onclick="filterQCM('custom')">🧩 Mes QCM</button>
@@ -2387,15 +2126,14 @@
                         
                         <!-- Filters -->
                         <div class="quiz-filters">
-                            <button class="quiz-filter-btn active" onclick="filterQuiz('all')">Toutes (147)</button>
+                            <button class="quiz-filter-btn active" onclick="filterQuiz('all')">Toutes (127)</button>
                             <button class="quiz-filter-btn" onclick="filterQuiz('pko')">PKO & ICM (17)</button>
                             <button class="quiz-filter-btn" onclick="filterQuiz('sqz')">SQZ 80bb (19)</button>
                             <button class="quiz-filter-btn" onclick="filterQuiz('icm')">Exploits ICM (15)</button>
                             <button class="quiz-filter-btn" onclick="filterQuiz('math')">Maths (28)</button>
                             <button class="quiz-filter-btn" onclick="filterQuiz('hu')">Heads-Up (24)</button>
                             <button class="quiz-filter-btn" onclick="filterQuiz('xr')">Check-Raise (24)</button>
-                            <button class="quiz-filter-btn" onclick="filterQuiz('mw')">OR/IP/BB Multiway (20)</button>
-                            <button class="quiz-filter-btn" onclick="filterQuiz('takeaway')">Takeaways (37)</button>
+                            <button class="quiz-filter-btn" onclick="filterQuiz('takeaway')">Takeaways (33)</button>
                         </div>
 
                         <!-- Progress -->
@@ -4805,482 +4543,10 @@
             </div>
             <!-- End Session XR Flop -->
 
-            <!-- ============================================== -->
-            <!-- SESSION 07: OR/IP/BB MULTIWAY (A. TAXIGALLOISE) -->
-            <!-- ============================================== -->
-            <div id="session-mw-oripbb" class="session-content">
-
-                <!-- Header -->
-                <header class="session-header">
-                    <div class="session-badge gold">
-                        <span>●</span> Coaching Technique 1-to-1 • Part 1 — En cours
-                    </div>
-                    <h1 class="session-title">OR/IP/BB en Multiway</h1>
-                    <p class="session-subtitle">Fréquences de c-bet en position (IP) : écart théorie/pratique entre pot à 2 (SRP) et pot multiway (MW), exploits associés côté OR et côté BB. Notes de coaching brutes — la suite arrive la semaine prochaine (mid/deep, probes turn).</p>
-                    <div class="session-meta">
-                        <div class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                            Alexis Taxigalloise — Coach Technique
-                        </div>
-                        <div class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                            1-to-1 • Notes de séance
-                        </div>
-                        <div class="meta-item">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
-                            OR, IP, BB, C-Bet Multiway
-                        </div>
-                    </div>
-                </header>
-
-                <!-- Stats Overview -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value gold">~50%</div>
-                        <div class="stat-label">Stab IP théorique en SRP (non équité-driven)</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value gold">MW ↑</div>
-                        <div class="stat-label">Théorie : IP doit stab + en multiway qu'en SRP — la pop fait l'inverse</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value gold">95%</div>
-                        <div class="stat-label">BB censé x-range la turn (hors board très particulier)</div>
-                    </div>
-                </div>
-
-                <!-- KEY CONCEPTS -->
-                <section class="content-section">
-                    <div class="section-header">
-                        <div class="section-icon mw">💡</div>
-                        <h2 class="section-title">Key Concepts</h2>
-                    </div>
-
-                    <div class="card-grid">
-                        <div class="card">
-                            <span class="card-number">01</span>
-                            <span class="concept-tag gold">THÉORIE</span>
-                            <h4>Le c-bet IP a deux fonctions : protéger et deny</h4>
-                            <p>En tant qu'IP, on stab beaucoup et <strong>merged</strong> (pas de slowplay). Deux objectifs : se <strong>protéger contre les 4 cartes</strong> qui restent à agir, et <strong>deny l'équité de BB</strong> en le forçant à agir tout de suite plutôt que de checker derrière.</p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-number">02</span>
-                            <span class="concept-tag gold">THÉORIE</span>
-                            <h4>SRP vs Multiway : IP doit stab encore plus en MW</h4>
-                            <p>En SRP OOP face à IP, la théorie dit ~50% de stab (pas équité-driven, plutôt mérité/mixé). En <strong>multiway, IP est censé c-bet encore plus qu'en SRP, peu importe la texture du board</strong>.</p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-number">03</span>
-                            <span class="concept-tag red">LEAK POP</span>
-                            <h4>La population fait l'inverse en multiway</h4>
-                            <p>En SRP, la pop stab IP à peu près comme la théorie (~50%) mais de façon équité-driven. En <strong>MW, énorme écart : elle under-stab massivement</strong> alors qu'elle devrait c-bet plus qu'en SRP.</p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-number">04</span>
-                            <span class="concept-tag gold">EXPLOIT OR</span>
-                            <h4>Overcbet en exploit quand on est OR</h4>
-                            <p>Comme le bouton ne stab pas assez et ne raise pas assez IP, <strong>overcbet devient +EV en exploit</strong> pour un OR : on fait à la place de IP le travail de deny d'équité qu'il aurait dû faire.</p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-number">05</span>
-                            <span class="concept-tag gold">DÉFENSE BB</span>
-                            <h4>BB : jamais de raise vs stab IP, mais agressif en clos d'action</h4>
-                            <p>En théorie, BB ne raise pas contre un stab IP (sauf board très particulier). En revanche, <strong>dès qu'on clôt l'action</strong> (peu importe la position), on doit jouer <strong>très agressivement</strong>.</p>
-                        </div>
-
-                        <div class="card">
-                            <span class="card-number">06</span>
-                            <span class="concept-tag red">HARD EXPLOIT</span>
-                            <h4>Probe turn en BB = souvent un tell</h4>
-                            <p>En théorie, BB ne probe quasiment jamais la turn (x-range ~95% du temps, sauf board hyper particulier). <strong>Un probe avec un sizing qui tell sur un board où il devrait checker sa range = spot à attaquer massivement.</strong></p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- SITUATIONS & LINES -->
-                <section class="content-section">
-                    <div class="section-header">
-                        <div class="section-icon mw">🎯</div>
-                        <h2 class="section-title">Situations & Lines Analysées</h2>
-                    </div>
-
-                    <!-- IP en MW vs SRP -->
-                    <div class="situation-card">
-                        <div class="situation-header">
-                            <div class="situation-title">
-                                Fréquence de c-bet IP : SRP vs Multiway
-                                <span class="position-badge gold">Théorie vs Pratique</span>
-                            </div>
-                        </div>
-                        <div class="situation-content">
-                            <div class="situation-block">
-                                <h5>✓ Lines Recommandées</h5>
-                                <ul>
-                                    <li>SRP OOP vs IP : stab théorique ~50%, pas équité-driven (mix, pas juste les bonnes mains)</li>
-                                    <li>MW : c-bet encore plus qu'en SRP en théorie, peu importe le board</li>
-                                    <li>On stab très mergé et on ne slowplay jamais en tant qu'IP</li>
-                                    <li>Objectif double : protection contre les 4 cartes derrière + deny l'équité de BB</li>
-                                </ul>
-                            </div>
-                            <div class="situation-block errors">
-                                <h5>✗ Erreurs Communes (population)</h5>
-                                <ul>
-                                    <li>En SRP, la pop stab ~50% mais équité-driven au lieu de merger sa range</li>
-                                    <li>En MW, under-stab énorme en tant qu'IP — à l'inverse total de la théorie</li>
-                                    <li>Se protéger trop peu contre les 4 cartes restantes en multiway</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exploiter le gap MW -->
-                    <div class="situation-card">
-                        <div class="situation-header">
-                            <div class="situation-title">
-                                Exploiter le under-cbet multiway de la population
-                                <span class="position-badge gold">OR / Overcbet</span>
-                            </div>
-                        </div>
-                        <div class="situation-content">
-                            <div class="situation-block">
-                                <h5>✓ Lines Recommandées</h5>
-                                <ul>
-                                    <li>Être plus agressif turn/river quand on est IP face à une pop qui sous-c-bet</li>
-                                    <li>Vs un OOP random qui checke trop en IP alors qu'on est OR : c-bet plus, on fait le deny d'équité à sa place</li>
-                                    <li>Overcbet en exploit quand on est OR : le bouton ne stab pas assez et ne raise pas assez IP</li>
-                                    <li>On peut raise IP si on soupçonne un overcbet OOP (ex : Ah/Kh déco — peu cbetées en théorie, beaucoup en pratique)</li>
-                                    <li>En théorie, OOP/OR ne cbet que les meilleurs boards : ceux où sa range préflop connecte</li>
-                                </ul>
-                            </div>
-                            <div class="situation-block errors">
-                                <h5>✗ Erreurs Communes</h5>
-                                <ul>
-                                    <li>Rester à une fréquence de c-bet « GTO » de base sans ajuster face à une pop qui sous-c-bet en MW</li>
-                                    <li>Ne pas punir les overcbets OOP par un raise IP</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Défense BB -->
-                    <div class="situation-card">
-                        <div class="situation-header">
-                            <div class="situation-title">
-                                Défense en BB face au stab IP
-                                <span class="position-badge gold">No Raise / Clos d'action</span>
-                            </div>
-                        </div>
-                        <div class="situation-content">
-                            <div class="situation-block">
-                                <h5>✓ Lines Recommandées</h5>
-                                <ul>
-                                    <li>On ne raise pas contre un stab IP (sauf board très particulier)</li>
-                                    <li>Dès qu'on clôt l'action, jouer très agressivement, peu importe la position</li>
-                                    <li>Vs cbet d'un OR qui a flat call IP : fastplay toujours paire + flush draw (pas de slowplay)</li>
-                                    <li>On reste globalement tight/agressif en BB, en continuant surtout des mains à backdoors</li>
-                                </ul>
-                            </div>
-                            <div class="situation-block errors">
-                                <h5>✗ Erreurs Communes</h5>
-                                <ul>
-                                    <li>Slowplay une paire + FD vs un OR qui a flat call IP au lieu de fastplay</li>
-                                    <li>Continuer une top pair sans redraw vs cbet/call en BB (on devrait souvent fold)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hard exploit turn -->
-                    <div class="situation-card">
-                        <div class="situation-header">
-                            <div class="situation-title">
-                                Hard exploit : probe turn BB & sizing tells de l'OR
-                                <span class="position-badge red">Attaque massive</span>
-                            </div>
-                        </div>
-                        <div class="situation-content">
-                            <div class="situation-block">
-                                <h5>✓ Lines Recommandées</h5>
-                                <ul>
-                                    <li>En théorie, BB x-range la turn ~95% du temps sauf board hyper particulier</li>
-                                    <li>Si BB probe avec un sizing qui tell sur un board où il devrait x-range : attaquer massivement ce spot</li>
-                                    <li>Dans les nœuds où on (bon joueur) x-range la turn en BB, un leak fréquent chez l'OR : il size sans corrélation avec l'équité de sa range</li>
-                                    <li>Si on est un bon reg et qu'on size en fonction de l'équité réelle de sa range, on va parfois paraître aggro à tort → ne pas overfold ce spot</li>
-                                </ul>
-                            </div>
-                            <div class="situation-block errors">
-                                <h5>✗ Erreurs Communes</h5>
-                                <ul>
-                                    <li>OR qui utilise de gros sizes avec des mains médianes en pensant à tort que BB est cappé</li>
-                                    <li>Overfold contre un bon reg qui size en corrélation avec l'équité (le confondre avec le leak ci-dessus)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- TAKEAWAYS -->
-                <section class="content-section">
-                    <div class="section-header">
-                        <div class="section-icon takeaways">✅</div>
-                        <h2 class="section-title">Takeaways Actionnables</h2>
-                    </div>
-
-                    <div class="checklist">
-                        <div class="checklist-item">
-                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
-                            <div class="checklist-text">
-                                <strong>C-bet IP plus souvent en multiway qu'en SRP</strong>
-                                <span>La théorie le demande peu importe le board. La pop fait l'inverse : gros spot à exploiter en étant plus agressif turn/river.</span>
-                            </div>
-                        </div>
-
-                        <div class="checklist-item">
-                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
-                            <div class="checklist-text">
-                                <strong>Overcbet en exploit quand je suis OR</strong>
-                                <span>Le bouton ne stab pas assez et ne raise pas assez IP — je peux aussi raise IP si je soupçonne un overcbet OOP.</span>
-                            </div>
-                        </div>
-
-                        <div class="checklist-item">
-                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
-                            <div class="checklist-text">
-                                <strong>Ne jamais raise en BB vs un stab IP</strong>
-                                <span>Sauf board très particulier. En contrepartie, dès que je clos l'action, jouer très agressivement peu importe la position.</span>
-                            </div>
-                        </div>
-
-                        <div class="checklist-item">
-                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
-                            <div class="checklist-text">
-                                <strong>Fastplay systématique paire + FD vs cbet d'un OR flat IP</strong>
-                                <span>Pas de slowplay. En parallèle, rester prêt à fold une top pair sans redraw vs cbet/call en BB.</span>
-                            </div>
-                        </div>
-
-                        <div class="checklist-item">
-                            <div class="checklist-box" onclick="this.classList.toggle('checked')"></div>
-                            <div class="checklist-text">
-                                <strong>Attaquer massivement un probe turn BB avec sizing tell</strong>
-                                <span>BB devrait x-range ~95% du temps la turn. Un probe qui tell sur un board hors norme = spot à punir fort.</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CITATIONS -->
-                <section class="content-section">
-                    <div class="section-header">
-                        <div class="section-icon quotes">💬</div>
-                        <h2 class="section-title">Citations Clés (notes brutes du coach)</h2>
-                    </div>
-
-                    <div class="quote-card">
-                        <p class="quote-text">En SRP, IP stab environ 50% du temps et ce n'est pas équité-driven. En multiway, en théorie, IP est censé stab encore plus qu'en SRP, peu importe le board.</p>
-                        <p class="quote-context">— Sur l'écart de fréquence de c-bet SRP vs Multiway</p>
-                    </div>
-
-                    <div class="quote-card">
-                        <p class="quote-text">L'écart théorie/pratique : en SRP, IP stab comme la théorie (~50%) mais de façon équité-driven ; en multiway, il y a un énorme under-stab de la part de IP.</p>
-                        <p class="quote-context">— Sur le leak de la population en multiway</p>
-                    </div>
-
-                    <div class="quote-card">
-                        <p class="quote-text">En théorie, la BB joue no probe la turn sauf board hyper particulier : elle est censée x-range la turn 95% du temps. Si elle probe avec un sizing qui tell, il faut attaquer massivement ce spot.</p>
-                        <p class="quote-context">— Sur le hard exploit du probe turn en BB</p>
-                    </div>
-                </section>
-
-                <div class="quote-card" style="border-style: dashed; opacity: 0.85;">
-                    <p class="quote-text">📌 Coaching en cours — Part 1 sur le multiway (fréquences de c-bet IP, exploits OR/BB). La suite arrive la semaine prochaine et viendra compléter cette même session (probes turn, sizing tells détaillés, autres nœuds).</p>
-                    <p class="quote-context">— À suivre</p>
-                </div>
-
-            </div>
-            <!-- End Session MW OR/IP/BB -->
-
         </main>
     </div>
 
     <script>
-        // ==========================================
-        // SIDEBAR — SESSIONS INDEX (source de vérité pour la nav dynamique)
-        // ==========================================
-        // Pour ajouter une nouvelle session : ajouter une entrée ici + le contenu
-        // dans <main> + les cartes dans quizData. La sidebar (recherche, groupes
-        // par thématique/coach/provenance) se génère automatiquement à partir
-        // de ce tableau — ne pas écrire le HTML de la sidebar à la main.
-        const sessionsIndex = [
-            { id: "session-pko-icm", icon: "01", navClass: "pko", title: "PKO & ICM + Postflop", meta: "Série PKO • Avancé", theme: "pko", themeLabel: "PKO & ICM (Bounties)", coach: null, source: "Coaching Vidéo", minutes: 45 },
-            { id: "session-sqz-80bb", icon: "02", navClass: "postflop", title: "Pots SQZ 80bb SB vs HJ", meta: "C-Bet • Textures", theme: "sqz", themeLabel: "Postflop • SQZ / C-Bet", coach: null, source: "Coaching Vidéo", minutes: 40 },
-            { id: "session-exploit-icm", icon: "03", navClass: "icm", title: "Exploits ICM en TF", meta: "T. Boivin • Préflop", theme: "icm", themeLabel: "ICM Préflop", coach: "Thomas Boivin", source: "Coaching Vidéo", minutes: 35 },
-            { id: "session-maths", icon: "04", navClass: "math", title: "Mathématiques du Poker", meta: "T. Sacquet • Fondamentaux", theme: "math", themeLabel: "Théorie & Maths", coach: "Thomas Sacquet", source: "Coaching Vidéo", minutes: 45 },
-            { id: "session-hu-shortstack", icon: "05", navClass: "hu", title: "Jeu Heads-Up — Short Stack", meta: "Preflop 7,5-15 BB • Part 1", theme: "hu", themeLabel: "Heads-Up", coach: "KT & Flavien", source: "Coaching Vidéo", minutes: 40 },
-            { id: "session-xr-flop", icon: "06", navClass: "xr", title: "Check-Raise Flop en Défense", meta: "Cédric • Review solver", theme: "xr", themeLabel: "Postflop BB • Check-Raise", coach: "Cédric (Pure Poker)", source: "Review + Solver", minutes: 35 },
-            { id: "session-mw-oripbb", icon: "07", navClass: "mw", title: "OR/IP/BB en Multiway", meta: "A. Taxigalloise • Part 1 — en cours", theme: "mw", themeLabel: "Multiway", coach: "Alexis Taxigalloise", source: "Coaching 1-to-1", minutes: 15 },
-        ];
-
-        const NAV_COACH_FALLBACK = "Non précisé";
-
-        function navStorageGet(key) {
-            try { return localStorage.getItem(key); } catch (e) { return null; }
-        }
-        function navStorageSet(key, value) {
-            try { localStorage.setItem(key, value); } catch (e) { /* stockage indisponible, on ignore */ }
-        }
-
-        // ==========================================
-        // THEME TOGGLE (Clair / Sombre / Soft)
-        // ==========================================
-        function setDashboardTheme(theme) {
-            document.documentElement.setAttribute("data-theme", theme);
-            navStorageSet("dashboardTheme", theme);
-            document.querySelectorAll(".theme-toggle-btn").forEach(btn => {
-                btn.classList.toggle("active", btn.dataset.themeBtn === theme);
-            });
-        }
-
-        let navGrouping = navStorageGet("navGrouping") || "theme";
-        let navCollapsedState = {};
-        try { navCollapsedState = JSON.parse(navStorageGet("navCollapsedState") || "{}"); } catch (e) { navCollapsedState = {}; }
-
-        function escapeHtml(str) {
-            return String(str).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
-        }
-
-        function matchesNavQuery(s, q) {
-            const haystack = [s.title, s.meta, s.themeLabel, s.coach, s.source].filter(Boolean).join(" ").toLowerCase();
-            return haystack.includes(q);
-        }
-
-        function renderNavItem(s) {
-            return `
-                <div class="nav-item ${s.navClass}" data-session-id="${s.id}" onclick="showSession('${s.id}')">
-                    <div class="nav-item-icon">${s.icon}</div>
-                    <div class="nav-item-content">
-                        <div class="nav-item-title">${escapeHtml(s.title)}</div>
-                        <div class="nav-item-meta">${escapeHtml(s.meta)}</div>
-                    </div>
-                </div>`;
-        }
-
-        function groupSessions(list, grouping) {
-            const groups = [];
-            const byKey = {};
-            list.forEach(s => {
-                let key, label;
-                if (grouping === "coach") {
-                    key = s.coach || NAV_COACH_FALLBACK;
-                    label = key;
-                } else if (grouping === "source") {
-                    key = s.source;
-                    label = s.source;
-                } else {
-                    key = s.theme;
-                    label = s.themeLabel;
-                }
-                if (!byKey[key]) {
-                    byKey[key] = { key, label, items: [] };
-                    groups.push(byKey[key]);
-                }
-                byKey[key].items.push(s);
-            });
-            return groups;
-        }
-
-        function toggleNavGroup(key) {
-            // Le groupe peut ne pas avoir d'état stocké explicite (il utilise alors
-            // un état par défaut : déplié si actif, replié sinon) — on part donc de
-            // l'état effectif actuellement affiché, pas de la valeur brute stockée.
-            const group = groupSessions(sessionsIndex, navGrouping).find(g => (navGrouping + "::" + g.key) === key);
-            const activeSessionId = document.querySelector(".session-content.active") ? document.querySelector(".session-content.active").id : null;
-            const hasActive = group ? group.items.some(s => s.id === activeSessionId) : false;
-            const currentlyCollapsed = key in navCollapsedState ? navCollapsedState[key] : !hasActive;
-            navCollapsedState[key] = !currentlyCollapsed;
-            navStorageSet("navCollapsedState", JSON.stringify(navCollapsedState));
-            renderSidebarSessions(document.getElementById("nav-search-input").value);
-        }
-
-        function setNavGrouping(grouping) {
-            navGrouping = grouping;
-            navStorageSet("navGrouping", grouping);
-            document.querySelectorAll(".nav-group-tab").forEach(btn => {
-                btn.classList.toggle("active", btn.dataset.group === grouping);
-            });
-            renderSidebarSessions(document.getElementById("nav-search-input").value);
-        }
-
-        function handleNavSearch(value) {
-            document.getElementById("nav-search-clear").style.display = value ? "block" : "none";
-            renderSidebarSessions(value);
-        }
-
-        function clearNavSearch() {
-            const input = document.getElementById("nav-search-input");
-            input.value = "";
-            document.getElementById("nav-search-clear").style.display = "none";
-            renderSidebarSessions("");
-            input.focus();
-        }
-
-        function syncActiveNavItem() {
-            const activeSession = document.querySelector(".session-content.active");
-            if (!activeSession) return;
-            document.querySelectorAll("#nav-sessions-container .nav-item").forEach(item => {
-                item.classList.toggle("active", item.dataset.sessionId === activeSession.id);
-            });
-        }
-
-        function renderSidebarSessions(filterText) {
-            const container = document.getElementById("nav-sessions-container");
-            const q = (filterText || "").trim().toLowerCase();
-
-            if (q) {
-                const matches = sessionsIndex.filter(s => matchesNavQuery(s, q));
-                container.innerHTML = matches.length
-                    ? `<div class="nav-section">${matches.map(renderNavItem).join("")}</div>`
-                    : `<div class="nav-section"><div class="nav-empty">Aucun résultat pour « ${escapeHtml(filterText)} »</div></div>`;
-                syncActiveNavItem();
-                return;
-            }
-
-            const groups = groupSessions(sessionsIndex, navGrouping);
-            const activeSessionId = document.querySelector(".session-content.active") ? document.querySelector(".session-content.active").id : null;
-
-            container.innerHTML = groups.map(group => {
-                const key = navGrouping + "::" + group.key;
-                const hasActive = group.items.some(s => s.id === activeSessionId);
-                const collapsed = key in navCollapsedState ? navCollapsedState[key] : !hasActive;
-                return `
-                    <div class="nav-section nav-group">
-                        <div class="nav-group-header" onclick="toggleNavGroup('${key}')">
-                            <span class="nav-group-chevron ${collapsed ? "collapsed" : ""}">▾</span>
-                            <span class="nav-group-title">${escapeHtml(group.label)}</span>
-                            <span class="nav-group-count">${group.items.length}</span>
-                        </div>
-                        <div class="nav-group-items ${collapsed ? "collapsed" : ""}">
-                            <div class="nav-group-items-inner">${group.items.map(renderNavItem).join("")}</div>
-                        </div>
-                    </div>`;
-            }).join("");
-            syncActiveNavItem();
-        }
-
-        function refreshNavStats() {
-            const takeaways = quizData.filter(c => c.isTakeaway).length;
-            const totalMinutes = sessionsIndex.reduce((sum, s) => sum + (s.minutes || 0), 0);
-            document.getElementById("nav-quiz-meta").textContent = `${quizData.length} cartes • Flashcards`;
-            document.getElementById("nav-stat-sessions").textContent = `📚 ${sessionsIndex.length} sessions`;
-            document.getElementById("nav-stat-minutes").textContent = `⏱️ ~${totalMinutes} min de contenu`;
-            document.getElementById("nav-stat-takeaways").textContent = `🎯 ${takeaways} takeaways`;
-            document.getElementById("nav-stat-cards").textContent = `🃏 ${quizData.length} flashcards`;
-        }
-
         // ==========================================
         // QUIZ DATA
         // ==========================================
@@ -5434,31 +4700,7 @@
             { q: "[TAKEAWAY] XR - Choix du size turn selon la carte ?", a: "Brique / low : bet small (attaquer les floats qui miss). High card (Roi) : polariser, bet cher.", tag: "TAKEAWAY", session: "Session 06", category: "xr", isTakeaway: true },
             { q: "[TAKEAWAY] XR - Défense BB avec un gros KO (je couvre) ?", a: "Défendre beaucoup plus loose : le KO à gagner compense l'ICM (RP négatif). Toujours rajouter le KO dans mes calculs.", tag: "TAKEAWAY", session: "Session 06", category: "xr", isTakeaway: true },
             { q: "[TAKEAWAY] XR - Sélection de mes combos de bluff ?", a: "Prendre ceux qui unblock les folds / unblock les flush draws. Bottom pair basse et « X de pique + low card » privilégiés.", tag: "TAKEAWAY", session: "Session 06", category: "xr", isTakeaway: true },
-            { q: "[TAKEAWAY] XR - Mes bluffs vs bouton vs early position ?", a: "Vs bouton : ça marche mieux (il undercall). Vs early position : prudence, il overcall (range inélastique).", tag: "TAKEAWAY", session: "Session 06", category: "xr", isTakeaway: true },
-
-            // ============ SESSION 07: OR/IP/BB Multiway (A. Taxigalloise) - Concepts [Part 1, en cours] ============
-            { q: "En SRP, à quelle fréquence IP stab-t-il en théorie face à OOP, et est-ce équité-driven ?", a: "Environ 50% du temps, et ce n'est pas équité-driven (pas seulement ses bonnes mains) : IP c-bet sa range de façon mergée.", tag: "THÉORIE", session: "Session 07", category: "mw" },
-            { q: "En multiway (MW), IP doit-il stab plus ou moins qu'en SRP en théorie ?", a: "Plus. En MW, IP est censé c-bet encore plus qu'en SRP, peu importe la texture du board.", tag: "THÉORIE", session: "Session 07", category: "mw" },
-            { q: "Quelles sont les deux fonctions du c-bet quand on est IP ?", a: "Se protéger contre les 4 cartes qui restent à agir derrière, et deny l'équité de BB en le forçant à agir tout de suite.", tag: "CONCEPT", session: "Session 07", category: "mw" },
-            { q: "Quel est le leak massif de la population en multiway côté IP ?", a: "Elle under-stab énormément en MW, alors que la théorie voudrait qu'elle c-bet encore plus qu'en SRP (en SRP elle stab ~50% mais de façon équité-driven).", tag: "LEAK-POP", session: "Session 07", category: "mw" },
-            { q: "Comment dévier pour exploiter le under-cbet multiway de la population ?", a: "Être plus agressif turn/river en tant qu'IP. Face à un OOP random qui checke trop alors qu'on est OR, on c-bet plus : on fait à sa place le travail de deny d'équité.", tag: "EXPLOIT", session: "Session 07", category: "mw" },
-            { q: "Pourquoi est-ce ok d'overcbet en exploit quand on est OR ?", a: "Parce que le bouton (BU) ne stab pas assez et ne raise pas assez IP en pratique.", tag: "EXPLOIT-OR", session: "Session 07", category: "mw" },
-            { q: "Dans quel cas peut-on raise IP en exploit, et avec quel type de mains ?", a: "Si on soupçonne un overcbet OOP (ex : Ah/Kh dépareillées) — des mains peu cbetées en théorie par un OR mais beaucoup en pratique.", tag: "EXPLOIT-OR", session: "Session 07", category: "mw" },
-            { q: "En théorie, sur quels boards l'OOP/OR doit-il cbet ?", a: "Seulement les meilleurs boards : ceux où sa range de raise préflop connecte le mieux.", tag: "THÉORIE", session: "Session 07", category: "mw" },
-            { q: "En BB, doit-on raise contre un stab IP ?", a: "Non, sauf board très particulier. En théorie, on ne raise pas vs un stab IP.", tag: "DÉFENSE-BB", session: "Session 07", category: "mw" },
-            { q: "Que doit faire la BB dès qu'elle clôt l'action ?", a: "Jouer très très agressivement, peu importe la position.", tag: "DÉFENSE-BB", session: "Session 07", category: "mw" },
-            { q: "Vs un c-bet d'un OR qui a flat call IP, comment joue-t-on nos paires + flush draws en BB ?", a: "On fastplay toujours : pas de slowplay dans ce spot.", tag: "DÉFENSE-BB", session: "Session 07", category: "mw" },
-            { q: "En BB, quel type de main continue-t-on souvent en priorité vs cbet/call, et laquelle fold-on souvent ?", a: "On continue surtout des mains à backdoors ; on fold souvent une top pair sans redraw. BB reste globalement tight/agressif.", tag: "DÉFENSE-BB", session: "Session 07", category: "mw" },
-            { q: "En théorie, à quelle fréquence la BB doit-elle x-range (checker sa range) à la turn ?", a: "Environ 95% du temps, sauf board hyper particulier — la BB ne probe quasiment jamais la turn.", tag: "HARD-EXPLOIT", session: "Session 07", category: "mw" },
-            { q: "Hard exploit : que faire si BB probe la turn avec un sizing tell sur un board qu'il devrait x-range ?", a: "Attaquer massivement ce spot — le probe avec ce tell révèle un fort déséquilibre.", tag: "HARD-EXPLOIT", session: "Session 07", category: "mw" },
-            { q: "Quel leak massif fait souvent l'OR sur son sizing dans les nœuds où BB x-range sa range ?", a: "Il utilise des sizes qui ne sont pas corrélés à l'équité de sa range : gros sizes avec des mains médianes, en pensant à tort que BB est cappé.", tag: "LEAK-SIZING", session: "Session 07", category: "mw" },
-            { q: "Si on size en corrélation avec l'équité réelle de sa range en tant que bon reg, quel risque prend-on et comment réagir ?", a: "On peut sembler aggro à tort (perçu comme un leak similaire à celui de l'OR décrit ci-dessus) — il ne faut pas pour autant overfold ce spot.", tag: "LEAK-SIZING", session: "Session 07", category: "mw" },
-
-            // ============ SESSION 07: TAKEAWAYS OR/IP/BB Multiway ============
-            { q: "[TAKEAWAY] MW - Fréquence de c-bet IP en multiway vs SRP ?", a: "C-bet encore plus qu'en SRP peu importe le board (théorie). La pop fait l'inverse (under-stab en MW) : exploiter en étant plus agressif turn/river.", tag: "TAKEAWAY", session: "Session 07", category: "mw", isTakeaway: true },
-            { q: "[TAKEAWAY] MW - Réflexe en tant qu'OR sur l'overcbet ?", a: "Overcbet en exploit : le bouton ne stab pas assez et ne raise pas assez IP. Je peux aussi raise IP si je soupçonne un overcbet OOP.", tag: "TAKEAWAY", session: "Session 07", category: "mw", isTakeaway: true },
-            { q: "[TAKEAWAY] MW - Règle de base en défense BB vs stab IP ?", a: "Jamais de raise vs stab IP (sauf board très particulier). Dès que je clos l'action, jouer très agressivement peu importe la position.", tag: "TAKEAWAY", session: "Session 07", category: "mw", isTakeaway: true },
-            { q: "[TAKEAWAY] MW - Réflexe sur un probe turn BB avec sizing tell ?", a: "BB devrait x-range ~95% du temps la turn. Un probe qui tell sur un board hors norme = attaquer massivement ce spot.", tag: "TAKEAWAY", session: "Session 07", category: "mw", isTakeaway: true }
+            { q: "[TAKEAWAY] XR - Mes bluffs vs bouton vs early position ?", a: "Vs bouton : ça marche mieux (il undercall). Vs early position : prudence, il overcall (range inélastique).", tag: "TAKEAWAY", session: "Session 06", category: "xr", isTakeaway: true }
         ];
 
         // ==========================================
@@ -6738,16 +5980,6 @@
                 }
             });
         });
-
-        // ==========================================
-        // SIDEBAR INIT (recherche, groupes, stats)
-        // ==========================================
-        document.querySelectorAll('.nav-group-tab').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.group === navGrouping);
-        });
-        renderSidebarSessions('');
-        refreshNavStats();
-        setDashboardTheme(document.documentElement.getAttribute('data-theme') || 'light');
     </script>
 </body>
 </html>
